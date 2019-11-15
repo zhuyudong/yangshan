@@ -3,7 +3,7 @@ export default {
   common: {
     search: 'Search',
     resume:
-      'A suite of React components, sensible UI design, and a friendly development experience.',
+      '图灵人工智能研究院前端基础部件及能力平台',
     advanced: 'Advanced',
     guide: 'Guide',
     design: 'Design',

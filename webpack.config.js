@@ -1,6 +1,6 @@
 const path = require('path')
 const fs = require('fs')
-const ip = require('ip')
+// const ip = require('ip')
 const _ = require('lodash')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
@@ -154,7 +154,7 @@ module.exports = merge(
         ]
       },
       compress: true,
-      host: ip.address(), // '0.0.0.0',
+      host: '0.0.0.0', // ip.address(), 
       port: 3200
     },
     entry,

@@ -3,7 +3,6 @@ import PageContainer from './PageContainer'
 import MarkdownView from './MarkdownView'
 
 const createPageContainer = ({ routerId }) => {
-  console.log(6, routerId)
   return locale => {
     const localePath = locale === 'en' ? '/en/' : '/'
     const content = require(`@src/pages/${routerId}${localePath}index.md`)
