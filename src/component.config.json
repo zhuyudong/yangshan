@@ -1,0 +1,452 @@
+[
+  {
+    "id": "overview",
+    "name": "Overview",
+    "title": "概览"
+  },
+  {
+    "id": "css",
+    "name": "CSS",
+    "title": "CSS",
+    "children": []
+  },
+  {
+    "id": "svg",
+    "name": "SVG",
+    "title": "SVG",
+    "children": []
+  },
+  {
+    "id": "html",
+    "name": "HTML",
+    "title": "HTML",
+    "children": []
+  },
+  {
+    "id": "linux",
+    "name": "Linux",
+    "title": "Linux",
+    "children": []
+  },
+  {
+    "id": "canvas",
+    "name": "Canvas",
+    "title": "Canvas",
+    "children": []
+  },
+  {
+    "id": "webgl",
+    "name": "WebGL",
+    "title": "WebGL",
+    "children": [
+      {
+        "id": "basic",
+        "name": "Basic",
+        "title": "基本构形",
+        "components": [
+          "Point",
+          "Line",
+          "Triangle"
+        ],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "rect",
+        "name": "Rect",
+        "title": "矩形",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "cube",
+        "name": "Cube",
+        "title": "立方体",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "pyramis",
+        "name": "Pyramis",
+        "title": "锥体",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "platform",
+        "name": "Platform",
+        "title": "台体",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "podetium",
+        "name": "Podetium",
+        "title": "柱体",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      }
+    ]
+  },
+  {
+    "id": "python",
+    "name": "Python",
+    "title": "Python",
+    "children": []
+  },
+  {
+    "id": "flutter",
+    "name": "Flutter",
+    "title": "Flutter",
+    "children": []
+  },
+  {
+    "id": "javascript",
+    "name": "JavaScript",
+    "title": "JavaScript",
+    "children": []
+  },
+  {
+    "id": "typescript",
+    "name": "TypeScript",
+    "title": "TypeScript",
+    "children": []
+  },
+  {
+    "id": "database",
+    "name": "数据库",
+    "title": "数据库",
+    "children": []
+  },
+  {
+    "id": "utils",
+    "name": "工具函数",
+    "title": "工具函数",
+    "children": [
+      {
+        "id": "util",
+        "name": "Util",
+        "title": "Util",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "seq",
+        "name": "Seq",
+        "title": "Seq",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "date",
+        "name": "Date",
+        "title": "Date",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "math",
+        "name": "Math",
+        "title": "Math",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "lang",
+        "name": "Lang",
+        "title": "Lang",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "array",
+        "name": "Array",
+        "title": "Array",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "string",
+        "name": "String",
+        "title": "String",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "object",
+        "name": "Object",
+        "title": "Object",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "number",
+        "name": "Number",
+        "title": "Number",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "function",
+        "name": "Function",
+        "title": "Function",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "collection",
+        "name": "Collection",
+        "title": "Collection",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "properties",
+        "name": "Properties",
+        "title": "Properties",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      }
+    ]
+  },
+  {
+    "id": "standard",
+    "name": "代码规范",
+    "title": "代码规范",
+    "children": [
+      {
+        "id": "babel",
+        "name": "babel",
+        "title": ".babelrc",
+        "components": [
+          "development",
+          "production"
+        ],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "tslint",
+        "name": "tslint",
+        "title": "tslint.json",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "vscode",
+        "name": "vscode",
+        "title": ".vscode",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "eslint",
+        "name": "eslint",
+        "title": ".eslintrc.js",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "prettier",
+        "name": "prettier",
+        "title": ".prettierrc",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "gitignore",
+        "name": "gitignore",
+        "title": ".gitignore",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "tsconfig",
+        "name": "tsconfig",
+        "title": "tsconfig.json",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "editconfig",
+        "name": "editconfig",
+        "title": ".editconfig",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "package",
+        "name": "package",
+        "title": "package.json",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "postcss",
+        "name": "postcss",
+        "title": "postcss.config.js",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "eslintignore",
+        "name": "eslintignore",
+        "title": ".eslintignore",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "webpack",
+        "name": "webpack",
+        "title": "webpack.config.js",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      }
+    ]
+  },
+  {
+    "id": "config",
+    "name": "配置文件",
+    "title": "配置文件",
+    "children": [
+      {
+        "id": "mysql",
+        "name": "MySQL",
+        "title": "my.conf",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "redis",
+        "name": "Redis",
+        "title": "redis.conf",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "nginx",
+        "name": "Nginx",
+        "title": "nginx.conf",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "docker",
+        "name": "Docker",
+        "title": "Dockerfile",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "mongodb",
+        "name": "MongoDB",
+        "title": "mongo.conf",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      }
+    ]
+  }
+]

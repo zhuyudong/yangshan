@@ -1,0 +1,194 @@
+@import './functions';
+@import './ie-polyfill';
+@import './code-view';
+@import './markdown';
+@import './rtl';
+@import '~@rsuite/document-nav/lib/less/index.less';
+@import '../components/SearchDrawer/styles';
+@import '../components/Stars/styles';
+@import '../components/ReactLogo/styles';
+@import '../components/TopLevelNav/styles';
+@import '../components/Logo/styles';
+@import '../components/PageContainer/styles';
+@import '../components/DocSidebar/styles';
+@import '../components/LanguageSwitchButton/styles';
+@import '../pages/tools/icons/styles';
+@import '../pages/tools/palette/styles';
+@import '../pages/home/styles';
+// @import '../pages/components/array/styles';
+// @import '../pages/components/babel/styles';
+// @import '../pages/components/canvas/styles';
+// @import '../pages/components/collection/styles';
+// @import '../pages/components/cube/styles';
+// @import '../pages/components/date/styles';
+// @import '../pages/components/docker/styles';
+// @import '../pages/components/editconfig/styles';
+// @import '../pages/components/eslint/styles';
+// @import '../pages/components/eslintignore/styles';
+// @import '../pages/components/function/styles';
+// @import '../pages/components/gitignore/styles';
+// @import '../pages/components/lang/styles';
+// @import '../pages/components/math/styles';
+// @import '../pages/components/mongodb/styles';
+// @import '../pages/components/mysql/styles';
+// @import '../pages/components/nginx/styles';
+// @import '../pages/components/number/styles';
+// @import '../pages/components/object/styles';
+@import '../pages/components/overview/styles';
+// @import '../pages/components/package/styles';
+@import '../pages/components/webgl/platform/styles';
+// @import '../pages/components/podetium/styles';
+// @import '../pages/components/postcss/styles';
+// @import '../pages/components/prettier/styles';
+// @import '../pages/components/properties/styles';
+// @import '../pages/components/pyramis/styles';
+// @import '../pages/components/redis/styles';
+// @import '../pages/components/seq/styles';
+// @import '../pages/components/string/styles';
+// @import '../pages/components/svg/styles';
+// @import '../pages/components/tsconfig/styles';
+// @import '../pages/components/tslint/styles';
+// @import '../pages/components/util/styles';
+// @import '../pages/components/vscode/styles';
+// @import '../pages/components/webgl/styles';
+// @import '../pages/components/webpack/styles';
+@import '../pages/error/styles';
+
+//@ns: rs-;
+//rewrite base color
+//@base-color: #3498ff;
+@bg-color: #fff;
+@banner-bg-color: #fff;
+@header-height: 64px;
+@media-xs: 768px;
+@media-md: 992px;
+@scrollbar-width: 10px;
+@top-level-nav-height: 48px;
+@doc-nav-active-color: @link-color;
+
+.main-container {
+  padding-right: 180px;
+
+  @media (max-width: @media-xs) {
+    margin-top: @top-level-nav-height + 28px;
+  }
+}
+
+.app-container {
+  .page-context {
+    @media (max-width: @media-xs) {
+      margin-left: 0 !important;
+      padding: 15px;
+    }
+
+    @media (min-width: @media-xs) {
+      padding: 20px 210px 20px 20px;
+      margin-left: 324px;
+    }
+  }
+}
+
+pre {
+  border: none;
+  border-radius: 0;
+}
+
+.external-link {
+  font-size: 12px;
+  margin-left: 4px;
+  display: inline-block;
+  color: #bbb;
+  transition: color 0.3s linear;
+}
+
+.navbar-brand {
+  padding: 18px 20px;
+  display: inline-block;
+}
+
+.placement-table {
+  td {
+    padding: 4px;
+  }
+
+  tr td:first-child {
+    text-align: right;
+  }
+}
+
+.json-tree-wrapper {
+  background: rgb(0, 43, 54) !important;
+  margin-bottom: 20px !important;
+
+  .rs-panel-heading {
+    background: #06232c;
+    border-radius: 6px;
+    color: #fff;
+  }
+
+  .rs-panel-body {
+    padding: 0px 4px 8px 10px;
+  }
+}
+
+.link-view-design {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.gitter-open-chat-button {
+  color: @btn-default-color !important;
+  background: @btn-default-bg;
+  border-top-left-radius: 0.5em;
+  border-bottom-left-radius: 0.5em;
+  bottom: 40px;
+  right: 0px;
+  padding: 1em 2em;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.12), 0 0 10px rgba(0, 0, 0, 0.06);
+
+  &.is-collapsed {
+    transform: translateX(120%);
+  }
+
+  @media (max-width: @media-xs) {
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    text-indent: -999px;
+    box-shadow: @default-box-shadow;
+
+    &::before {
+      font-family: 'rsuite-icon-font' !important;
+      content: '\F086';
+      position: absolute;
+      right: -489px;
+      font-size: 20px;
+      width: 20px;
+      z-index: 999;
+      top: 6px;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    color: @btn-default-hover-color;
+    background-color: @btn-default-hover-bg;
+  }
+}
+
+/* rtl:begin:ignore */
+.gitter-open-chat-button {
+  right: inherit;
+}
+
+.gitter-chat-embed {
+  border-left: none;
+}
+
+.document-nav .nav-link::before {
+  background: @divider-border-color;
+}
+
+.nav-wrapper {
+  padding: 20px;
+}
