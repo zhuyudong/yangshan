@@ -20,7 +20,7 @@ import { defateTilte } from './title'
 import { createRouters } from './pages/routers'
 import { getDict } from './locales'
 import zhCN from 'rsuite/lib/IntlProvider/locales/zh_CN'
-// import enUS from 'rsuite/lib/IntlProvider/locales/en_US'
+import enUS from 'rsuite/lib/IntlProvider/locales/en_US'
 
 import { DirectionContext } from '@src/components/Context'
 
@@ -46,8 +46,7 @@ export default locale => {
 
     routes = (
       <Route
-        // path={locale === 'en' ? '/en/' : '/'}
-        path={'/'}
+        path={locale === 'en' ? '/en/' : '/'}
         component={props => (
           <App {...props} onRemoveLoading={this.props.onRemoveLoading} />
         )}
@@ -69,8 +68,7 @@ export default locale => {
         >
           <IntlProvider locale={getDict(locale)}>
             <RSIntlProvider
-              // locale={locale === 'en' ? enUS : zhCN}
-              locale={zhCN}
+              locale={locale === 'en' ? enUS : zhCN}
               rtl={this.state.direction === 'rtl'}
             >
               <Router

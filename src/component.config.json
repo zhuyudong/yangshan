@@ -29,10 +29,37 @@
     "children": []
   },
   {
+    "id": "docker",
+    "name": "Docker",
+    "title": "Docker",
+    "children": []
+  },
+  {
     "id": "canvas",
     "name": "Canvas",
     "title": "Canvas",
-    "children": []
+    "children": [
+      {
+        "id": "konva",
+        "name": "Konva",
+        "title": "Konva",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "fabric",
+        "name": "Fabric",
+        "title": "Fabric",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      }
+    ]
   },
   {
     "id": "webgl",
@@ -143,7 +170,7 @@
       {
         "id": "util",
         "name": "Util",
-        "title": "Util",
+        "title": "工具",
         "components": [],
         "designHash": {
           "default": "1",
@@ -153,7 +180,7 @@
       {
         "id": "seq",
         "name": "Seq",
-        "title": "Seq",
+        "title": "链式",
         "components": [],
         "designHash": {
           "default": "1",
@@ -163,7 +190,7 @@
       {
         "id": "date",
         "name": "Date",
-        "title": "Date",
+        "title": "日期",
         "components": [],
         "designHash": {
           "default": "1",
@@ -173,7 +200,7 @@
       {
         "id": "math",
         "name": "Math",
-        "title": "Math",
+        "title": "数学",
         "components": [],
         "designHash": {
           "default": "1",
@@ -183,7 +210,7 @@
       {
         "id": "lang",
         "name": "Lang",
-        "title": "Lang",
+        "title": "通用",
         "components": [],
         "designHash": {
           "default": "1",
@@ -193,17 +220,7 @@
       {
         "id": "array",
         "name": "Array",
-        "title": "Array",
-        "components": [],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
-      },
-      {
-        "id": "string",
-        "name": "String",
-        "title": "String",
+        "title": "数组",
         "components": [],
         "designHash": {
           "default": "1",
@@ -213,7 +230,17 @@
       {
         "id": "object",
         "name": "Object",
-        "title": "Object",
+        "title": "对象",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
+        "id": "string",
+        "name": "String",
+        "title": "字符串",
         "components": [],
         "designHash": {
           "default": "1",
@@ -223,7 +250,7 @@
       {
         "id": "number",
         "name": "Number",
-        "title": "Number",
+        "title": "数字",
         "components": [],
         "designHash": {
           "default": "1",
@@ -233,7 +260,7 @@
       {
         "id": "function",
         "name": "Function",
-        "title": "Function",
+        "title": "函数",
         "components": [],
         "designHash": {
           "default": "1",
@@ -243,7 +270,7 @@
       {
         "id": "collection",
         "name": "Collection",
-        "title": "Collection",
+        "title": "集合",
         "components": [],
         "designHash": {
           "default": "1",
@@ -253,7 +280,7 @@
       {
         "id": "properties",
         "name": "Properties",
-        "title": "Properties",
+        "title": "属性",
         "components": [],
         "designHash": {
           "default": "1",
@@ -267,6 +294,16 @@
     "name": "代码规范",
     "title": "代码规范",
     "children": [
+      {
+        "id": "vscode",
+        "name": "vscode",
+        "title": ".vscode",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
       {
         "id": "babel",
         "name": "babel",
@@ -284,16 +321,6 @@
         "id": "tslint",
         "name": "tslint",
         "title": "tslint.json",
-        "components": [],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
-      },
-      {
-        "id": "vscode",
-        "name": "vscode",
-        "title": ".vscode",
         "components": [],
         "designHash": {
           "default": "1",
@@ -331,6 +358,16 @@
         }
       },
       {
+        "id": "editconfig",
+        "name": "editconfig",
+        "title": ".editconfig",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      },
+      {
         "id": "tsconfig",
         "name": "tsconfig",
         "title": "tsconfig.json",
@@ -341,9 +378,9 @@
         }
       },
       {
-        "id": "editconfig",
-        "name": "editconfig",
-        "title": ".editconfig",
+        "id": "eslintignore",
+        "name": "eslintignore",
+        "title": ".eslintignore",
         "components": [],
         "designHash": {
           "default": "1",
@@ -364,16 +401,6 @@
         "id": "postcss",
         "name": "postcss",
         "title": "postcss.config.js",
-        "components": [],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
-      },
-      {
-        "id": "eslintignore",
-        "name": "eslintignore",
-        "title": ".eslintignore",
         "components": [],
         "designHash": {
           "default": "1",
@@ -421,16 +448,6 @@
         "id": "nginx",
         "name": "Nginx",
         "title": "nginx.conf",
-        "components": [],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
-      },
-      {
-        "id": "docker",
-        "name": "Docker",
-        "title": "Dockerfile",
         "components": [],
         "designHash": {
           "default": "1",

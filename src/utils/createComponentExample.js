@@ -36,10 +36,10 @@ const CustomCodeView = ({ dependencies, ...rest }) => (
 
 const createComponentExample = ({
   id,
-  category = 'components',
   examples = [],
   getDependencies,
-  dependencies = {}
+  dependencies = {},
+  category = 'components'
 }) => {
   return locale => {
     const name = id // _.kebabCase(id)

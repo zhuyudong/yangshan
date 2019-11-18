@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import _ from 'lodash'
+import { isUndefined } from 'lodash/lang'
 import DocSidebar from './DocSidebar'
 import TopLevelNav from './TopLevelNav'
 import { DirectionContext } from '@src/components/Context'
@@ -21,7 +21,7 @@ class Frame extends Component {
   handleToggleMenu = show => {
     const { showSubmenu } = this.state
     this.setState({
-      showSubmenu: _.isUndefined(show) ? !showSubmenu : show
+      showSubmenu: isUndefined(show) ? !showSubmenu : show
     })
   }
 

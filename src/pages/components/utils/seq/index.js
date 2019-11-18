@@ -3,6 +3,5 @@ import createComponentExample from '@src/utils/createComponentExample'
 
 export default createComponentExample({
   id: 'utils/seq',
-  examples: ['basic'],
   dependencies: {}
 })

@@ -2,11 +2,11 @@ export default {
   id: 'zh-CN',
   common: {
     search: '搜索',
-    // resume: '一套 React 的 UI 组件库，贴心的 UI 设计，友好的开发体验。',
     resume: '图灵人工智能研究院前端基础部件及能力平台',
     advanced: '高级功能',
     guide: '新手指南',
     design: '设计原型',
+    opensources: '开源软件',
     components: '组件',
     tools: '工具',
     introduction: '介绍',

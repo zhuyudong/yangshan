@@ -36,7 +36,8 @@ const getStyleLoader = () => {
       options: {
         javascriptEnabled: true,
         globalVars: {
-          rootPath: __PRO__ ? '~' : '../../../../'
+          rootPath: '~'
+          // rootPath: __PRO__ ? '~' : '../../../../'
         }
       }
     }
@@ -154,7 +155,7 @@ module.exports = merge(
         ]
       },
       compress: true,
-      host: '0.0.0.0', // ip.address(), 
+      host: '0.0.0.0', // ip.address(),
       port: 3200
     },
     entry,
@@ -240,19 +241,19 @@ module.exports = merge(
   themesConfig,
   __PRO__
     ? {
-      resolve: {
-        alias: {
-          '@src': resolveToStaticPath('./src')
+        resolve: {
+          alias: {
+            '@src': resolveToStaticPath('./src')
+          }
         }
       }
-    }
     : {
-      resolve: {
-        alias: {
-          '@src': resolveToStaticPath('./src'),
-          rsuite: path.resolve(__dirname, '../rsuite')
-          // 'react-dom': '@hot-loader/react-dom'
+        resolve: {
+          alias: {
+            '@src': resolveToStaticPath('./src')
+            // rsuite: path.resolve(__dirname, '../rsuite')
+            // 'react-dom': '@hot-loader/react-dom'
+          }
         }
       }
-    }
 )

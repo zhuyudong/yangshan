@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router'
-import _ from 'lodash'
 import { menu } from '@src/utils/getMenu'
 import createComponentExample from '@src/utils/createComponentExample'
 
-const components = menu[1].children.filter(item => item.id !== 'overview')
+const category = 'components'
+const components = (
+  ((menu || []).find(i => i.id === category) || {}).children || []
+).filter(item => item.id !== 'overview')
 
 const Item = ({ name, isComponent }) => (
   <li>
@@ -13,7 +15,10 @@ const Item = ({ name, isComponent }) => (
 )
 
 export default locale => {
-  const ComponentExample = createComponentExample({ id: 'overview' })(locale)
+  const ComponentExample = createComponentExample({
+    category,
+    id: 'overview'
+  })(locale)
   const localePath = locale === 'zh' ? '/' : '/en/'
   return () => {
     return (
@@ -21,40 +26,39 @@ export default locale => {
         <div className='component-overview'>
           <ul>
             {components.map(item => {
-              if (item.group) {
-                return (
-                  <li className='title' key={item.id}>
-                    <h4 id={item.name}># {item.name}</h4>
-                  </li>
-                )
-              } else {
-                return (
-                  <li key={item.id}>
-                    <Link
-                      to={`${localePath}components/${item.id}`}
-                      className='header'
-                    >
-                      {item.name}
-                      {locale === 'zh' ? (
-                        <span>
-                          <br /> ({item.title})
-                        </span>
-                      ) : null}
-                    </Link>
-                    <ul className='content'>
-                      {item.components
-                        ? item.components.map(name => (
-                          <Item name={name} key={name} isComponent />
-                        ))
-                        : null}
-
-                      {item.apis
-                        ? item.apis.map(name => <Item name={name} key={name} />)
-                        : null}
-                    </ul>
-                  </li>
-                )
+              const items = [
+                <li className='title' key={item.id}>
+                  <h4 id={item.name}>{item.name}</h4>
+                </li>
+              ]
+              if (item.children && item.children.length) {
+                item.children.forEach(child => {
+                  items.push(
+                    <li key={child.id}>
+                      <Link
+                        to={`${localePath}${category}/${child.id}`}
+                        className='header'
+                      >
+                        {child.name}
+                        {locale === 'zh' && child.title !== child.name && (
+                          <span>({child.title})</span>
+                        )}
+                      </Link>
+                      <ul className='content'>
+                        {child.components &&
+                          child.components.map(name => (
+                            <Item name={name} key={name} isComponent />
+                          ))}
+                        {child.apis &&
+                          child.apis.map(name => (
+                            <Item name={name} key={name} />
+                          ))}
+                      </ul>
+                    </li>
+                  )
+                })
               }
+              return items
             })}
           </ul>
         </div>

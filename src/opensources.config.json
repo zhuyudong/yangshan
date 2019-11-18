@@ -1,0 +1,24 @@
+[
+  {
+    "id": "overview",
+    "name": "Overview",
+    "title": "概览"
+  },
+  {
+    "id": "react",
+    "name": "React",
+    "title": "React",
+    "children": [
+      {
+        "id": "basic",
+        "name": "Basic",
+        "title": "基础组件",
+        "components": [],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      }
+    ]
+  }
+]

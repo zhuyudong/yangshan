@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { Sidebar, Dropdown, Nav, Icon, IconButton, Sidenav } from 'rsuite'
 import { Link } from 'react-router'
-import _ from 'lodash'
+import { get } from 'lodash/object'
 import getMenu from '@src/utils/getMenu'
 
 const NavItem = Nav.Item
@@ -16,7 +16,8 @@ class DocSidebar extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      mediaSidebarShow: false
+      mediaSidebarShow: false,
+      expandedMenus: []
     }
   }
 
@@ -26,7 +27,7 @@ class DocSidebar extends React.PureComponent {
   }
 
   getRootPath() {
-    return _.get(this.context.router, 'routes.0.path')
+    return get(this.context.router, 'routes.0.path')
   }
 
   handleOpenMediaSidebarShow = () => {
@@ -41,7 +42,17 @@ class DocSidebar extends React.PureComponent {
     })
   }
 
+  onMenuClick = id => {
+    const { expandedMenus } = this.state
+    this.setState({
+      expandedMenus: expandedMenus.includes(id)
+        ? expandedMenus.filter(i => i !== id)
+        : expandedMenus.concat(id)
+    })
+  }
+
   render() {
+    const { expandedMenus } = this.state
     const nodeItems = []
     const menuItems = this.getMenuItems()
     const rootPath = this.getRootPath()
@@ -54,7 +65,6 @@ class DocSidebar extends React.PureComponent {
     const { name: activeTitle, icon } = menu.filter(({ id }) =>
       isActive(`${rootPath}${id}`)
     )[0]
-
     menuItems
       .filter(({ id }) => this.context.router.isActive(`${rootPath}${id}`))
       .map((item, key) => {
@@ -64,15 +74,24 @@ class DocSidebar extends React.PureComponent {
               ? child.url
               : `${rootPath}${item.id}/${child.id}`
             const active = this.context.router.isActive({ pathname })
-
             if (child.children) {
               nodeItems.push(
                 <NavItem panel key={child.id}>
-                  # {child.name}
+                  <span className='tr-collapse-menu'>
+                    # {child.name}
+                    {!!child.children.length && (
+                      <Icon
+                        className='tr-collapse-icon'
+                        onClick={() => this.onMenuClick(child.id)}
+                        icon={expandedMenus.includes(child.id) ? 'up' : 'down'}
+                      />
+                    )}
+                  </span>
                 </NavItem>
               )
-              if (child.children.length) {
+              if (child.children.length && expandedMenus.includes(child.id)) {
                 child.children.forEach(i => {
+                  const showName = !i.title.match(/\./)
                   nodeItems.push(
                     <NavItem
                       key={`${child.id}/${i.id}`}
@@ -80,8 +99,8 @@ class DocSidebar extends React.PureComponent {
                       to={`${pathname}/${i.id}`}
                       active={active}
                     >
-                      {i.name}
-                      {i.title}
+                      {showName ? i.name : i.title}
+                      {showName && i.title !== i.name && i.title}
                     </NavItem>
                   )
                 })
@@ -90,7 +109,7 @@ class DocSidebar extends React.PureComponent {
             }
 
             const title =
-              _.get(locale, 'id') === 'en-US' || !child.title ? null : (
+              get(locale, 'id') === 'en-US' || !child.title ? null : (
                 <span className='title-zh'>{child.title}</span>
               )
 

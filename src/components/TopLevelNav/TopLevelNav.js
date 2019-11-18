@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
+import { get } from 'lodash/object'
 import { Link } from 'react-router'
 import { Button, Icon, Whisper, Tooltip } from 'rsuite'
 import { isMobile } from 'react-device-detect'
 import Logo from '@src/components/Logo'
 import {
   guide,
+  github,
   component,
   tools,
   search,
@@ -118,37 +119,25 @@ class TopLevelNav extends React.Component {
   render() {
     const { children, showSubmenu, hideToggle } = this.props
     const { router, locale } = this.context
-    const localePath = _.get(locale, 'id') === 'en-US' ? '/en/' : '/'
+    const localePath = get(locale, 'id') === 'en-US' ? '/en/' : '/'
     const { light } = this.state
     const menu = [
-      // {
-      //   key: 'guide',
-      //   tip: _.get(locale, 'common.guide'),
-      //   to: `${localePath}guide/introduction`,
-      //   icon: guide
-      // },
+      {
+        key: 'opensources',
+        tip: get(locale, 'common.opensources'),
+        to: `${localePath}opensources`,
+        icon: github
+      },
       {
         key: 'components',
-        tip: _.get(locale, 'common.components'),
+        tip: get(locale, 'common.components'),
         to: `${localePath}components/overview`,
         icon: component
       }
-      // {
-      //   key: 'tools',
-      //   tip: _.get(locale, 'common.tools'),
-      //   to: `${localePath}tools/palette`,
-      //   icon: tools
-      // },
-      // {
-      //   key: 'extensions',
-      //   tip: _.get(locale, 'common.extension'),
-      //   to: `${localePath}extensions`,
-      //   icon: extension
-      // }
     ]
     const renderSearchButton = className => (
       <WithTooltipButton
-        tip={_.get(locale, 'common.search')}
+        tip={get(locale, 'common.search')}
         className={`icon-btn-circle ${className}`}
         onClick={this.showSearchDrawer}
       >
@@ -194,7 +183,7 @@ class TopLevelNav extends React.Component {
                 ))}
 
                 {/* <WithTooltipButton
-                  tip={_.get(locale, 'common.design')}
+                  tip={get(locale, 'common.design')}
                   className='icon-btn-circle'
                   componentClass='a'
                   target='_blank'
@@ -256,8 +245,8 @@ class TopLevelNav extends React.Component {
                     <WithTooltipButton
                       tip={
                         showSubmenu
-                          ? _.get(locale, 'common.closeMenu')
-                          : _.get(locale, 'common.openMenu')
+                          ? get(locale, 'common.closeMenu')
+                          : get(locale, 'common.openMenu')
                       }
                       className='icon-btn-circle'
                       onClick={this.handleToggleMenu}

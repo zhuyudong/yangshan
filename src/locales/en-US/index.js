@@ -3,10 +3,11 @@ export default {
   common: {
     search: 'Search',
     resume:
-      '图灵人工智能研究院前端基础部件及能力平台',
+      'Turing Institute of artificial intelligence front-end basic components and capability platform',
     advanced: 'Advanced',
     guide: 'Guide',
     design: 'Design',
+    opensources: 'Open souce softwart',
     components: 'Components',
     tools: 'Tools',
     introduction: 'Introduction',
