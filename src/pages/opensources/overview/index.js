@@ -25,32 +25,37 @@ export default locale => {
         <div className='component-overview'>
           <ul>
             {components.map(item => {
+              const items = [
+                <li className='title' key={item.id}>
+                  <h4 id={item.name}>{item.name}</h4>
+                </li>
+              ]
               if (item.children && item.children.length) {
-                return (
-                  <li className='title' key={item.id}>
-                    <h4 id={item.name}># {item.name}</h4>
-                  </li>
-                )
-              } else {
-                return (
-                  <li key={item.id}>
-                    <Link
-                      to={`${localePath}${category}/${item.id}`}
-                      className='header'
-                    >
-                      {item.name}
-                      {locale === 'zh' && <span>({item.title})</span>}
-                    </Link>
-                    <ul className='content'>
-                      {item.components &&
-                        item.components.map(name => (
-                          <Item name={name} key={name} isComponent />
-                        ))}
-                      {item.apis &&
-                        item.apis.map(name => <Item name={name} key={name} />)}
-                    </ul>
-                  </li>
-                )
+                item.children.forEach(child => {
+                  items.push(
+                    <li key={child.id}>
+                      <Link
+                        to={`${localePath}${category}/${child.id}`}
+                        className='header'
+                      >
+                        {child.name}
+                        {locale === 'zh' && child.title !== child.name && (
+                          <span>({child.title})</span>
+                        )}
+                      </Link>
+                      <ul className='content'>
+                        {child.components &&
+                          child.components.map(name => (
+                            <Item name={name} key={name} isComponent />
+                          ))}
+                        {child.apis &&
+                          child.apis.map(name => (
+                            <Item name={name} key={name} />
+                          ))}
+                      </ul>
+                    </li>
+                  )
+                })
               }
             })}
           </ul>

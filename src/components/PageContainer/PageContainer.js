@@ -137,11 +137,10 @@ class PageContainer extends React.Component {
                             speaker={<Tooltip>{locale.common.edit}</Tooltip>}
                           >
                             <IconButton
-                              disabled
                               appearance='subtle'
                               icon={<Icon icon='edit2' />}
-                              // target='_blank'
-                              // href={`https://github.com/rsuite/rsuite.github.io/edit/master/src/pages/${routerId}/index.md`}
+                              target='_blank'
+                              href={`https://devcloud.huaweicloud.com/codehub/project/933940192fa2419b91ee3c8905a3b107/codehub/591388/file?ref=master&path=src/pages/${routerId}/basic.md`}
                             />
                           </Whisper>
                         ) : null}
@@ -166,7 +165,6 @@ class PageContainer extends React.Component {
                           }
                         >
                           <LanguageSwitchButton
-                            disabled
                             language={locale.id}
                             onClick={this.handleChangeLanguage}
                           />

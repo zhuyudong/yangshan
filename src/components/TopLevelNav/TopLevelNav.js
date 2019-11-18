@@ -144,7 +144,7 @@ class TopLevelNav extends React.Component {
         <Icon icon={search} svgStyle={svgStyle} size='lg' />
       </WithTooltipButton>
     )
-
+    console.log(147, router, menu)
     return (
       <DirectionContext.Consumer>
         {({ direction, handleToggleDirection }) => {
@@ -157,7 +157,6 @@ class TopLevelNav extends React.Component {
 
               <div className='top-level-nav-menu'>
                 {renderSearchButton('visible-xs')}
-
                 {menu.map(item => (
                   <WithTooltipButton
                     tip={item.tip}
@@ -195,51 +194,38 @@ class TopLevelNav extends React.Component {
                 {renderSearchButton('hidden-xs')} */}
 
                 <div className='nav-menu-bottom'>
-                  {/* <WithTooltipButton
-                    tip="Toggle light/dark theme"
-                    className="icon-btn-circle"
+                  <WithTooltipButton
+                    tip='Toggle light/dark theme'
+                    className='icon-btn-circle'
                     onClick={this.handleToggleThemeButtonClick}
                   >
                     <Icon
                       icon={light ? lightOff : lightOn}
                       svgStyle={svgStyle}
-                      size="lg"
+                      size='lg'
                     />
                   </WithTooltipButton>
 
                   <WithTooltipButton
-                    tip="Toggle RTL/LTR"
-                    className="icon-btn-circle"
+                    tip='Toggle RTL/LTR'
+                    className='icon-btn-circle'
                     onClick={handleToggleDirection}
                   >
                     <Icon
                       icon={direction === 'ltr' ? rtl : ltr}
                       svgStyle={svgStyle}
-                      size="lg"
+                      size='lg'
                     />
                   </WithTooltipButton>
 
                   <WithTooltipButton
-                    tip="GitHub"
-                    className="icon-btn-circle"
-                    href="https://github.com/rsuite/rsuite"
-                    target="_blank"
+                    tip='GitHub'
+                    className='icon-btn-circle'
+                    href='https://devcloud.huaweicloud.com/codehub/project/933940192fa2419b91ee3c8905a3b107/codehub/591388/home'
+                    target='_blank'
                   >
-                    <Icon
-                      icon="github"
-                      size="lg"
-                      style={{ color: iconColor }}
-                    />
+                    <Icon icon='code' size='lg' style={{ color: iconColor }} />
                   </WithTooltipButton>
-
-                  <WithTooltipButton
-                    tip="码云"
-                    className="icon-btn-circle"
-                    href="https://gitee.com/rsuite/rsuite"
-                    target="_blank"
-                  >
-                    <Icon icon={gitee} svgStyle={svgStyle} size="lg" />
-                  </WithTooltipButton> */}
 
                   {hideToggle ? null : (
                     <WithTooltipButton
