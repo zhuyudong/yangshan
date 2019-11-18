@@ -144,7 +144,6 @@ class TopLevelNav extends React.Component {
         <Icon icon={search} svgStyle={svgStyle} size='lg' />
       </WithTooltipButton>
     )
-    console.log(147, router, menu)
     return (
       <DirectionContext.Consumer>
         {({ direction, handleToggleDirection }) => {
