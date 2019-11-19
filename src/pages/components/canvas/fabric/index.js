@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import createComponentExample from '@src/utils/createComponentExample'
+import createComponent from '@src/utils/createComponent'
 
-export default createComponentExample({
+export default createComponent({
   id: 'canvas/fabric',
   examples: [],
   dependencies: {

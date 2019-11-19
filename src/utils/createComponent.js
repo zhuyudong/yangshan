@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, Component } from 'react'
 import { get } from 'lodash/object'
 import {
   Divider,
@@ -23,6 +23,13 @@ const babelOptions = {
   presets: ['env', 'stage-1', 'react'],
   plugins: ['transform-class-properties']
 }
+const embedStart =
+  '\n<!--start-code-->\n<div class="doc-highlight"><pre><code class="javascript"><span class="hljs-keyword">const</span> helloSource = <span class="hljs-string">`'
+const embedEnd = `\`</span>
+<span class="hljs-keyword">const</span> CodeSandbox = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Embed</span> <span class="hljs-attr">source</span>=<span class="hljs-string">{helloSource}</span> /&gt;</span>
+}
+ReactDOM.render(<span class="hljs-tag">&lt;<span class="hljs-name">CodeSandbox</span> /&gt;</span>)</span></code></pre></div><!--end-code--><!--divider-->\n`
 
 const CustomCodeView = ({ dependencies, ...rest }) => (
   <CodeView
@@ -34,7 +41,7 @@ const CustomCodeView = ({ dependencies, ...rest }) => (
   />
 )
 
-const createComponentExample = ({
+const createComponent = ({
   id,
   examples = [],
   getDependencies,
@@ -52,13 +59,41 @@ const createComponentExample = ({
       source: require(`@src/pages/${category}/${namePath}${item}.md`),
       path: `https://github.com/rsuite/rsuite.github.io/tree/master/src/pages/${category}/${namePath}${item}.md`
     }))
+    /* 将 index.md 中的代码插入 */
+    if (context.match(/doc-highlight/)) {
+      // 使用 react-runkit 执行 md 文件中的 js 代码块
+      console.log(context)
+      const codes = context
+        // .replace(
+        //   /<div class="doc-highlight">/g,
+        //   '\n<!--start-code-->\n<div class="doc-highlight">'
+        // )
+        // .replace(
+        //   /<\/code><\/pre><\/div>/g,
+        //   '</code></pre></div><!--end-code--><!--divider-->\n'
+        // )
+        .replace(
+          /<div class="doc-highlight"><pre><code class="javascript"><span class="hljs-built_in">/g,
+          embedStart
+        )
+        .replace(/<\/code><\/pre><\/div>/g, embedEnd)
+        .split('<!--divider-->')
+        .filter(i => i.match(/<!--end-code-->/))
+      codes.forEach((i, ix) => {
+        componentExamples.splice(ix, 0, {
+          showSource,
+          source: i,
+          path: ''
+        })
+      })
+    }
     const extraDependencies = getDependencies ? getDependencies(locale) : null
 
     if (extraDependencies) {
       dependencies = Object.assign(dependencies, extraDependencies)
     }
 
-    class ComponentExample extends React.Component {
+    class ComponentExample extends Component {
       static defaultProps = {
         tabExamples: []
       }
@@ -97,7 +132,6 @@ const createComponentExample = ({
         }
 
         const { sorce = '' } = tabExamples[tabIndex] || {}
-
         return (
           <CustomCodeView
             key={tabIndex}
@@ -117,7 +151,6 @@ const createComponentExample = ({
         return (
           <div>
             <h3>{dist.common.advanced} </h3>
-
             <ButtonGroup size='xs'>
               {tabExamples.map((item, index) => (
                 <Button
@@ -145,13 +178,14 @@ const createComponentExample = ({
 
         const { designHash, routerId, tabIndex } = this.state
         const [header, footer = ''] = context.split('<!--{demo}-->')
+        // .replace(/<[a-z]+\s*(class=\"[a-z-_\s]+\")?>/g, '\n').replace(/<\/code>|<\/pre>|<\/span>|<\/div>/g, '')
         const { source = '' } = tabExamples[tabIndex] || {}
         return (
           <PageContainer
             designHash={designHash}
             routerId={routerId ? `${category}/${routerId}` : null}
           >
-            <MarkdownView>{header}</MarkdownView>
+            {!!examples.length && <MarkdownView>{header}</MarkdownView>}
             {componentExamples.map((item, index) =>
               item.source ? (
                 <CustomCodeView
@@ -161,7 +195,7 @@ const createComponentExample = ({
                   renderToolbar={showCodeButton => {
                     return (
                       item.showSource && (
-                        <React.Fragment>
+                        <Fragment>
                           <CopyToClipboard onCopy={this.onCopy} text={source}>
                             <Fragment>
                               <Whisper
@@ -199,7 +233,7 @@ const createComponentExample = ({
                               href={item.path}
                             />
                           </Whisper>
-                        </React.Fragment>
+                        </Fragment>
                       )
                     )
                   }}
@@ -219,4 +253,4 @@ const createComponentExample = ({
   }
 }
 
-export default createComponentExample
+export default createComponent

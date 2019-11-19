@@ -189,7 +189,9 @@
         "id": "util",
         "name": "Util",
         "title": "工具",
-        "components": [],
+        "components": [
+          "times"
+        ],
         "designHash": {
           "default": "1",
           "dark": "1"
@@ -209,7 +211,14 @@
         "id": "date",
         "name": "Date",
         "title": "日期",
-        "components": [],
+        "components": [
+          "get",
+          "set",
+          "query",
+          "format",
+          "display",
+          "manipulate"
+        ],
         "designHash": {
           "default": "1",
           "dark": "1"
@@ -229,7 +238,17 @@
         "id": "lang",
         "name": "Lang",
         "title": "通用",
-        "components": [],
+        "components": [
+          "gt",
+          "gte",
+          "isNil",
+          "isNaN",
+          "isNull",
+          "isEmpty",
+          "isFinite",
+          "isInteger",
+          "isUndefined"
+        ],
         "designHash": {
           "default": "1",
           "dark": "1"
@@ -239,13 +258,49 @@
         "id": "array",
         "name": "Array",
         "title": "数组",
-        "components": []
+        "components": [
+          "fill",
+          "find",
+          "first",
+          "join",
+          "last",
+          "drop",
+          "head",
+          "tail",
+          "chunk",
+          "slice",
+          "concat",
+          "flatten",
+          "indexOf",
+          "compact",
+          "isArray",
+          "reverse",
+          "without",
+          "findIndex",
+          "dropRight",
+          "fromPairs",
+          "flattenDeep",
+          "difference",
+          "lastIndexOf",
+          "intersection",
+          "isArrayBuffer"
+        ]
       },
       {
         "id": "object",
         "name": "Object",
         "title": "对象",
-        "components": [],
+        "components": [
+          "get",
+          "keys",
+          "omit",
+          "pick",
+          "values",
+          "pickBy",
+          "assign",
+          "extend",
+          "toPairs"
+        ],
         "designHash": {
           "default": "1",
           "dark": "1"
@@ -255,7 +310,20 @@
         "id": "string",
         "name": "String",
         "title": "字符串",
-        "components": [],
+        "components": [
+          "trim",
+          "split",
+          "padEnd",
+          "repeat",
+          "toLower",
+          "toUpper",
+          "replace",
+          "template",
+          "endsWith",
+          "padStart",
+          "startsWith",
+          "upperFirst"
+        ],
         "designHash": {
           "default": "1",
           "dark": "1"
@@ -265,7 +333,10 @@
         "id": "number",
         "name": "Number",
         "title": "数字",
-        "components": [],
+        "components": [
+          "random",
+          "inRange"
+        ],
         "designHash": {
           "default": "1",
           "dark": "1"
@@ -275,7 +346,13 @@
         "id": "function",
         "name": "Function",
         "title": "函数",
-        "components": [],
+        "components": [
+          "bind",
+          "after",
+          "partial",
+          "throttle",
+          "debounce"
+        ],
         "designHash": {
           "default": "1",
           "dark": "1"
@@ -285,7 +362,26 @@
         "id": "collection",
         "name": "Collection",
         "title": "集合",
-        "components": [],
+        "components": [
+          "map",
+          "size",
+          "some",
+          "uniq",
+          "each",
+          "every",
+          "filter",
+          "minBy",
+          "maxBy",
+          "keyBy",
+          "pluck",
+          "range",
+          "reduce",
+          "sortBy",
+          "orderBy",
+          "groupBy",
+          "includes",
+          "reduceRight"
+        ],
         "designHash": {
           "default": "1",
           "dark": "1"
@@ -312,7 +408,10 @@
         "id": "vscode",
         "name": "vscode",
         "title": ".vscode",
-        "components": [],
+        "components": [
+          "launch.json",
+          "setting.json"
+        ],
         "designHash": {
           "default": "1",
           "dark": "1"
@@ -323,8 +422,8 @@
         "name": "babel",
         "title": ".babelrc",
         "components": [
-          "development",
-          "production"
+          ".babelrc",
+          ".babelrc.js"
         ],
         "designHash": {
           "default": "1",
@@ -335,7 +434,9 @@
         "id": "tslint",
         "name": "tslint",
         "title": "tslint.json",
-        "components": [],
+        "components": [
+          "tslint.json"
+        ],
         "designHash": {
           "default": "1",
           "dark": "1"
@@ -345,7 +446,10 @@
         "id": "eslint",
         "name": "eslint",
         "title": ".eslintrc.js",
-        "components": [],
+        "components": [
+          ".eslintrc",
+          ".eslintrc.js"
+        ],
         "designHash": {
           "default": "1",
           "dark": "1"
@@ -355,7 +459,12 @@
         "id": "prettier",
         "name": "prettier",
         "title": ".prettierrc",
-        "components": [],
+        "components": [
+          ".prettierrc.js",
+          ".prettierrc.yml",
+          ".prettierrc.json",
+          ".prettierrc.yaml"
+        ],
         "designHash": {
           "default": "1",
           "dark": "1"
@@ -365,7 +474,9 @@
         "id": "gitignore",
         "name": "gitignore",
         "title": ".gitignore",
-        "components": [],
+        "components": [
+          ".gitignore"
+        ],
         "designHash": {
           "default": "1",
           "dark": "1"
@@ -375,7 +486,9 @@
         "id": "editconfig",
         "name": "editconfig",
         "title": ".editconfig",
-        "components": [],
+        "components": [
+          ".editconfig"
+        ],
         "designHash": {
           "default": "1",
           "dark": "1"
@@ -385,7 +498,9 @@
         "id": "tsconfig",
         "name": "tsconfig",
         "title": "tsconfig.json",
-        "components": [],
+        "components": [
+          "tsconfig.json"
+        ],
         "designHash": {
           "default": "1",
           "dark": "1"
@@ -395,7 +510,9 @@
         "id": "eslintignore",
         "name": "eslintignore",
         "title": ".eslintignore",
-        "components": [],
+        "components": [
+          ".eslintignore"
+        ],
         "designHash": {
           "default": "1",
           "dark": "1"
@@ -405,7 +522,9 @@
         "id": "package",
         "name": "package",
         "title": "package.json",
-        "components": [],
+        "components": [
+          "package.json"
+        ],
         "designHash": {
           "default": "1",
           "dark": "1"
@@ -415,7 +534,9 @@
         "id": "postcss",
         "name": "postcss",
         "title": "postcss.config.js",
-        "components": [],
+        "components": [
+          "postcss.config.js"
+        ],
         "designHash": {
           "default": "1",
           "dark": "1"
@@ -425,7 +546,9 @@
         "id": "webpack",
         "name": "webpack",
         "title": "webpack.config.js",
-        "components": [],
+        "components": [
+          "webpack.config.js"
+        ],
         "designHash": {
           "default": "1",
           "dark": "1"
@@ -442,7 +565,9 @@
         "id": "mysql",
         "name": "MySQL",
         "title": "my.conf",
-        "components": [],
+        "components": [
+          "my.conf"
+        ],
         "designHash": {
           "default": "1",
           "dark": "1"
@@ -452,7 +577,9 @@
         "id": "redis",
         "name": "Redis",
         "title": "redis.conf",
-        "components": [],
+        "components": [
+          "redis.conf"
+        ],
         "designHash": {
           "default": "1",
           "dark": "1"
@@ -462,7 +589,9 @@
         "id": "nginx",
         "name": "Nginx",
         "title": "nginx.conf",
-        "components": [],
+        "components": [
+          "nginx.conf"
+        ],
         "designHash": {
           "default": "1",
           "dark": "1"
@@ -472,7 +601,9 @@
         "id": "mongodb",
         "name": "MongoDB",
         "title": "mongo.conf",
-        "components": [],
+        "components": [
+          "mongo.conf"
+        ],
         "designHash": {
           "default": "1",
           "dark": "1"

@@ -48,69 +48,6 @@ export const createRouters = (locale, onEnter, onEntered) => {
             ))}
         </Route>
       ))}
-      {/* <Route path='components' component={Frame}>
-        <IndexRedirect to={`${localePath}/components/overview`} />
-        {routes.components.map(route => (
-          <Route
-            key={route}
-            path={route}
-            getComponents={(location, callback) => {
-              onEnter && onEnter()
-              // require.ensure([], () => {
-              //   const getComponent = require(`./components/${route}`).default
-              //   const component = getComponent(locale)
-              //   callback && callback(null, component)
-              //   onEntered && onEntered()
-              // })
-              import(`./components/${route}/index.js`).then(
-                ({ default: getComponent }) => {
-                  const component = getComponent(locale)
-                  callback && callback(null, component)
-                  onEntered && onEntered()
-                }
-              )
-            }}
-            onEnter={() => {
-              setTitle(`${capitalize(route)} - components`)
-            }}
-          />
-        ))}
-      </Route> */}
-      {/* <Route path='opensource' component={Frame}>
-        <IndexRedirect to={`${localePath}/opensource/overview`} />
-        <Route
-          path='overview'
-          getComponents={(location, callback) => {
-            onEnter && onEnter()
-            import('./opensource/overview/index.js').then(
-              ({ default: getComponent }) => {
-                const component = getComponent(locale)
-                callback && callback(null, component)
-                onEntered && onEntered()
-              }
-            )
-          }}
-          onEnter={() => {
-            setTitle('Overview - OpenSource')
-          }}
-        />
-        <Route
-          path='react'
-          getComponents={(location, callback) => {
-            import('./opensource/react/index.js').then(
-              ({ default: getComponent }) => {
-                const component = getComponent(locale)
-                callback && callback(null, component)
-                onEntered && onEntered()
-              }
-            )
-          }}
-          onEnter={() => {
-            setTitle('React - OpenSource')
-          }}
-        />
-      </Route> */}
-
       <Route
         path='*'
         getComponents={(location, callback) => {

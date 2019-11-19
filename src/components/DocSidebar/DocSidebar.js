@@ -90,7 +90,7 @@ class DocSidebar extends React.PureComponent {
                 </NavItem>
               )
               if (child.children.length && expandedMenus.includes(child.id)) {
-                child.children.forEach(i => {
+                child.children.forEach((i, ix) => {
                   const showName = !i.title.match(/\./)
                   const toPath = `${pathname}/${i.id}`
                   nodeItems.push(
@@ -99,8 +99,9 @@ class DocSidebar extends React.PureComponent {
                       to={toPath}
                       componentClass={Link}
                       active={location.pathname === toPath}
+                      className={classnames({ 'mt-8': ix === 0 })}
                     >
-                      {showName ? i.name : i.title}
+                      {showName ? i.name : i.title}{' '}
                       {showName && i.title !== i.name && i.title}
                     </NavItem>
                   )

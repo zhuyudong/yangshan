@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import createComponentExample from '@src/utils/createComponentExample'
+import createComponent from '@src/utils/createComponent'
 import {
   getCanvas,
   getContext,
@@ -9,7 +9,7 @@ import {
   createShaderFromScript
 } from '@src/utils/webgl/helper'
 
-export default createComponentExample({
+export default createComponent({
   id: 'webgl/platform',
   examples: ['basic'],
   dependencies: {

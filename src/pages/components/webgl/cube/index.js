@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import createComponentExample from '@src/utils/createComponentExample'
+import createComponent from '@src/utils/createComponent'
 import math from '@src/utils/webgl/math'
 import Euler from '@src/utils/webgl/euler'
 import matrix from '@src/utils/webgl/matrix'
@@ -27,7 +27,7 @@ import {
   createSimpleProgramFromScript
 } from '@src/utils/webgl/helper'
 
-export default createComponentExample({
+export default createComponent({
   id: 'webgl/cube',
   examples: ['basic'],
   dependencies: {

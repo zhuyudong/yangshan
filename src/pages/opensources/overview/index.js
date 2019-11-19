@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 import { menu } from '@src/utils/getMenu'
-import createComponentExample from '@src/utils/createComponentExample'
+import createComponent from '@src/utils/createComponent'
 
 const category = 'opensources'
 const components = (
@@ -14,7 +14,7 @@ const Item = ({ name, isComponent }) => (
 )
 
 export default locale => {
-  const ComponentExample = createComponentExample({
+  const ComponentExample = createComponent({
     category,
     id: 'overview'
   })(locale)

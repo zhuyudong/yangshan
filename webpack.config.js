@@ -1,6 +1,6 @@
-const path = require('path')
-const fs = require('fs')
-const ip = require('ip')
+const { join, resolve } = require('path')
+// const fs = require('fs')
+// const ip = require('ip')
 const _ = require('lodash')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
@@ -18,9 +18,8 @@ const packageJSON = require('./package.json')
 const iconPath = [
   './node_modules/rsuite/lib/styles',
   '../rsuite/src/styles'
-].map(relativePath => path.resolve(__dirname, relativePath))
-const resolveToStaticPath = relativePath =>
-  path.resolve(__dirname, relativePath)
+].map(relativePath => resolve(__dirname, relativePath))
+const resolveToStaticPath = relativePath => resolve(__dirname, relativePath)
 
 const { NODE_ENV, STYLE_DEBUG, ENV_LOCALE } = process.env
 const __PRO__ = NODE_ENV === 'production'
@@ -70,7 +69,7 @@ const themesConfig = multipleThemesCompile({
 @import '../themes/${themeName}.less';
 
 @theme-name: ${themeName};`,
-  cwd: path.resolve(__dirname, './'), // 将相对目录修改为 webpack.config.js 所在目录
+  cwd: resolve(__dirname, './'), // 将相对目录修改为 webpack.config.js 所在目录
   cacheDir: './src/less/themes-cache', // 输出目录
   outputName: themeName => `resources/css/${themeName}.css`
 })
@@ -146,7 +145,7 @@ if (__PRO__) {
 module.exports = merge(
   {
     devServer: {
-      contentBase: path.join(__dirname, 'public'),
+      contentBase: join(__dirname, 'public'),
       disableHostCheck: true,
       historyApiFallback: {
         rewrites: [
@@ -161,7 +160,7 @@ module.exports = merge(
     entry,
     output: {
       filename: '[name].bundle.js?[hash:8]',
-      path: path.resolve(__dirname, 'dist'),
+      path: resolve(__dirname, 'dist'),
       publicPath: '/'
     },
     optimization,
@@ -238,10 +237,7 @@ module.exports = merge(
     plugins,
     devtool: STYLE_DEBUG === 'SOURCE' && 'source-map',
     stats: {
-      warningsFilter: warning => {
-        // Warning: componentWillMount has been renamed, and is not recommended for use.
-        return false
-      }
+      warningsFilter: [/componentWillMount has been renamed/]
     }
   },
   themesConfig,
@@ -257,7 +253,7 @@ module.exports = merge(
         resolve: {
           alias: {
             '@src': resolveToStaticPath('./src')
-            // rsuite: path.resolve(__dirname, '../rsuite')
+            // rsuite: resolve(__dirname, '../rsuite')
             // 'react-dom': '@hot-loader/react-dom'
           }
         }
