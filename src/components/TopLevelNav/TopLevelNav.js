@@ -6,14 +6,10 @@ import { Button, Icon, Whisper, Tooltip } from 'rsuite'
 import { isMobile } from 'react-device-detect'
 import Logo from '@src/components/Logo'
 import {
-  guide,
   github,
   component,
-  tools,
   search,
-  design,
-  extension,
-  gitee,
+  docs,
   lightOn,
   lightOff,
   rtl,
@@ -134,6 +130,12 @@ class TopLevelNav extends React.Component {
         to: `${localePath}components/overview`,
         icon: component
       }
+      // {
+      //   key: 'docs',
+      //   tip: get(locale, 'common.docs'),
+      //   to: `${localePath}docs`,
+      //   icon: docs
+      // }
     ]
     const renderSearchButton = className => (
       <WithTooltipButton
@@ -151,7 +153,7 @@ class TopLevelNav extends React.Component {
             <div className='top-level-nav'>
               <Link to={`${localePath}`}>
                 {/* <Logo width={26} height={30} className='logo-sm' /> */}
-                <img src={yangshan} style={{ width: 26, marginLeft: 8 }} />
+                <img src={yangshan} className='logo-circle' />
               </Link>
 
               <div className='top-level-nav-menu'>

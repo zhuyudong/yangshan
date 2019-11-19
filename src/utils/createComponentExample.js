@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import _ from 'lodash'
+import { get } from 'lodash/object'
 import {
   Divider,
   Icon,
@@ -38,6 +38,7 @@ const createComponentExample = ({
   id,
   examples = [],
   getDependencies,
+  showSource = true,
   dependencies = {},
   category = 'components'
 }) => {
@@ -47,6 +48,7 @@ const createComponentExample = ({
     const namePath = locale === 'en' ? `${name}/en/` : `${name}/`
     const context = require(`@src/pages/${category}/${namePath}index.md`)
     const componentExamples = examples.map(item => ({
+      showSource,
       source: require(`@src/pages/${category}/${namePath}${item}.md`),
       path: `https://github.com/rsuite/rsuite.github.io/tree/master/src/pages/${category}/${namePath}${item}.md`
     }))
@@ -63,19 +65,26 @@ const createComponentExample = ({
 
       constructor(props) {
         super(props)
-        const component = components.find(
-          i =>
-            i.id === id ||
-            i.name === id ||
-            (i.children || []).some(
-              j => `${i.id}/${j.id}` === id || j.id === id
-            )
-        )
+        let component =
+          components.find(
+            i =>
+              i.id === id ||
+              i.name === id ||
+              (i.children || []).some(
+                j => `${i.id}/${j.id}` === id || j.id === id
+              )
+          ) || {}
+        if (component.id !== id) {
+          component =
+            component.children.find(
+              i => i.id === id || `${component.id}/${i.id}` === id
+            ) || {}
+        }
         const tabIndex = sessionStorage.getItem(`${id}-tab-index`)
         this.state = {
           tabIndex: tabIndex ? +tabIndex : 0,
-          designHash: _.get(component, 'designHash'),
-          routerId: _.get(component, 'id')
+          designHash: get(component, 'designHash'),
+          routerId: id // get(component, 'id')
         }
       }
 
@@ -140,7 +149,7 @@ const createComponentExample = ({
         return (
           <PageContainer
             designHash={designHash}
-            routerId={routerId ? `components/${routerId}` : null}
+            routerId={routerId ? `${category}/${routerId}` : null}
           >
             <MarkdownView>{header}</MarkdownView>
             {componentExamples.map((item, index) =>
@@ -151,43 +160,47 @@ const createComponentExample = ({
                   dependencies={dependencies}
                   renderToolbar={showCodeButton => {
                     return (
-                      <React.Fragment>
-                        <CopyToClipboard onCopy={this.onCopy} text={source}>
-                          <Fragment>
-                            <Whisper
-                              placement='top'
-                              speaker={<Tooltip>Copy to clipboard</Tooltip>}
-                            >
-                              <IconButton
-                                appearance='subtle'
-                                icon={<Icon icon='copy' />}
-                                circle
-                                size='xs'
-                              />
-                            </Whisper>{' '}
-                          </Fragment>
-                        </CopyToClipboard>
-                        <Whisper
-                          placement='top'
-                          speaker={<Tooltip>Show the source</Tooltip>}
-                        >
-                          {showCodeButton}
-                        </Whisper>{' '}
-                        <Whisper
-                          placement='top'
-                          speaker={<Tooltip>See the source on GitHub</Tooltip>}
-                        >
-                          <IconButton
-                            disabled
-                            appearance='subtle'
-                            icon={<Icon icon='github' />}
-                            circle
-                            size='xs'
-                            // target='_blank'
-                            // href={item.path}
-                          />
-                        </Whisper>
-                      </React.Fragment>
+                      item.showSource && (
+                        <React.Fragment>
+                          <CopyToClipboard onCopy={this.onCopy} text={source}>
+                            <Fragment>
+                              <Whisper
+                                placement='top'
+                                speaker={<Tooltip>Copy to clipboard</Tooltip>}
+                              >
+                                <IconButton
+                                  appearance='subtle'
+                                  icon={<Icon icon='copy' />}
+                                  circle
+                                  size='xs'
+                                />
+                              </Whisper>{' '}
+                            </Fragment>
+                          </CopyToClipboard>
+                          <Whisper
+                            placement='top'
+                            speaker={<Tooltip>Show the source</Tooltip>}
+                          >
+                            {showCodeButton}
+                          </Whisper>{' '}
+                          <Whisper
+                            placement='top'
+                            speaker={
+                              <Tooltip>See the source on GitHub</Tooltip>
+                            }
+                          >
+                            <IconButton
+                              disabled
+                              appearance='subtle'
+                              icon={<Icon icon='github' />}
+                              circle
+                              size='xs'
+                              target='_blank'
+                              href={item.path}
+                            />
+                          </Whisper>
+                        </React.Fragment>
+                      )
                     )
                   }}
                 />

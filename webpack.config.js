@@ -155,7 +155,7 @@ module.exports = merge(
         ]
       },
       compress: true,
-      host: ip.address(),
+      host: '0.0.0.0', // ip.address(),
       port: 3200
     },
     entry,
@@ -236,7 +236,13 @@ module.exports = merge(
       ]
     },
     plugins,
-    devtool: STYLE_DEBUG === 'SOURCE' && 'source-map'
+    devtool: STYLE_DEBUG === 'SOURCE' && 'source-map',
+    stats: {
+      warningsFilter: warning => {
+        // Warning: componentWillMount has been renamed, and is not recommended for use.
+        return false
+      }
+    }
   },
   themesConfig,
   __PRO__

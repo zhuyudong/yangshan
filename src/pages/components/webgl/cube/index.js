@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
 import createComponentExample from '@src/utils/createComponentExample'
-import matrix from '@src/utils/webgl-matrix'
-import math from '@src/utils/math'
-import { Model } from '@src/utils/model'
-import Euler from '@src/utils/euler'
-import Vector3 from '@src/utils/vector3'
-import Quaternion from '@src/utils/quaternion'
+import math from '@src/utils/webgl/math'
+import Euler from '@src/utils/webgl/euler'
+import matrix from '@src/utils/webgl/matrix'
+import { Model } from '@src/utils/webgl/model'
+import Vector3 from '@src/utils/webgl/vector3'
+import Quaternion from '@src/utils/webgl/quaternion'
 import {
   createCone,
   createFace,
@@ -16,7 +16,7 @@ import {
   getArrayTypeByAttribName,
   getElementsCountPerVertex,
   transformIndicesToUnIndices
-} from '@src/utils/geometry'
+} from '@src/utils/webgl/geometry'
 import {
   getCanvas,
   getContext,
@@ -25,7 +25,7 @@ import {
   createSimpleProgram,
   createShaderFromScript,
   createSimpleProgramFromScript
-} from '@src/utils/webgl-helper'
+} from '@src/utils/webgl/helper'
 
 export default createComponentExample({
   id: 'webgl/cube',

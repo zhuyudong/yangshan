@@ -7,7 +7,7 @@ import {
   resizeCanvas,
   createSimpleProgram,
   createShaderFromScript
-} from '@src/utils/webgl-helper'
+} from '@src/utils/webgl/helper'
 
 export default createComponentExample({
   id: 'webgl/rect',

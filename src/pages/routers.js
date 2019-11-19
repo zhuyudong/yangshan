@@ -3,64 +3,49 @@ import { Route, IndexRedirect } from 'react-router'
 import { capitalize } from 'lodash/string'
 import Frame from '@src/components/Frame'
 import { setTitle } from '@src/title'
-import components from '../component.config.json'
-import opensources from '../opensources.config.json'
+import getRoutes from '@src/utils/dir'
 
-const routes = {
-  components: [],
-  opensources: []
-}
-components.forEach(i => {
-  if (i.children && i.children.length) {
-    i.children.forEach(j => {
-      routes.components.push(`${i.id}/${j.id}`)
-    })
-  } else {
-    routes.components.push(i.id)
-  }
-})
-opensources.forEach(i => {
-  if (i.children && i.children.length) {
-    i.children.forEach(j => {
-      routes.opensources.push(`${i.id}/${j.id}`)
-    })
-  } else {
-    routes.opensources.push(i.id)
-  }
-})
+// {components: ['webgl', 'webgl/basic'], home: []}
+const routes = getRoutes(require.context('./', true, /\.js/))
 export const createRouters = (locale, onEnter, onEntered) => {
   const localePath = locale === 'en' ? '/en/' : '/'
-
   return (
     <Fragment>
-      {Object.entries(routes).map(([dir, items]) => (
-        <Route path={dir} component={Frame}>
-          <IndexRedirect to={`${localePath}/${dir}/overview`} />
-          {items.map(route => (
-            <Route
-              key={route}
-              path={route}
-              getComponents={(location, callback) => {
-                onEnter && onEnter()
-                // require.ensure([], () => {
-                //   const getComponent = require(`./components/${route}`).default
-                //   const component = getComponent(locale)
-                //   callback && callback(null, component)
-                //   onEntered && onEntered()
-                // })
-                import(`./${dir}/${route}/index.js`).then(
-                  ({ default: getComponent }) => {
-                    const component = getComponent(locale)
-                    callback && callback(null, component)
-                    onEntered && onEntered()
-                  }
-                )
-              }}
-              onEnter={() => {
-                setTitle(`${capitalize(route)} - ${dir}`)
-              }}
-            />
-          ))}
+      {Object.entries(routes).map(([dir, items = []]) => (
+        <Route key={dir} path={dir} component={Frame}>
+          <IndexRedirect
+            to={
+              items.length
+                ? `${localePath}/${dir}/overview`
+                : `${localePath}/${dir}`
+            }
+          />
+          {!!items.length &&
+            items.map(route => (
+              <Route
+                key={`${dir}/${route}`}
+                path={route}
+                getComponents={(location, callback) => {
+                  onEnter && onEnter()
+                  // require.ensure([], () => {
+                  //   const getComponent = require(`./components/${route}`).default
+                  //   const component = getComponent(locale)
+                  //   callback && callback(null, component)
+                  //   onEntered && onEntered()
+                  // })
+                  import(`./${dir}/${route}/index.js`).then(
+                    ({ default: getComponent }) => {
+                      const component = getComponent(locale)
+                      callback && callback(null, component)
+                      onEntered && onEntered()
+                    }
+                  )
+                }}
+                onEnter={() => {
+                  setTitle(`${capitalize(route)} - ${dir}`)
+                }}
+              />
+            ))}
         </Route>
       ))}
       {/* <Route path='components' component={Frame}>

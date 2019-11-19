@@ -17,6 +17,12 @@
     "children": []
   },
   {
+    "id": "vue",
+    "name": "VUE",
+    "title": "VUE",
+    "children": []
+  },
+  {
     "id": "html",
     "name": "HTML",
     "title": "HTML",
@@ -26,6 +32,12 @@
     "id": "linux",
     "name": "Linux",
     "title": "Linux",
+    "children": []
+  },
+  {
+    "id": "react",
+    "name": "React",
+    "title": "React",
     "children": []
   },
   {
@@ -163,6 +175,12 @@
     "children": []
   },
   {
+    "id": "block-chain",
+    "name": "区块链",
+    "title": "区块链",
+    "children": []
+  },
+  {
     "id": "utils",
     "name": "工具函数",
     "title": "工具函数",
@@ -221,11 +239,7 @@
         "id": "array",
         "name": "Array",
         "title": "数组",
-        "components": [],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        "components": []
       },
       {
         "id": "object",
@@ -465,5 +479,17 @@
         }
       }
     ]
+  },
+  {
+    "id": "intelligence",
+    "name": "人工智能",
+    "title": "人工智能",
+    "children": []
+  },
+  {
+    "id": "algorithm",
+    "name": "算法与数据结构",
+    "title": "算法与数据结构",
+    "children": []
   }
 ]

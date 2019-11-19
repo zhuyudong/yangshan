@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
+import { get } from 'lodash/object'
 import { Button, ButtonToolbar, FlexboxGrid, Grid, Row, Col } from 'rsuite'
 import TopLevelNav from '@src/components/TopLevelNav'
 import LanguageSwitchButton from '@src/components/LanguageSwitchButton'
@@ -28,7 +28,7 @@ class HomePage extends React.Component {
 
   render() {
     const { locale } = this.context
-    const localePath = _.get(locale, 'id') === 'en-US' ? '/en/' : '/'
+    const localePath = get(locale, 'id') === 'en-US' ? '/en/' : '/'
 
     return (
       <Grid
@@ -39,21 +39,21 @@ class HomePage extends React.Component {
       >
         <TopLevelNav hideToggle />
 
-        {/* <span className='language-switch-button-wrapper'>
+        <span className='language-switch-button-wrapper'>
           <LanguageSwitchButton
             size='lg'
-            language={_.get(locale, 'id')}
+            language={get(locale, 'id')}
             href={localePath}
             className='home-page'
           />
-        </span> */}
+        </span>
 
         <Row>
           <FlexboxGrid align='middle' className='banner'>
             <FlexboxGrid.Item componentClass={Col} colspan={24} md={12}>
               <section className='section'>
-                <h1 className='title'>洋山</h1>
-                <p className='sub-title'> {_.get(locale, 'common.resume')}</p>
+                <h1 className='title'>{get(locale, 'common.name')}</h1>
+                <p className='sub-title'> {get(locale, 'common.resume')}</p>
                 {/* <p className='home-page-badge-wrap'>
                   <a
                     href='https://www.npmjs.com/package/rsuite'
@@ -77,10 +77,9 @@ class HomePage extends React.Component {
                     size='lg'
                     appearance='primary'
                     componentClass={Link}
-                    // to={`${localePath}guide/introduction`}
                     to={`${localePath}components/overview`}
                   >
-                    {_.get(locale, 'common.gettingStarted')}
+                    {get(locale, 'common.gettingStarted')}
                   </Button>
                 </ButtonToolbar>
               </section>
