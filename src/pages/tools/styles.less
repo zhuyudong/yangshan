@@ -1,0 +1,34 @@
+.masonry-search-input {
+  margin-top: 60px !important;
+  border-radius: 0 !important;
+}
+.masonry {
+  column-count: 4;
+  column-gap: 0.5em;
+  width: 100%;
+  margin: 0.5em auto;
+  margin-top: 30px;
+  a {
+    display: block;
+  }
+}
+.item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 4px #999;
+  transition: all 0.5s ease-out;
+}
+.item {
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+  break-inside: avoid;
+}
+@media screen and (max-width: 800px) {
+  .masonry {
+    column-count: 2;
+  }
+}
+@media screen and (max-width: 500px) {
+  .masonry {
+    column-count: 1;
+  }
+}
