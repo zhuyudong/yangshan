@@ -6,14 +6,15 @@ import { Button, Icon, Whisper, Tooltip } from 'rsuite'
 import { isMobile } from 'react-device-detect'
 import Logo from '@src/components/Logo'
 import {
-  github,
-  component,
-  search,
+  rtl,
+  ltr,
   docs,
+  github,
+  search,
+  wrench,
   lightOn,
   lightOff,
-  rtl,
-  ltr
+  component
 } from '@src/components/SvgIcons'
 import SearchDrawer from '@src/components/SearchDrawer'
 import loadCssFile from '@src/utils/loadCssFile'
@@ -23,7 +24,7 @@ import yangshan from '../../resources/images/yangshan.jpg'
 function WithTooltipButton({ children, tip, ...props }) {
   if (isMobile) {
     return (
-      <Button size='lg' {...props}>
+      <Button size="lg" {...props}>
         {children}
       </Button>
     )
@@ -34,9 +35,9 @@ function WithTooltipButton({ children, tip, ...props }) {
         <Whisper
           speaker={<Tooltip>{tip}</Tooltip>}
           placement={direction === 'ltr' ? 'right' : 'left'}
-          trigger='hover'
+          trigger="hover"
         >
-          <Button size='lg' {...props}>
+          <Button size="lg" {...props}>
             {children}
           </Button>
         </Whisper>
@@ -119,6 +120,12 @@ class TopLevelNav extends React.Component {
     const { light } = this.state
     const menu = [
       {
+        key: 'tools',
+        tip: get(locale, 'common.tools'),
+        to: `${localePath}tools`,
+        icon: wrench
+      },
+      {
         key: 'opensources',
         tip: get(locale, 'common.opensources'),
         to: `${localePath}opensources`,
@@ -129,13 +136,13 @@ class TopLevelNav extends React.Component {
         tip: get(locale, 'common.components'),
         to: `${localePath}components/overview`,
         icon: component
+      },
+      {
+        key: 'docs',
+        tip: get(locale, 'common.docs'),
+        to: `${localePath}docs`,
+        icon: docs
       }
-      // {
-      //   key: 'docs',
-      //   tip: get(locale, 'common.docs'),
-      //   to: `${localePath}docs`,
-      //   icon: docs
-      // }
     ]
     const renderSearchButton = className => (
       <WithTooltipButton
@@ -143,26 +150,26 @@ class TopLevelNav extends React.Component {
         className={`icon-btn-circle ${className}`}
         onClick={this.showSearchDrawer}
       >
-        <Icon icon={search} svgStyle={svgStyle} size='lg' />
+        <Icon icon={search} svgStyle={svgStyle} size="lg" />
       </WithTooltipButton>
     )
     return (
       <DirectionContext.Consumer>
         {({ direction, handleToggleDirection }) => {
           return (
-            <div className='top-level-nav'>
+            <div className="top-level-nav">
               <Link to={`${localePath}`}>
                 {/* <Logo width={26} height={30} className='logo-sm' /> */}
-                <img src={yangshan} className='logo-circle' />
+                <img src={yangshan} className="logo-circle" />
               </Link>
 
-              <div className='top-level-nav-menu'>
+              <div className="top-level-nav-menu">
                 {renderSearchButton('visible-xs')}
                 {menu.map(item => (
                   <WithTooltipButton
                     tip={item.tip}
                     key={item.key}
-                    className='icon-btn-circle'
+                    className="icon-btn-circle"
                     componentClass={Link}
                     to={item.to}
                     onClick={event => {
@@ -177,7 +184,7 @@ class TopLevelNav extends React.Component {
                           ? '#169de0'
                           : iconColor
                       }}
-                      size='lg'
+                      size="lg"
                     />
                   </WithTooltipButton>
                 ))}
@@ -194,38 +201,38 @@ class TopLevelNav extends React.Component {
 
                 {renderSearchButton('hidden-xs')} */}
 
-                <div className='nav-menu-bottom'>
+                <div className="nav-menu-bottom">
                   <WithTooltipButton
-                    tip='Toggle light/dark theme'
-                    className='icon-btn-circle'
+                    tip="Toggle light/dark theme"
+                    className="icon-btn-circle"
                     onClick={this.handleToggleThemeButtonClick}
                   >
                     <Icon
                       icon={light ? lightOff : lightOn}
                       svgStyle={svgStyle}
-                      size='lg'
+                      size="lg"
                     />
                   </WithTooltipButton>
 
                   <WithTooltipButton
-                    tip='Toggle RTL/LTR'
-                    className='icon-btn-circle'
+                    tip="Toggle RTL/LTR"
+                    className="icon-btn-circle"
                     onClick={handleToggleDirection}
                   >
                     <Icon
                       icon={direction === 'ltr' ? rtl : ltr}
                       svgStyle={svgStyle}
-                      size='lg'
+                      size="lg"
                     />
                   </WithTooltipButton>
 
                   <WithTooltipButton
-                    tip='GitHub'
-                    className='icon-btn-circle'
-                    href='https://devcloud.huaweicloud.com/codehub/project/933940192fa2419b91ee3c8905a3b107/codehub/591388/home'
-                    target='_blank'
+                    tip="GitHub"
+                    className="icon-btn-circle"
+                    href="https://devcloud.huaweicloud.com/codehub/project/933940192fa2419b91ee3c8905a3b107/codehub/591388/home"
+                    target="_blank"
                   >
-                    <Icon icon='code' size='lg' style={{ color: iconColor }} />
+                    <Icon icon="code" size="lg" style={{ color: iconColor }} />
                   </WithTooltipButton>
 
                   {hideToggle ? null : (
@@ -235,12 +242,12 @@ class TopLevelNav extends React.Component {
                           ? get(locale, 'common.closeMenu')
                           : get(locale, 'common.openMenu')
                       }
-                      className='icon-btn-circle'
+                      className="icon-btn-circle"
                       onClick={this.handleToggleMenu}
                     >
                       <Icon
                         icon={showSubmenu ? 'angle-left' : 'angle-right'}
-                        size='lg'
+                        size="lg"
                       />
                     </WithTooltipButton>
                   )}

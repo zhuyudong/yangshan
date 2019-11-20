@@ -11,17 +11,17 @@ export const createRouters = (locale, onEnter, onEntered) => {
   const localePath = locale === 'en' ? '/en/' : '/'
   return (
     <Fragment>
-      {Object.entries(routes).map(([dir, items = []]) => (
-        <Route key={dir} path={dir} component={Frame}>
-          <IndexRedirect
-            to={
-              items.length
-                ? `${localePath}/${dir}/overview`
-                : `${localePath}/${dir}`
-            }
-          />
-          {!!items.length &&
-            items.map(route => (
+      {Object.entries(routes).map(([dir, items = []]) =>
+        items && items.length ? (
+          <Route key={dir} path={dir} component={Frame}>
+            <IndexRedirect
+              to={
+                items.includes('overview')
+                  ? `${localePath}/${dir}/overview`
+                  : `${localePath}/${dir}`
+              }
+            />
+            {items.map(route => (
               <Route
                 key={`${dir}/${route}`}
                 path={route}
@@ -46,10 +46,27 @@ export const createRouters = (locale, onEnter, onEntered) => {
                 }}
               />
             ))}
-        </Route>
-      ))}
+          </Route>
+        ) : (
+          <Route
+            key={dir}
+            path={dir}
+            getComponents={(location, callback) => {
+              onEnter && onEnter()
+              import(`./${dir}/index.js`).then(({ default: getComponent }) => {
+                const component = getComponent(locale)
+                callback && callback(null, component)
+                onEntered && onEntered()
+              })
+            }}
+            onEnter={() => {
+              setTitle(capitalize(dir))
+            }}
+          />
+        )
+      )}
       <Route
-        path='*'
+        path="*"
         getComponents={(location, callback) => {
           onEnter && onEnter()
           require.ensure([], require => {

@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react'
 import createComponent from '@src/utils/createComponent'
 import math from '@src/utils/webgl/math'
 import Euler from '@src/utils/webgl/euler'
@@ -31,7 +30,6 @@ export default createComponent({
   id: 'webgl/cube',
   examples: ['basic'],
   dependencies: {
-    useEffect,
     getCanvas,
     getContext,
     randomColor,

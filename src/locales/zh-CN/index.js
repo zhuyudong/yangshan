@@ -3,10 +3,11 @@ export default {
   common: {
     search: '搜索',
     name: '洋山',
-    resume: '图灵人工智能研究院前端基础部件及能力平台',
+    resume: '前端基础部件及能力平台',
     advanced: '高级功能',
     guide: '新手指南',
     design: '设计原型',
+    tools: '工具集',
     opensources: '开源软件',
     components: '组件 && 规范',
     docs: '文档',

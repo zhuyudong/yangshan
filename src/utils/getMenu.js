@@ -1,7 +1,7 @@
 import React from 'react'
 import { get } from 'lodash/object'
 import { Icon } from 'rsuite'
-import { component, github } from '@src/components/SvgIcons'
+import { wrench, github, component, docs } from '@src/components/SvgIcons'
 import components from '@src/component.config.json'
 import opensources from '@src/opensources.config.json'
 import { getDict } from '@src/locales'
@@ -14,16 +14,28 @@ const svgStyle = {
 const getMenu = locale => {
   return [
     {
+      id: 'tools',
+      name: get(locale, 'common.tools'),
+      icon: <Icon icon={wrench} svgStyle={svgStyle} size="lg" />,
+      children: null
+    },
+    {
       id: 'opensources',
       name: get(locale, 'common.opensources'),
-      icon: <Icon icon={github} svgStyle={svgStyle} size='lg' />,
+      icon: <Icon icon={github} svgStyle={svgStyle} size="lg" />,
       children: opensources
     },
     {
       id: 'components',
       name: get(locale, 'common.components'),
-      icon: <Icon icon={component} svgStyle={svgStyle} size='lg' />,
+      icon: <Icon icon={component} svgStyle={svgStyle} size="lg" />,
       children: components
+    },
+    {
+      id: 'docs',
+      name: get(locale, 'common.docs'),
+      icon: <Icon icon={docs} svgStyle={svgStyle} size="lg" />,
+      children: null
     }
   ]
 }

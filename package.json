@@ -1,7 +1,7 @@
 {
-  "name": "rsuite-docs",
-  "version": "4.1.0-doc.20191107",
-  "description": "RSUITE components built with React",
+  "name": "yangshan",
+  "version": "0.0.1",
+  "description": "Front-end basic components and capability platform",
   "main": "lib/index.js",
   "directories": {
     "lib": "lib/"
@@ -23,8 +23,6 @@
   },
   "keywords": [
     "react",
-    "suite",
-    "rsuite",
     "react-component"
   ],
   "files": [
@@ -32,11 +30,11 @@
     "lib",
     "src"
   ],
-  "author": "HYPERS Team",
+  "author": "Yudong Zhu",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:rsuite/rsuite.git"
+    "url": "git@github.com:zhuyudong/yangshan.git"
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",

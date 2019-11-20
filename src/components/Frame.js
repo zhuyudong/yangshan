@@ -54,7 +54,7 @@ class Frame extends Component {
                   onChangeTheme={this.handleChangeTheme}
                 />
                 <DocSidebar style={menuStyles} />
-                <div className='page-context' style={contextStyle}>
+                <div className="page-context" style={contextStyle}>
                   {this.props.children}
                 </div>
               </div>

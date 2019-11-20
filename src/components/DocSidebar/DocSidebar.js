@@ -61,7 +61,6 @@ class DocSidebar extends React.PureComponent {
     const isActive = router.isActive
     const menu = getMenu(locale)
     const { mediaSidebarShow } = this.state
-
     const { name: activeTitle, icon } = menu.filter(({ id }) =>
       isActive(`${rootPath}${id}`)
     )[0]
@@ -77,11 +76,11 @@ class DocSidebar extends React.PureComponent {
             if (child.children) {
               nodeItems.push(
                 <NavItem panel key={child.id}>
-                  <span className='tr-collapse-menu'>
+                  <span className="tr-collapse-menu">
                     # {child.name}
                     {!!child.children.length && (
                       <Icon
-                        className='tr-collapse-icon'
+                        className="tr-collapse-icon"
                         onClick={() => this.onMenuClick(child.id)}
                         icon={expandedMenus.includes(child.id) ? 'up' : 'down'}
                       />
@@ -112,14 +111,14 @@ class DocSidebar extends React.PureComponent {
 
             const title =
               get(locale, 'id') === 'en-US' || !child.title ? null : (
-                <span className='title-zh'>{child.title}</span>
+                <span className="title-zh">{child.title}</span>
               )
 
             if (child.target === '_blank' && child.url) {
               nodeItems.push(
-                <NavItem key={child.id} href={child.url} target='_blank'>
+                <NavItem key={child.id} href={child.url} target="_blank">
                   {child.name} {title}
-                  <Icon icon='external-link-square' className='external-link' />
+                  <Icon icon="external-link-square" className="external-link" />
                 </NavItem>
               )
             } else {
@@ -142,8 +141,8 @@ class DocSidebar extends React.PureComponent {
       <Fragment>
         {showMediaToggleButton && (
           <IconButton
-            className='media-toggle-side-bar'
-            icon={<Icon icon='bars' />}
+            className="media-toggle-side-bar"
+            icon={<Icon icon="bars" />}
             onClick={this.handleOpenMediaSidebarShow}
           />
         )}
@@ -156,14 +155,14 @@ class DocSidebar extends React.PureComponent {
         >
           <Sidebar>
             <IconButton
-              className='media-close-side-bar-button'
-              icon={<Icon icon='close' />}
+              className="media-close-side-bar-button"
+              icon={<Icon icon="close" />}
               onClick={this.handleCloseMediaSidebarShow}
             />
-            <div className='title-wrapper'>
+            <div className="title-wrapper">
               {icon} {activeTitle}
             </div>
-            <Nav className='nav-docs' vertical>
+            <Nav className="nav-docs" vertical>
               {nodeItems}
             </Nav>
           </Sidebar>

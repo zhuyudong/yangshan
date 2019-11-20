@@ -1,7 +1,7 @@
 export default [
   {
     title: 'Ant Design',
-    image: [],
+    image: '',
     icon:
       'https: //gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
     href: 'https: //ant.design/index-cn',
