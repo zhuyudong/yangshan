@@ -99,11 +99,11 @@ const platform = () => {
 }
 
 const Platform = () => {
-  useEffect(() => {
+  React.useEffect(() => {
     platform()
   }, [])
 
-  return <canvas id='canvas' style={{ width: '100%' }}></canvas>
+  return <canvas id="canvas" style={{ width: '100%' }}></canvas>
 }
 ReactDOM.render(<Platform />)
 ```

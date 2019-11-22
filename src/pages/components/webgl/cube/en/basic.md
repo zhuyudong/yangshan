@@ -4,7 +4,7 @@
 
 ```js
 const Cube = () => {
-  useEffect(() => {
+  React.useEffect(() => {
     let playing = false
     function handleClick() {
       playing = !playing
@@ -344,7 +344,7 @@ const Cube = () => {
       document.body.removeEventListener('click', handleClick)
     }
   }, [])
-  return <canvas id='canvas' style={{ width: '100%' }}></canvas>
+  return <canvas id="canvas" style={{ width: '100%' }}></canvas>
 }
 ReactDOM.render(<Cube />)
 ```

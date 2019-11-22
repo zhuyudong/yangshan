@@ -160,7 +160,20 @@
     "id": "javascript",
     "name": "JavaScript",
     "title": "JavaScript",
-    "children": []
+    "children": [
+      {
+        "id": "prototype",
+        "name": "原型与原型链",
+        "title": "原型与原型链",
+        "components": [
+          "prototype"
+        ],
+        "designHash": {
+          "default": "1",
+          "dark": "1"
+        }
+      }
+    ]
   },
   {
     "id": "typescript",

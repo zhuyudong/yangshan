@@ -36,6 +36,7 @@ const CustomCodeView = ({ dependencies, ...rest }) => (
   <CodeView
     {...rest}
     theme="dark"
+    className="code-view-custom"
     babelOptions={babelOptions}
     buttonClassName="rs-btn-subtle rs-btn-icon-circle"
     dependencies={{ ...dependencies, Paragraph, Divider }}

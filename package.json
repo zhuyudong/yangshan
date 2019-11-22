@@ -37,6 +37,7 @@
     "url": "git@github.com:zhuyudong/yangshan.git"
   },
   "dependencies": {
+    "@antv/g6": "^3.2.0",
     "@babel/runtime": "^7.7.2",
     "@rsuite/document-nav": "^1.0.6",
     "@rsuite/responsive-nav": "0.0.6",
