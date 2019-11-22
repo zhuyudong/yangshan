@@ -1,20 +1,25 @@
 import createComponent from '@src/utils/createComponent'
 import G6 from '@antv/g6'
-
-const explain = {
-  'writable-true': '可改变',
-  'writable-false': '不可改变',
-  'enumerable"-true': '可枚举',
-  'enumerable-false': '不可枚举',
-  'configurable-true': '可删除',
-  'configurable-false': '不可删除'
-}
+import { Instance, getTree, explain, containerStyle } from '@src/utils/g6'
 
 export default createComponent({
   id: 'javascript/prototype',
-  examples: ['object'],
+  examples: [
+    'object',
+    'array',
+    'number',
+    'string',
+    // 'date',
+    'math',
+    'function',
+    'regexp'
+    // 'symbol'
+  ],
   dependencies: {
     G6,
-    explain
+    explain,
+    getTree,
+    Instance,
+    containerStyle
   }
 })

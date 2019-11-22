@@ -56,13 +56,14 @@ const createComponent = ({
     const dist = getDict(locale)
     const namePath = locale === 'en' ? `${name}/en/` : `${name}/`
     const context = require(`@src/pages/${category}/${namePath}index.md`)
+    console.log(category, namePath, examples)
     const componentExamples = examples.map(item => ({
       showSource,
       source: require(`@src/pages/${category}/${namePath}${item}.md`),
       path: `https://github.com/zhuyudong/yangshan/blob/master/src/pages/${category}/${namePath}${item}.md`
     }))
     /* 将 index.md 中的代码插入 */
-    if (context.match(/class="javascript"/)) {
+    if (!context.match(/\$\$ignore/) && context.match(/class="javascript"/)) {
       // 使用 react-runkit 执行 md 文件中的 js 代码块
       const codes = context
         // .replace(
