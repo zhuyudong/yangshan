@@ -1,7 +1,7 @@
 import { getDict } from './locales'
 
 const dist = getDict()
-const TITLE = 'React Suite | React components'
+const TITLE = 'Components | Front-End'
 
 export const pageview = title => {
   window._ha &&

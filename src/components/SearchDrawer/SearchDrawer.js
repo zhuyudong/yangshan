@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
 import get from 'lodash/get'
 import algoliasearch from 'algoliasearch'
 import { Link } from 'react-router'
@@ -22,7 +21,7 @@ class SearchDrawer extends Component {
   }
   initIndex() {
     const { locale } = this.context
-    const indexKey = _.get(locale, 'id') === 'en-US' ? 'rsuite-en' : 'rsuite-zh'
+    const indexKey = get(locale, 'id') === 'en-US' ? 'rsuite-en' : 'rsuite-zh'
     const client = algoliasearch(
       'PTK5IGAK3K',
       'dd3a62fc583bb0749dafa15cc61588bf'
@@ -55,31 +54,31 @@ class SearchDrawer extends Component {
     const { show, onHide } = this.props
     const { list } = this.state
     const { locale } = this.context
-    const path = _.get(locale, 'id') === 'en-US' ? '/en' : ''
+    const path = get(locale, 'id') === 'en-US' ? '/en' : ''
 
     return (
       <Drawer
-        className='search-drawer'
-        placement='left'
-        size='xs'
+        className="search-drawer"
+        placement="left"
+        size="xs"
         show={show}
         onHide={onHide}
       >
         <Drawer.Header>
-          <Drawer.Title>{_.get(locale, 'common.search')}</Drawer.Title>
+          <Drawer.Title>{get(locale, 'common.search')}</Drawer.Title>
         </Drawer.Header>
         <Drawer.Body>
           <Input
-            placeholder={_.get(locale, 'common.search')}
-            className='search-input'
+            placeholder={get(locale, 'common.search')}
+            className="search-input"
             value={this.state.keyword}
             onChange={this.handleSearch}
           />
-          <ul className='search-list'>
+          <ul className="search-list">
             {list.map((item, index) => {
-              let component = _.get(item, 'component')
-              let content = _.get(item, 'content')
-              let title = _.get(item, ['_highlightResult', 'title', 'value'])
+              let component = get(item, 'component')
+              let content = get(item, 'content')
+              let title = get(item, ['_highlightResult', 'title', 'value'])
               title = `${component} > ${title.replace(/`/gi, '')}`
               let url = `${path}/components/${component}`
 

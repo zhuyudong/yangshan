@@ -10,7 +10,7 @@ const components = (
 
 const Item = ({ name, isComponent }) => (
   <li>
-    <span className='name'>{isComponent ? `<${name}>` : name}</span>
+    <span className="name">{isComponent ? `<${name}>` : name}</span>
   </li>
 )
 
@@ -23,11 +23,11 @@ export default locale => {
   return () => {
     return (
       <ComponentExample>
-        <div className='component-overview'>
+        <div className="component-overview">
           <ul>
             {components.map(item => {
               const items = [
-                <li className='title' key={item.id}>
+                <li className="title" key={item.id}>
                   <h4 id={item.name}>{item.name}</h4>
                 </li>
               ]
@@ -36,15 +36,15 @@ export default locale => {
                   items.push(
                     <li key={child.id}>
                       <Link
-                        to={`${localePath}${category}/${child.id}`}
-                        className='header'
+                        to={`${localePath}${category}/${item.id}/${child.id}`}
+                        className="header"
                       >
                         {child.name}
                         {locale === 'zh' && child.title !== child.name && (
                           <span>({child.title})</span>
                         )}
                       </Link>
-                      <ul className='content'>
+                      <ul className="content">
                         {child.components &&
                           child.components.map(name => (
                             <Item name={name} key={name} isComponent />

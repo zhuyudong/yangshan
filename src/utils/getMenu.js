@@ -3,7 +3,6 @@ import { get } from 'lodash/object'
 import { Icon } from 'rsuite'
 import { wrench, github, component, docs } from '@src/components/SvgIcons'
 import components from '@src/component.config.json'
-import opensources from '@src/opensources.config.json'
 import { getDict } from '@src/locales'
 
 const dict = getDict()
@@ -23,7 +22,7 @@ const getMenu = locale => {
       id: 'opensources',
       name: get(locale, 'common.opensources'),
       icon: <Icon icon={github} svgStyle={svgStyle} size="lg" />,
-      children: opensources
+      children: null
     },
     {
       id: 'components',

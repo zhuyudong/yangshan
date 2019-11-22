@@ -4,8 +4,6 @@ import { get } from 'lodash/object'
 import { Button, ButtonToolbar, FlexboxGrid, Grid, Row, Col } from 'rsuite'
 import TopLevelNav from '@src/components/TopLevelNav'
 import LanguageSwitchButton from '@src/components/LanguageSwitchButton'
-import Logo from '@src/components/Logo'
-import ReactLogo from '@src/components/ReactLogo'
 import { Link } from 'react-router'
 import yangshan from '../../resources/images/yangshan.jpg'
 
@@ -32,50 +30,50 @@ class HomePage extends React.Component {
 
     return (
       <Grid
-        className='page-home'
+        className="page-home"
         ref={ref => {
           this.home = ref
         }}
       >
         <TopLevelNav hideToggle />
 
-        <span className='language-switch-button-wrapper'>
+        <span className="language-switch-button-wrapper">
           <LanguageSwitchButton
-            size='lg'
+            size="lg"
             language={get(locale, 'id')}
             href={localePath}
-            className='home-page'
+            className="home-page"
           />
         </span>
 
         <Row>
-          <FlexboxGrid align='middle' className='banner'>
+          <FlexboxGrid align="middle" className="banner">
             <FlexboxGrid.Item componentClass={Col} colspan={24} md={12}>
-              <section className='section'>
-                <h1 className='title'>{get(locale, 'common.name')}</h1>
-                <p className='sub-title'> {get(locale, 'common.resume')}</p>
+              <section className="section">
+                <h1 className="title">{get(locale, 'common.name')}</h1>
+                <p className="sub-title"> {get(locale, 'common.resume')}</p>
                 {/* <p className='home-page-badge-wrap'>
                   <a
-                    href='https://www.npmjs.com/package/rsuite'
+                    href='https://www.npmjs.com/package/yangshan'
                     target='_blank'
                   >
-                    <img alt='npm' src='https://badge.fury.io/js/rsuite.svg' />
+                    <img alt='npm' src='https://badge.fury.io/js/yangshan.svg' />
                   </a>
                   <a
                     style={{ marginLeft: 10 }}
-                    href='https://github.com/rsuite/rsuite'
+                    href='https://github.com/zhuyudong/yangshan'
                     target='_blank'
                   >
                     <img
                       alt='GitHub stars'
-                      src='https://img.shields.io/github/stars/rsuite/rsuite?style=social'
+                      src='https://img.shields.io/github/stars/zhuyudong/yangshan?style=social'
                     />
                   </a>
                 </p> */}
                 <ButtonToolbar>
                   <Button
-                    size='lg'
-                    appearance='primary'
+                    size="lg"
+                    appearance="primary"
                     componentClass={Link}
                     to={`${localePath}components/overview`}
                   >
@@ -86,12 +84,12 @@ class HomePage extends React.Component {
             </FlexboxGrid.Item>
 
             <FlexboxGrid.Item
-              className='logo-react-suite-wrapper'
+              className="logo-react-suite-wrapper"
               componentClass={Col}
               colspan={24}
               md={12}
             >
-              <div className='section logo-react-suite'>
+              <div className="section logo-react-suite">
                 {/* <Logo width={120} height={138} />
                 <ReactLogo running={this.state.running} /> */}
                 <img src={yangshan} style={{ width: '100%' }} />

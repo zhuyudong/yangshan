@@ -12,6 +12,7 @@ export default {
     components: 'Components && Standards',
     docs: 'article',
     tools: 'Tools',
+    example: 'image',
     introduction: 'Introduction',
     usage: 'Quick Start',
     useWithCreateReactApp: 'Use in create-react-app',
