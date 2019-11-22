@@ -24,19 +24,20 @@ const babelOptions = {
   plugins: ['transform-class-properties']
 }
 const embedStart =
-  '\n<!--start-code-->\n<div class="doc-highlight"><pre><code class="javascript"><span class="hljs-keyword">const</span> helloSource = <span class="hljs-string">`'
+  '\n<!--start-code-->\n<div class="doc-highlight"><pre><code class="javascript"><span class="hljs-keyword">const</span> $source = <span class="hljs-string">`'
+// const embedEnd = `\`</span>
+// <span class="hljs-keyword">const</span> CodeSandbox = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+//   <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Embed</span> <span class="hljs-attr">source</span>=<span class="hljs-string">{$source}</span> /&gt;</span>
+// }
+// ReactDOM.render(<span class="hljs-tag">&lt;<span class="hljs-name">CodeSandbox</span> /&gt;</span>)</span></code></pre></div><!--end-code--><!--divider-->\n`
 const embedEnd = `\`</span>
-<span class="hljs-keyword">const</span> CodeSandbox = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
-  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Embed</span> <span class="hljs-attr">source</span>=<span class="hljs-string">{helloSource}</span> /&gt;</span>
-}
-ReactDOM.render(<span class="hljs-tag">&lt;<span class="hljs-name">CodeSandbox</span> /&gt;</span>)</span></code></pre></div><!--end-code--><!--divider-->\n`
-
+ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Embed</span> <span class="hljs-attr">source</span>=<span class="hljs-string">{$source}</span> /&gt;</span>)</span></code></pre></div><!--end-code--><!--divider-->\n`
 const CustomCodeView = ({ dependencies, ...rest }) => (
   <CodeView
     {...rest}
-    theme='dark'
+    theme="dark"
     babelOptions={babelOptions}
-    buttonClassName='rs-btn-subtle rs-btn-icon-circle'
+    buttonClassName="rs-btn-subtle rs-btn-icon-circle"
     dependencies={{ ...dependencies, Paragraph, Divider }}
   />
 )
@@ -57,12 +58,11 @@ const createComponent = ({
     const componentExamples = examples.map(item => ({
       showSource,
       source: require(`@src/pages/${category}/${namePath}${item}.md`),
-      path: `https://github.com/rsuite/rsuite.github.io/tree/master/src/pages/${category}/${namePath}${item}.md`
+      path: `https://github.com/zhuyudong/yangshan/blob/master/src/pages/${category}/${namePath}${item}.md`
     }))
     /* 将 index.md 中的代码插入 */
-    if (context.match(/doc-highlight/)) {
+    if (context.match(/class="javascript"/)) {
       // 使用 react-runkit 执行 md 文件中的 js 代码块
-      console.log(context)
       const codes = context
         // .replace(
         //   /<div class="doc-highlight">/g,
@@ -73,7 +73,8 @@ const createComponent = ({
         //   '</code></pre></div><!--end-code--><!--divider-->\n'
         // )
         .replace(
-          /<div class="doc-highlight"><pre><code class="javascript"><span class="hljs-built_in">/g,
+          /<div class="doc-highlight">/g,
+          // /<div class="doc-highlight"><pre><code class="javascript"><span class="hljs-built_in">/g,
           embedStart
         )
         .replace(/<\/code><\/pre><\/div>/g, embedEnd)
@@ -151,7 +152,7 @@ const createComponent = ({
         return (
           <div>
             <h3>{dist.common.advanced} </h3>
-            <ButtonGroup size='xs'>
+            <ButtonGroup size="xs">
               {tabExamples.map((item, index) => (
                 <Button
                   key={index}
@@ -199,37 +200,37 @@ const createComponent = ({
                           <CopyToClipboard onCopy={this.onCopy} text={source}>
                             <Fragment>
                               <Whisper
-                                placement='top'
+                                placement="top"
                                 speaker={<Tooltip>Copy to clipboard</Tooltip>}
                               >
                                 <IconButton
-                                  appearance='subtle'
-                                  icon={<Icon icon='copy' />}
+                                  appearance="subtle"
+                                  icon={<Icon icon="copy" />}
                                   circle
-                                  size='xs'
+                                  size="xs"
                                 />
                               </Whisper>{' '}
                             </Fragment>
                           </CopyToClipboard>
                           <Whisper
-                            placement='top'
+                            placement="top"
                             speaker={<Tooltip>Show the source</Tooltip>}
                           >
                             {showCodeButton}
                           </Whisper>{' '}
                           <Whisper
-                            placement='top'
+                            placement="top"
                             speaker={
                               <Tooltip>See the source on GitHub</Tooltip>
                             }
                           >
                             <IconButton
                               disabled
-                              appearance='subtle'
-                              icon={<Icon icon='github' />}
+                              appearance="subtle"
+                              icon={<Icon icon="github" />}
                               circle
-                              size='xs'
-                              target='_blank'
+                              size="xs"
+                              target="_blank"
                               href={item.path}
                             />
                           </Whisper>
