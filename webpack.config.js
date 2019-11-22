@@ -155,7 +155,8 @@ module.exports = merge(
       },
       compress: true,
       host: '0.0.0.0', // ip.address(),
-      port: 3200
+      port: 8080,
+      open: true
     },
     entry,
     output: {

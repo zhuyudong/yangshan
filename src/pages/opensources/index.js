@@ -144,7 +144,7 @@ export default locale => {
                                 }
                               />
                             ))}
-                          {i.home && (
+                          {i.home && !i.home.match(/github\.com/) && (
                             <a
                               href={i.home}
                               target="__blank"

@@ -47,15 +47,13 @@ export default locale => {
                 target="__blank"
                 className="opensource-card-href item"
               >
-                <Panel bodyFill bordered className="opensource-card">
+                <Panel bodyFill bordered className="tools-card">
                   <Panel
                     header={
                       i.icon ? (
                         <span>
                           {i.icon && <img src={i.icon} />}
-                          <span className="opensource-card-title">
-                            {i.title}
-                          </span>
+                          <span className="tools-card-title">{i.title}</span>
                         </span>
                       ) : (
                         i.title
@@ -67,7 +65,7 @@ export default locale => {
                     </p>
                   </Panel>
                   {showImage && Array.isArray(i.image) ? (
-                    <Carousel autoplay className="opensource-card-carousel">
+                    <Carousel autoplay className="tools-card-carousel">
                       {i.image.map((i, ix) => (
                         <img key={`${i}-${ix}`} src={i} />
                       ))}
