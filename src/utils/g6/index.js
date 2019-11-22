@@ -1,5 +1,6 @@
 import G6 from '@antv/g6'
 import React from 'react'
+import { capitalize } from 'lodash/string'
 
 export const explain = {
   'writable-true': '可改变',
@@ -50,7 +51,7 @@ const obj = {
 export const Instance = ({ container }) => {
   React.useEffect(() => {
     const data = {
-      id: 'Object',
+      id: capitalize(container),
       children: getTree(container, obj[container])
     }
     const width = document.getElementById(container).scrollWidth

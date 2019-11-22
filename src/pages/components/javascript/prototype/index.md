@@ -5,29 +5,61 @@
 ```js
 /* $$ignore */
 // utils/g6/index.js
-const style = { width: '100%', border: '1px solid orange' }
-const getTree = obj => {
+import G6 from '@antv/g6'
+import React from 'react'
+import { capitalize } from 'lodash/string'
+
+export const explain = {
+  'writable-true': '可改变',
+  'writable-false': '不可改变',
+  'enumerable"-true': '可枚举',
+  'enumerable-false': '不可枚举',
+  'configurable-true': '可删除',
+  'configurable-false': '不可删除'
+}
+
+export const containerStyle = { width: '100%', border: '1px solid orange' }
+export const getTree = (container, obj) => {
   return Object.entries(Object.getOwnPropertyDescriptors(obj)).map(
     ([name, properties]) => {
       return {
         id: name,
-        children: Object.entries(properties).map(([n, p]) => ({
-          id: explain[`${n}-${p}`]
-            ? explain[`${n}-${p}`]
-            : typeof p === 'function'
-            ? `${n}()`
-            : n,
-          children: name === 'prototype' ? getTree(obj.prototype) : []
-        }))
+        children: Object.entries(properties).map(([n, p]) => {
+          return {
+            id: explain[`${n}-${p}`]
+              ? explain[`${n}-${p}`]
+              : typeof p === 'function'
+              ? `${n}()`
+              : n,
+            children:
+              name === 'prototype' &&
+              container !== 'symbol' &&
+              typeof obj['prototype'] === 'object'
+                ? getTree(container, obj['prototype'])
+                : []
+          }
+        })
       }
     }
   )
 }
-const Instance = ({ container }) => {
+
+const obj = {
+  math: Math,
+  date: Date,
+  array: Array,
+  object: Object,
+  regexp: RegExp,
+  number: Number,
+  string: String,
+  symbol: Symbol,
+  function: Function
+}
+export const Instance = ({ container }) => {
   React.useEffect(() => {
     const data = {
-      id: 'Object',
-      children: getTree(Object)
+      id: capitalize(container),
+      children: getTree(container, obj[container])
     }
     const width = document.getElementById(container).scrollWidth
     const height = document.getElementById(container).scrollHeight || 500
@@ -113,8 +145,10 @@ const Instance = ({ container }) => {
     graph.fitView()
   }, [])
 
-  return <div id={container} style={style}></div>
+  return <div id={container} style={containerStyle}></div>
 }
+
+export default Instance
 ```
 
 <!--{demo}-->
