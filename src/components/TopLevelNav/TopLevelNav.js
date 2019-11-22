@@ -146,9 +146,11 @@ class TopLevelNav extends React.Component {
     ]
     const renderSearchButton = className => (
       <WithTooltipButton
+        disabled
         tip={get(locale, 'common.search')}
         className={`icon-btn-circle ${className}`}
         onClick={this.showSearchDrawer}
+        style={{ background: 'transparent' }}
       >
         <Icon icon={search} svgStyle={svgStyle} size="lg" />
       </WithTooltipButton>
