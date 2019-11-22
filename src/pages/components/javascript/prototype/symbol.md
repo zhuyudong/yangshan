@@ -5,7 +5,14 @@
 <!--start-code-->
 
 ```js
-ReactDOM.render(<Instance container="symbol" />)
+ReactDOM.render(
+  <p>
+    <em>
+      <code>TODO</code>
+    </em>
+  </p>
+)
+// ReactDOM.render(<Instance container="symbol" />)
 ```
 
 <!--end-code-->

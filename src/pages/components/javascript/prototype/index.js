@@ -8,12 +8,12 @@ export default createComponent({
     'object',
     'array',
     'number',
-    'string',
-    // 'date',
+    'date',
     'math',
     'function',
-    'regexp'
-    // 'symbol'
+    'regexp',
+    'string',
+    'symbol'
   ],
   dependencies: {
     G6,

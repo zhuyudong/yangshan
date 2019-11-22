@@ -227,7 +227,6 @@ const createComponent = ({
                             }
                           >
                             <IconButton
-                              disabled
                               appearance="subtle"
                               icon={<Icon icon="github" />}
                               circle
