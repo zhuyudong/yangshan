@@ -40,7 +40,8 @@ export default locale => {
                         className="header"
                       >
                         {child.name}
-                        {locale === 'zh' && child.title !== child.name && (
+                        {locale === 'zh' &&
+                          /[\u4e00-\u9fa5]+/.test(child.title) && (
                           <span>({child.title})</span>
                         )}
                       </Link>

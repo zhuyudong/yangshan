@@ -43,13 +43,15 @@ export default locale => {
 
     const onChangeInput = debounce(value => {
       const reg = new RegExp(value, 'i')
-      changeResults(
-        sources.filter(i =>
-          (i.children || []).filter(
+      const items = sources
+        .map(i => {
+          i.children = (i.children || []).filter(
             j => j.title.match(reg) || j.description.match(reg)
           )
-        )
-      )
+          return i
+        })
+        .filter(i => i.children && i.children.length)
+      changeResults(items)
     }, 100)
 
     const onClickTag = name => {
