@@ -231,7 +231,7 @@ class TopLevelNav extends React.Component {
                   <WithTooltipButton
                     tip="GitHub"
                     className="icon-btn-circle"
-                    href="https://devcloud.huaweicloud.com/codehub/project/933940192fa2419b91ee3c8905a3b107/codehub/591388/home"
+                    href="https://github.com/zhuyudong/yangshan"
                     target="_blank"
                   >
                     <Icon icon="code" size="lg" style={{ color: iconColor }} />

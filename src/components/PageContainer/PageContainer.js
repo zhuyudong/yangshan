@@ -104,25 +104,26 @@ class PageContainer extends React.Component {
             {({ theme }) => {
               const designHash = designHashConfig[theme]
               const rtl = direction === 'rtl'
+              const route = location.pathname.match(/^([\/\w-]+)[?#]?.*/)[1]
               return (
                 <PageProvider>
                   <Row
                     {...rest}
                     className={classnames({ ['hide-page-nav']: hideNav })}
                   >
-                    <Col md={24} xs={24} sm={24} className='main-container'>
+                    <Col md={24} xs={24} sm={24} className="main-container">
                       <PageContent>{children}</PageContent>
                     </Col>
                     <Col md={8} xsHidden smHidden>
-                      <ButtonToolbar className='menu-button'>
-                        {designHash ? (
+                      <ButtonToolbar className="menu-button">
+                        {designHash && (
                           <Whisper
-                            placement='bottom'
+                            placement="bottom"
                             speaker={<Tooltip>{locale.common.design}</Tooltip>}
                           >
                             <IconButton
                               disabled
-                              appearance='subtle'
+                              appearance="subtle"
                               icon={
                                 <Icon icon={design} style={style.iconSvg} />
                               }
@@ -130,36 +131,37 @@ class PageContainer extends React.Component {
                               // href={`/design/${theme}/index.html#artboard${designHash}`}
                             />
                           </Whisper>
-                        ) : null}
-                        {routerId ? (
+                        )}
+                        {routerId && (
                           <Whisper
-                            placement='bottom'
+                            placement="bottom"
                             speaker={<Tooltip>{locale.common.edit}</Tooltip>}
                           >
                             <IconButton
-                              appearance='subtle'
-                              icon={<Icon icon='edit2' />}
-                              target='_blank'
-                              href={`https://devcloud.huaweicloud.com/codehub/project/933940192fa2419b91ee3c8905a3b107/codehub/591388/file?ref=master&path=src/pages/${routerId}/basic.md`}
+                              appearance="subtle"
+                              icon={<Icon icon="edit2" />}
+                              target="_blank"
+                              href={`https://github.com/zhuyudong/yangshan/blob/master/src/pages/${route}/index.md`}
                             />
                           </Whisper>
-                        ) : null}
+                        )}
 
                         <Whisper
-                          placement='bottom'
+                          placement="bottom"
                           speaker={<Tooltip>{locale.common.newIssues}</Tooltip>}
                         >
                           <IconButton
-                            disabled
-                            appearance='subtle'
-                            icon={<Icon icon='bug' />}
-                            // target='_blank'
-                            // href={'https://github.com/rsuite/rsuite/issues/new'}
+                            appearance="subtle"
+                            icon={<Icon icon="bug" />}
+                            target="_blank"
+                            href={
+                              'https://github.com/zhuyudong/yangshan/issues/new'
+                            }
                           />
                         </Whisper>
 
                         <Whisper
-                          placement='bottom'
+                          placement="bottom"
                           speaker={
                             <Tooltip>{locale.common.changeLanguage}</Tooltip>
                           }
@@ -171,14 +173,14 @@ class PageContainer extends React.Component {
                         </Whisper>
 
                         <Whisper
-                          placement='bottom'
+                          placement="bottom"
                           speaker={
                             <Tooltip>{locale.common.collapseMenu}</Tooltip>
                           }
                         >
                           <IconButton
-                            appearance='subtle'
-                            icon={<Icon icon='bars' />}
+                            appearance="subtle"
+                            icon={<Icon icon="bars" />}
                             onClick={this.handleNavicon}
                           />
                         </Whisper>
@@ -187,7 +189,7 @@ class PageContainer extends React.Component {
                       <PageNav
                         showOrderNumber={false}
                         width={150}
-                        scrollBar='left'
+                        scrollBar="left"
                         rtl={rtl}
                         offset={{
                           top: 80,
