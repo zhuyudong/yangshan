@@ -12,29 +12,73 @@ export const explain = {
 }
 
 export const containerStyle = { width: '100%', border: '1px solid orange' }
+const constructors = [
+  '',
+  'name',
+  'length',
+  'constructor',
+  'toString',
+  'valueOf',
+  'hasOwnProperty',
+  'isPrototypeOf',
+  'propertyIsEnumerable',
+  'toLocaleString',
+  '__defineGetter__',
+  '__defineSetter__',
+  '__lookupGetter__',
+  '__proto__',
+  '__lookupSetter__',
+  'get',
+  'set'
+  // 'writable',
+  // 'enumerable',
+  // 'configurable'
+]
 export const getTree = (container, obj) => {
-  return Object.entries(Object.getOwnPropertyDescriptors(obj)).map(
-    ([name, properties]) => {
-      return {
-        id: name,
-        children: Object.entries(properties).map(([n, p]) => {
-          return {
-            id: explain[`${n}-${p}`]
-              ? explain[`${n}-${p}`]
-              : typeof p === 'function'
-                ? `${n}()`
-                : n,
-            children:
-              name === 'prototype' &&
-              container !== 'symbol' &&
-              typeof obj['prototype'] === 'object'
-                ? getTree(container, obj['prototype'])
-                : []
-          }
+  const results = []
+  Object.keys(Object.getOwnPropertyDescriptors(obj)).map(name => {
+    if (
+      name === 'prototype' &&
+      typeof obj.prototype === 'object' &&
+      obj.prototype !== null
+    ) {
+      results.push({
+        id: 'prototype',
+        children: getTree(container, obj.prototype)
+      })
+      if (obj.prototype.__proto__ !== null) {
+        results.push({
+          id: '__proto__',
+          children: getTree(container, obj.prototype.__proto__)
         })
       }
+    } else {
+      results.push({ id: name, children: [] })
     }
-  )
+    // if (
+    //   typeof obj === 'object' &&
+    //   typeof obj.__proto__ === 'object' &&
+    //   obj.__proto__ !== null
+    // ) {
+    //   results.push({
+    //     id: '__proto__',
+    //     children: getTree(container, obj.__proto__)
+    //   })
+    // }
+    // if (
+    //   // depth >= 2 &&
+    //   typeof obj === 'object' &&
+    //   typeof obj.__proto__ === 'object' &&
+    //   obj.__proto__ !== null &&
+    //   obj.__proto__.__proto__ !== null
+    // ) {
+    //   results.push({
+    //     id: '__proto__',
+    //     children: getTree(container, obj.__proto__.__proto__)
+    //   })
+    // }
+  })
+  return results
 }
 
 const obj = {
@@ -52,7 +96,9 @@ export const Instance = ({ container }) => {
   React.useEffect(() => {
     const data = {
       id: capitalize(container),
-      children: getTree(container, obj[container])
+      children: getTree(container, obj[container], 1).concat(
+        getTree(container, obj[container].__proto__, 1)
+      )
     }
     const width = document.getElementById(container).scrollWidth
     const height = document.getElementById(container).scrollHeight || 500
@@ -76,7 +122,7 @@ export const Instance = ({ container }) => {
         ]
       },
       defaultNode: {
-        size: 16,
+        size: 14,
         anchorPoints: [
           [0, 0.5],
           [1, 0.5]
@@ -96,19 +142,16 @@ export const Instance = ({ container }) => {
         type: 'mindmap',
         direction: 'H',
         getHeight: () => {
-          return 8
+          return 12
         },
         getWidth: () => {
-          return 16
+          return 12
         },
         getVGap: () => {
-          return 10
+          return 2
         },
         getHGap: () => {
-          return 250
-        },
-        getSide: () => {
-          return 'right'
+          return 50
         }
       }
     })
@@ -124,7 +167,7 @@ export const Instance = ({ container }) => {
         labelCfg: {
           position:
             node.children && node.children.length > 0
-              ? 'right'
+              ? 'left'
               : node.x > centerX
                 ? 'right'
                 : 'left',
