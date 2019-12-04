@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import { Sidebar, Dropdown, Nav, Icon, IconButton, Sidenav } from 'rsuite'
+import { Sidebar, Nav, Icon, IconButton } from 'rsuite'
 import { Link } from 'react-router'
 import { get } from 'lodash/object'
 import getMenu from '@src/utils/getMenu'
@@ -67,7 +67,7 @@ class DocSidebar extends React.PureComponent {
     menuItems
       .filter(({ id }) => this.context.router.isActive(`${rootPath}${id}`))
       .map((item, key) => {
-        if (item.children) {
+        if (item.children && item.children.length) {
           item.children.map((child, index) => {
             const pathname = child.url
               ? child.url
@@ -77,7 +77,7 @@ class DocSidebar extends React.PureComponent {
               nodeItems.push(
                 <NavItem panel key={child.id}>
                   <span className="tr-collapse-menu">
-                    # {child.name}
+                    <Link to={pathname}>{child.name}</Link>
                     {!!child.children.length && (
                       <Icon
                         className="tr-collapse-icon"
@@ -98,10 +98,10 @@ class DocSidebar extends React.PureComponent {
                       to={toPath}
                       componentClass={Link}
                       active={location.pathname === toPath}
-                      className={classnames({ 'mt-8': ix === 0 })}
+                      className={classnames({ 'mt-0': ix === 0 })}
                     >
                       {showName ? i.name : i.title}{' '}
-                      {showName && i.title !== i.name && i.title}
+                      {showName && i.title !== i.name && `(${i.title})`}
                     </NavItem>
                   )
                 })
@@ -122,12 +122,14 @@ class DocSidebar extends React.PureComponent {
                 </NavItem>
               )
             } else {
+              console.log(child)
               nodeItems.push(
                 <Nav.Item
                   key={child.id}
                   componentClass={Link}
                   to={pathname}
                   active={active}
+                  className="overview"
                 >
                   {child.name}
                   {title}
@@ -162,7 +164,7 @@ class DocSidebar extends React.PureComponent {
             <div className="title-wrapper">
               {icon} {activeTitle}
             </div>
-            <Nav className="nav-docs" vertical>
+            <Nav className="nav-docs overflow-hidden" vertical>
               {nodeItems}
             </Nav>
           </Sidebar>

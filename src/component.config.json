@@ -5,21 +5,87 @@
     "title": "概览"
   },
   {
+    "id": "vue",
+    "name": "Vue",
+    "title": "Vue",
+    "children": []
+  },
+  {
     "id": "css",
     "name": "CSS",
     "title": "CSS",
-    "children": []
+    "children": [
+      {
+        "id": "flex",
+        "name": "Flex",
+        "title": "弹性"
+      },
+      {
+        "id": "grid",
+        "name": "Grid",
+        "title": "网格"
+      },
+      {
+        "id": "text",
+        "name": "Text",
+        "title": "文本"
+      },
+      {
+        "id": "font",
+        "name": "Font",
+        "title": "字体"
+      },
+      {
+        "id": "border",
+        "name": "Border",
+        "title": "边框"
+      },
+      {
+        "id": "shape",
+        "name": "Shape",
+        "title": "形状"
+      },
+      {
+        "id": "media",
+        "name": "Media",
+        "title": "媒体"
+      },
+      {
+        "id": "layout",
+        "name": "Layout",
+        "title": "布局"
+      },
+      {
+        "id": "gradients",
+        "name": "Gradients",
+        "title": "渐变"
+      },
+      {
+        "id": "transform",
+        "name": "Transform",
+        "title": "变换"
+      },
+      {
+        "id": "animation",
+        "name": "Animation",
+        "title": "动画"
+      },
+      {
+        "id": "transition",
+        "name": "Transition",
+        "title": "过渡"
+      },
+      {
+        "id": "background",
+        "name": "Background",
+        "title": "背景"
+      }
+    ]
   },
   {
     "id": "svg",
     "name": "SVG",
     "title": "SVG",
-    "children": []
-  },
-  {
-    "id": "vue",
-    "name": "VUE",
-    "title": "VUE",
     "children": []
   },
   {
@@ -656,6 +722,12 @@
         }
       }
     ]
+  },
+  {
+    "id": "pattern",
+    "name": "设计模式",
+    "title": "设计模式",
+    "children": []
   },
   {
     "id": "intelligence",

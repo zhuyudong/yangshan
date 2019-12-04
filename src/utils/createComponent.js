@@ -56,7 +56,6 @@ const createComponent = ({
     const dist = getDict(locale)
     const namePath = locale === 'en' ? `${name}/en/` : `${name}/`
     const context = require(`@src/pages/${category}/${namePath}index.md`)
-    console.log(category, namePath, examples)
     const componentExamples = examples.map(item => ({
       showSource,
       source: require(`@src/pages/${category}/${namePath}${item}.md`),
@@ -188,7 +187,8 @@ const createComponent = ({
             designHash={designHash}
             routerId={routerId ? `${category}/${routerId}` : null}
           >
-            {!!examples.length && <MarkdownView>{header}</MarkdownView>}
+            {/* {!!examples.length && <MarkdownView>{header}</MarkdownView>} */}
+            <MarkdownView>{header}</MarkdownView>
             {componentExamples.map((item, index) =>
               item.source ? (
                 <CustomCodeView
