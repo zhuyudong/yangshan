@@ -34,49 +34,43 @@ const constructors = [
   // 'enumerable',
   // 'configurable'
 ]
-export const getTree = (container, obj) => {
+export const getTree = obj => {
   const results = []
-  Object.keys(Object.getOwnPropertyDescriptors(obj)).map(name => {
+  Object.getOwnPropertyNames(obj).map(name => {
     if (
-      name === 'prototype' &&
-      typeof obj.prototype === 'object' &&
-      obj.prototype !== null
+      ['prototype', '__proto__'].includes(name) &&
+      typeof obj[name] === 'object'
     ) {
-      results.push({
-        id: 'prototype',
-        children: getTree(container, obj.prototype)
-      })
-      if (obj.prototype.__proto__ !== null) {
+      if (obj[name] === null) {
         results.push({
-          id: '__proto__',
-          children: getTree(container, obj.prototype.__proto__)
+          id: name
         })
+      } else {
+        const item = {
+          id: [name],
+          children: getTree(obj[name])
+        }
+        if (
+          (typeof obj.__proto__ === 'object' && obj.__proto__ !== null) ||
+          (Object.getPrototypeOf(obj) && Object.getPrototypeOf(obj) !== null)
+        ) {
+          if ((obj.__proto__ !== null || Object.getPrototypeOf(obj)) === null) {
+            item.children.push({
+              id: '__proto__',
+              children: [{ id: 'null' }]
+            })
+          } else {
+            item.children.push({
+              id: '__proto__',
+              children: getTree(obj.__proto__ || Object.getPrototypeOf(obj))
+            })
+          }
+        }
+        results.push(item)
       }
     } else {
       results.push({ id: name, children: [] })
     }
-    // if (
-    //   typeof obj === 'object' &&
-    //   typeof obj.__proto__ === 'object' &&
-    //   obj.__proto__ !== null
-    // ) {
-    //   results.push({
-    //     id: '__proto__',
-    //     children: getTree(container, obj.__proto__)
-    //   })
-    // }
-    // if (
-    //   // depth >= 2 &&
-    //   typeof obj === 'object' &&
-    //   typeof obj.__proto__ === 'object' &&
-    //   obj.__proto__ !== null &&
-    //   obj.__proto__.__proto__ !== null
-    // ) {
-    //   results.push({
-    //     id: '__proto__',
-    //     children: getTree(container, obj.__proto__.__proto__)
-    //   })
-    // }
   })
   return results
 }
@@ -96,9 +90,7 @@ export const Instance = ({ container }) => {
   React.useEffect(() => {
     const data = {
       id: capitalize(container),
-      children: getTree(container, obj[container], 1).concat(
-        getTree(container, obj[container].__proto__, 1)
-      )
+      children: getTree(obj[container])
     }
     const width = document.getElementById(container).scrollWidth
     const height = document.getElementById(container).scrollHeight || 500

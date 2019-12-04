@@ -3,7 +3,8 @@ export default {
   common: {
     search: 'Search',
     name: 'Yangshan',
-    resume: 'Front-end basic components and capability platform',
+    resume:
+      'Turing AI Institute of Nanjing Front-end basic components and capability platform',
     advanced: 'Advanced',
     guide: 'Guide',
     design: 'Design',

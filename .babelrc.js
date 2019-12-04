@@ -1,7 +1,7 @@
 module.exports = api => {
   api.cache(() => process.env.NODE_ENV)
   return {
-    presets: ['@babel/preset-env', '@babel/preset-react'],
+    presets: ['@babel/preset-env', '@babel/preset-react', 'linaria/babel'],
     plugins: [
       'lodash',
       '@babel/plugin-transform-proto-to-assign',

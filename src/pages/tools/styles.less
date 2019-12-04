@@ -14,7 +14,7 @@
       margin-bottom: 8px;
       margin-right: 8px;
       border-radius: 0;
-      border: 1px solid #e7e7e7;
+      border: 1px solid orange;
       padding: 4px;
       height: 28px;
     }
@@ -65,12 +65,12 @@
 }
 .item:hover {
   transform: translateY(1px);
-  box-shadow: 0 0 4px orange;
+  box-shadow: 0 0 4px red;
   transition: all 0.5s ease-out;
 }
 .item {
   // padding: 0.5em;
-  margin-bottom: 0.5em;
+  margin-bottom: 1em;
   break-inside: avoid;
 }
 @media screen and (max-width: 800px) {
@@ -82,4 +82,8 @@
   .masonry {
     column-count: 1;
   }
+}
+
+.rs-panel-bordered {
+  border: 1px solid orange !important;
 }

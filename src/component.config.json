@@ -185,7 +185,23 @@
     "id": "database",
     "name": "数据库",
     "title": "数据库",
-    "children": []
+    "children": [
+      {
+        "id": "redis",
+        "name": "Redis",
+        "title": "Redis"
+      },
+      {
+        "id": "mysql",
+        "name": "MySQL",
+        "title": "MySQL"
+      },
+      {
+        "id": "mongodb",
+        "name": "MongoDB",
+        "title": "MongoDB"
+      }
+    ]
   },
   {
     "id": "block-chain",
@@ -409,6 +425,23 @@
           "default": "1",
           "dark": "1"
         }
+      }
+    ]
+  },
+  {
+    "id": "network",
+    "name": "网络协议",
+    "title": "网络协议",
+    "children": [
+      {
+        "id": "tcp",
+        "name": "TCP",
+        "title": "TCP"
+      },
+      {
+        "id": "http",
+        "name": "HTTP",
+        "title": "HTTP"
       }
     ]
   },
