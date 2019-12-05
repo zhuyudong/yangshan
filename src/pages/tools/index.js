@@ -39,6 +39,9 @@ export default locale => {
             regs.some(j => j.test(i.description))
         )
       )
+      // changeResults(
+      //   sources.filter(i => i.tags.some(j => checkedTagList.includes(j)))
+      // )
     }
 
     const onCheckAllChange = e => {
@@ -86,6 +89,7 @@ export default locale => {
           >
             全选
           </Checkbox>
+          <hr style={{ margin: 2 }} />
           <CheckboxGroup
             options={ToolTags}
             onChange={changeTagsCheckbox}
