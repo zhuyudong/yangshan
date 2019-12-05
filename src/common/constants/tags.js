@@ -1,0 +1,50 @@
+const ToolTags = [
+  'GO',
+  'NPM',
+  'CSS',
+  'TCP',
+  'Vue',
+  'NLP',
+  'API',
+  'HTML',
+  'HTTP',
+  'React',
+  'Nginx',
+  'Linux',
+  'WebGL',
+  'MacOS',
+  'Chrome',
+  'Canvas',
+  'Python',
+  'Node.js',
+  'Leetcode',
+  'Markdown',
+  'JavaScript',
+  'TypeScript',
+  '框架',
+  '协议',
+  '加密',
+  '算法',
+  '教程',
+  '游戏',
+  '数据库',
+  '服务器',
+  '电子书',
+  '编辑器',
+  '可视化',
+  '浏览器',
+  '在线工具',
+  '搜索引擎',
+  '数据结构',
+  '人工智能',
+  '机器学习',
+  '深度学习',
+  '自然语言处理'
+]
+const ToolTagRegs = ToolTags.map(i => ({
+  tag: i,
+  reg: new RegExp(i, 'i')
+}))
+
+exports.ToolTags = ToolTags
+exports.ToolTagRegs = ToolTagRegs
