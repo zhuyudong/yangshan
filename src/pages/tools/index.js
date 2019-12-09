@@ -1,37 +1,44 @@
 import React, { useState } from 'react'
-import { Checkbox, Row, Col } from 'antd'
+import { Checkbox, Radio, Divider } from 'antd'
 import { Input, InputGroup, Icon, Panel, Carousel } from 'rsuite'
 import { debounce } from 'lodash/function'
 import 'lazysizes'
 import 'lazysizes/plugins/parent-fit/ls.parent-fit'
 import Frame from '@src/components/Frame'
 import PageContainer from '@src/components/PageContainer'
-import { ToolTags } from '@src/common/constants/tags'
+import { refers, types, tags } from '@src/common/constants'
 import sources from './sources'
 
 const CheckboxGroup = Checkbox.Group
+const RadioGroup = Radio.Group
 export default locale => {
   return () => {
     const [showImage, changeShowImage] = useState(true)
     const [results, changeResults] = useState(sources)
+    const [checkedRefers, changeCheckedRefers] = useState({
+      indeterminate: true,
+      checkedAll: true,
+      checkedList: refers
+    })
+    const [checkedType, changeRadioType] = useState(types[0].value)
     const [checkedTags, changeCheckedTags] = useState({
       indeterminate: true,
-      checkedTagsAll: true,
-      checkedTagList: ToolTags
+      checkedAll: true,
+      checkedList: tags
     })
 
-    const changeExampleCheckbox = e => {
+    const changeImageCheckbox = e => {
       changeShowImage(e.target.checked)
     }
 
-    const changeTagsCheckbox = checkedTagList => {
-      changeCheckedTags({
-        checkedTagList,
+    const changeReferCheckbox = checkedList => {
+      changeCheckedRefers({
+        checkedList,
         indeterminate:
-          !!checkedTagList.length && checkedTagList.length < ToolTags.length,
-        checkedTagsAll: checkedTagList.length === ToolTags.length
+          !!checkedList.length && checkedList.length < refers.length,
+        checkedTagsAll: checkedList.length === refers.length
       })
-      const regs = checkedTagList.map(i => new RegExp(i, 'i'))
+      const regs = checkedList.map(i => new RegExp(i, 'i'))
       changeResults(
         sources.filter(
           i =>
@@ -39,17 +46,43 @@ export default locale => {
             regs.some(j => j.test(i.description))
         )
       )
-      // changeResults(
-      //   sources.filter(i => i.tags.some(j => checkedTagList.includes(j)))
-      // )
     }
 
-    const onCheckAllChange = e => {
+    const changeTypeRadio = ({ target: { value } }) => {
+      changeRadioType(value)
+      changeResults(sources.filter(i => i.type === value))
+    }
+
+    const changeTagCheckbox = checkedList => {
       changeCheckedTags({
-        indeterminate: false,
-        checkedTagsAll: e.target.checked,
-        checkedTagList: e.target.checked ? ToolTags : []
+        checkedList,
+        indeterminate: !!checkedList.length && checkedList.length < tags.length,
+        checkedTagsAll: checkedList.length === tags.length
       })
+      const regs = checkedList.map(i => new RegExp(i, 'i'))
+      changeResults(
+        sources.filter(
+          i =>
+            regs.some(j => j.test(i.title)) ||
+            regs.some(j => j.test(i.description))
+        )
+      )
+    }
+
+    const onCheckAllChange = (type, e) => {
+      const state = {
+        indeterminate: false,
+        checkedAll: e.target.checked
+      }
+      switch (type) {
+        case 'refer':
+          state.checkedList = e.target.checked ? refers : []
+          changeCheckedRefers(state)
+          break
+        case 'tag':
+          state.checkedList = e.target.checked ? tags : []
+          changeCheckedTags(state)
+      }
       changeResults(e.target.checked ? sources : [])
     }
 
@@ -75,25 +108,51 @@ export default locale => {
             </InputGroup>
             <Checkbox
               checked={showImage}
-              onChange={changeExampleCheckbox}
+              onChange={changeImageCheckbox}
               style={{ margin: 'auto' }}
             >
               {' '}
               {locale === 'zh' ? '例图' : 'example'}
             </Checkbox>
           </div>
-          <Checkbox
-            onChange={onCheckAllChange}
-            checked={checkedTags.checkedTagsAll}
-            indeterminate={checkedTags.indeterminate}
-          >
-            全选
-          </Checkbox>
-          <hr style={{ margin: 2 }} />
+          <Divider orientation="left">
+            <Checkbox
+              checked={checkedRefers.checkedAll}
+              indeterminate={checkedRefers.indeterminate}
+              onChange={e => onCheckAllChange('refer', e)}
+            >
+              来源
+            </Checkbox>
+          </Divider>
           <CheckboxGroup
-            options={ToolTags}
-            onChange={changeTagsCheckbox}
-            value={checkedTags.checkedTagList}
+            options={refers}
+            className="ml-per3"
+            onChange={changeReferCheckbox}
+            value={checkedRefers.checkedList}
+          />
+          <Divider orientation="left" className="divider-text">
+            类型
+          </Divider>
+          <RadioGroup
+            options={types}
+            className="ml-per3"
+            value={checkedType}
+            onChange={changeTypeRadio}
+          />
+          <Divider orientation="left">
+            <Checkbox
+              checked={checkedTags.checkedAll}
+              indeterminate={checkedTags.indeterminate}
+              onChange={e => onCheckAllChange('tag', e)}
+            >
+              标签
+            </Checkbox>
+          </Divider>
+          <CheckboxGroup
+            options={tags}
+            className="ml-per3"
+            onChange={changeTagCheckbox}
+            value={checkedTags.checkedList}
           />
           <div className="masonry">
             {results.map((i, ix) => (

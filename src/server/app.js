@@ -7,21 +7,32 @@ const { spider } = require('./spider')
 
 const filename = path.join(__dirname, '../pages/tools/', 'sources.js')
 
-const exists = fs.existsSync(filename)
-if (!exists) {
-  console.log(chalk.green(`${filename}不存在，新创建一份`))
-  ;(async () => {
-    await spider()
-  })()
+;(async () => {
+  await spider()
+  if (!fs.existsSync(filename)) {
+    console.log(chalk.red('Create file failed'))
+  }
+})()
+if (!fs.existsSync(filename)) {
+  // console.log(chalk.yellow(`"${filename}" does not exist`))
+  // console.log(chalk.red('Create file failed'))
+  // ;(async () => {
+  //   await spider()
+  //   if (!fs.existsSync(filename)) {
+  //     console.log(chalk.red('Create file failed'))
+  //     process.exit(1)
+  //   }
+  // })()
 } else {
   /*
    * 每月 1 号执行一次定时任务
    */
-  schedule.scheduleJob('1 * *', async () => {
+  schedule.scheduleJob('*/1 * *', () => {
     try {
-      console.log(chalk.red(`删除${filename}`))
-      rimraf(filename)
-      await spider()
+      console.log(chalk.red(`Delete "${filename}"`))
+      rimraf(filename, async () => {
+        await spider()
+      })
     } catch (err) {
       console.error(err)
     }

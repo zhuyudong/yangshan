@@ -77,7 +77,12 @@ class DocSidebar extends React.PureComponent {
               nodeItems.push(
                 <NavItem panel key={child.id}>
                   <span className="tr-collapse-menu">
-                    <Link to={pathname}>{child.name}</Link>
+                    <Link
+                      to={pathname}
+                      onClick={() => this.onMenuClick(child.id)}
+                    >
+                      {child.name}
+                    </Link>
                     {!!child.children.length && (
                       <Icon
                         className="tr-collapse-icon"
@@ -122,7 +127,6 @@ class DocSidebar extends React.PureComponent {
                 </NavItem>
               )
             } else {
-              console.log(child)
               nodeItems.push(
                 <Nav.Item
                   key={child.id}

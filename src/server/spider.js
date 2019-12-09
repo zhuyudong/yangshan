@@ -1,9 +1,10 @@
 const path = require('path')
 const fs = require('fs-extra')
 const chalk = require('chalk')
+const shell = require('shelljs')
 const cheerio = require('cheerio')
 const superagent = require('superagent')
-const { ToolTagRegs } = require('../common/constants/tags')
+const { tagRegs } = require('../common/constants')
 
 const articles = []
 const ruanyifeng = 'https://github.com/ruanyf/weekly'
@@ -27,7 +28,9 @@ const spider = async () => {
   const diff1 = process.hrtime(time1)
   console.log(
     chalk.green(
-      `抓取${ruanyifeng}文章目录并解析URL ${(diff1[0] * 1e9 + diff1[1]) /
+      `Crawl the ${ruanyifeng} article directory and parse url. ${(diff1[0] *
+        1e9 +
+        diff1[1]) /
         1000000}ms`
     )
   )
@@ -38,7 +41,10 @@ const spider = async () => {
   const htmls = await Promise.all(pros)
   const diff2 = process.hrtime(time2)
   console.log(
-    chalk.green(`批量抓取各文章内容 ${(diff2[0] * 1e9 + diff2[1]) / 1000000}ms`)
+    chalk.green(
+      `Grab each article content in batches. ${(diff2[0] * 1e9 + diff2[1]) /
+        1000000}ms`
+    )
   )
   htmls.forEach((html, ix) => {
     const time = process.hrtime()
@@ -59,17 +65,24 @@ const spider = async () => {
       }
       if (/工具|软件/.test($(el).text())) {
         toolIndex = i
-      } else if (/图片|文摘/.test($(el).text())) {
+      } else if (/图片|文摘|文章/.test($(el).text())) {
         pictureIndex = i
       }
 
       if (i > toolIndex && i < pictureIndex) {
-        if (/\d+&#x3001;/.test($(el).html()) && $(el).find('a')) {
+        if (
+          /\d+&#x3001;/.test($(el).html()) &&
+          $(el).find('a') &&
+          $(el)
+            .find('a')
+            .text()
+        ) {
           const a = $(el).find('a')
           tools.push({
             title: a.text(),
             href: a.attr('href'),
-            referrer: articles[ix]
+            referr: 'ruanyifeng',
+            type: 'software'
           })
         } else if (
           tools.length &&
@@ -86,36 +99,34 @@ const spider = async () => {
             /（.*\@.+\s?投稿\）|\(.*\@.+\s?投稿\)/,
             ''
           )
-          const tags = ToolTagRegs.map(item => {
-            if (item.reg.test(description)) {
-              return item.tag
-            }
-          }).filter(Boolean)
+          const tags = tagRegs
+            .map(item => {
+              if (item.reg.test(description)) {
+                return item.tag
+              }
+            })
+            .filter(Boolean)
           tools[tools.length - 1].tags = tags
         }
       }
     })
     const diff = process.hrtime(time)
     console.log(
-      chalk.green(`解析《${title}》 ${(diff[0] * 1e9 + diff[1]) / 1000000}ms`)
+      chalk.green(`Parse《${title}》. ${(diff[0] * 1e9 + diff[1]) / 1000000}ms`)
     )
   })
   const time = process.hrtime()
   fs.outputFileSync(
     filename,
-    `export default ${JSON.stringify(tools, null, 2)
-      .replace(/"title"/g, 'title')
-      .replace(/"image"/g, 'image')
-      .replace(/"href"/g, 'href')
-      .replace(/"description"/g, 'description')
-      .replace(/"referrer"/g, 'referrer')}
-        // .replace(/'/, '\'')
-        // .replace(/"/g, '\'')}`
+    `export default ${JSON.stringify(tools, null, 2)}`
   )
+  shell.exec(`eslint --fix ${filename}`)
   const diff = process.hrtime(time)
   console.log(
     chalk.green(
-      `更新工具JSON配置文件完成 ${(diff[0] * 1e9 + diff[1]) / 1000000}ms`
+      `Update tool JSON configuration file completed. ${(diff[0] * 1e9 +
+        diff[1]) /
+        1000000}ms`
     )
   )
 }

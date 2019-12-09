@@ -1,4 +1,12 @@
-const ToolTags = [
+const refers = ['阮一峰']
+
+const types = [
+  { label: '开源软件&工具', value: 'software' },
+  { label: '新闻', value: 'new' },
+  { label: '文章', value: 'doc' }
+]
+
+const tags = [
   'GO',
   'NPM',
   'CSS',
@@ -48,10 +56,12 @@ const ToolTags = [
   '深度学习',
   '自然语言处理'
 ]
-const ToolTagRegs = ToolTags.map(i => ({
+const tagRegs = tags.map(i => ({
   tag: i,
   reg: new RegExp(i, 'i')
 }))
 
-exports.ToolTags = ToolTags
-exports.ToolTagRegs = ToolTagRegs
+exports.refers = refers
+exports.types = types
+exports.tags = tags
+exports.tagRegs = tagRegs

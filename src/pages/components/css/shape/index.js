@@ -1,4 +1,5 @@
 import createComponent from '@src/utils/createComponent'
+import styled from 'styled-components'
 
 export default createComponent({
   id: 'css/shape',
@@ -49,5 +50,7 @@ export default createComponent({
     // '指示器',
     // '锁'
   ],
-  dependencies: {}
+  dependencies: {
+    styled
+  }
 })

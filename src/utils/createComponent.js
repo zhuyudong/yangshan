@@ -62,7 +62,11 @@ const createComponent = ({
       path: `https://github.com/zhuyudong/yangshan/blob/master/src/pages/${category}/${namePath}${item}.md`
     }))
     /* 将 index.md 中的代码插入 */
-    if (!context.match(/\$\$ignore/) && context.match(/class="javascript"/)) {
+    if (
+      !context.match(/run-disable/) &&
+      !context.match(/ReactDOM.render/) &&
+      context.match(/class="javascript"/)
+    ) {
       // 使用 react-runkit 执行 md 文件中的 js 代码块
       const codes = context
         // .replace(
@@ -85,8 +89,19 @@ const createComponent = ({
         componentExamples.splice(ix, 0, {
           showSource,
           source: i,
-          path: ''
+          path: `@src/pages/${category}/${namePath}index.md`
         })
+      })
+    }
+    if (context.match(/ReactDOM.render/) && context.match(/<!--divider-->/)) {
+      context.split('<!--divider-->').forEach((i, ix) => {
+        if (!/^\n$/.test(i)) {
+          componentExamples.splice(ix, 0, {
+            showSource,
+            source: i,
+            path: `@src/pages/${category}/${namePath}index.md`
+          })
+        }
       })
     }
     const extraDependencies = getDependencies ? getDependencies(locale) : null
@@ -177,9 +192,9 @@ const createComponent = ({
 
       render() {
         const { tabExamples = [], children } = this.props
-
         const { designHash, routerId, tabIndex } = this.state
         const [header, footer = ''] = context.split('<!--{demo}-->')
+        const showMarkdown = context.match(/<!--{demo}-->/)
         // .replace(/<[a-z]+\s*(class=\"[a-z-_\s]+\")?>/g, '\n').replace(/<\/code>|<\/pre>|<\/span>|<\/div>/g, '')
         const { source = '' } = tabExamples[tabIndex] || {}
         return (
@@ -188,7 +203,7 @@ const createComponent = ({
             routerId={routerId ? `${category}/${routerId}` : null}
           >
             {/* {!!examples.length && <MarkdownView>{header}</MarkdownView>} */}
-            <MarkdownView>{header}</MarkdownView>
+            {showMarkdown && <MarkdownView>{header}</MarkdownView>}
             {componentExamples.map((item, index) =>
               item.source ? (
                 <CustomCodeView

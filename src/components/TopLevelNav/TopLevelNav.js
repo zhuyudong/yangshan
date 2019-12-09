@@ -10,9 +10,11 @@ import {
   ltr,
   docs,
   github,
+  gitee,
   search,
   wrench,
   lightOn,
+  practice,
   lightOff,
   component
 } from '@src/components/SvgIcons'
@@ -76,9 +78,11 @@ class TopLevelNav extends React.Component {
   showSearchDrawer = () => {
     this.setState({ search: true })
   }
+
   hideSearchDrawer = () => {
     this.setState({ search: false })
   }
+
   handleToggleMenu = (event, show) => {
     const { onToggleMenu } = this.props
     onToggleMenu && onToggleMenu(show)
@@ -138,6 +142,12 @@ class TopLevelNav extends React.Component {
         icon: component
       },
       {
+        key: 'practice',
+        tip: get(locale, 'common.practice'),
+        to: `${localePath}practice`,
+        icon: practice
+      },
+      {
         key: 'docs',
         tip: get(locale, 'common.docs'),
         to: `${localePath}docs`,
@@ -171,9 +181,9 @@ class TopLevelNav extends React.Component {
                   <WithTooltipButton
                     tip={item.tip}
                     key={item.key}
-                    className="icon-btn-circle"
-                    componentClass={Link}
                     to={item.to}
+                    componentClass={Link}
+                    className="icon-btn-circle"
                     onClick={event => {
                       this.handleToggleMenu(event, true)
                     }}
@@ -234,7 +244,20 @@ class TopLevelNav extends React.Component {
                     href="https://github.com/zhuyudong/yangshan"
                     target="_blank"
                   >
-                    <Icon icon="code" size="lg" style={{ color: iconColor }} />
+                    <Icon
+                      icon="github"
+                      size="lg"
+                      style={{ color: iconColor }}
+                    />
+                  </WithTooltipButton>
+
+                  <WithTooltipButton
+                    tip="码云"
+                    className="icon-btn-circle"
+                    href="https://gitee.com/zhuyudong/yangshan"
+                    target="_blank"
+                  >
+                    <Icon icon={gitee} svgStyle={svgStyle} size="lg" />
                   </WithTooltipButton>
 
                   {hideToggle ? null : (

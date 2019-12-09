@@ -3,7 +3,7 @@
 #### 引入依赖
 
 ```js
-/* $$ignore */
+/* run-disable */
 // utils/g6/index.js
 import G6 from '@antv/g6'
 import React from 'react'
