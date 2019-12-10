@@ -194,7 +194,6 @@ const createComponent = ({
         const { tabExamples = [], children } = this.props
         const { designHash, routerId, tabIndex } = this.state
         const [header, footer = ''] = context.split('<!--{demo}-->')
-        const showMarkdown = context.match(/<!--{demo}-->/)
         // .replace(/<[a-z]+\s*(class=\"[a-z-_\s]+\")?>/g, '\n').replace(/<\/code>|<\/pre>|<\/span>|<\/div>/g, '')
         const { source = '' } = tabExamples[tabIndex] || {}
         return (
@@ -203,7 +202,7 @@ const createComponent = ({
             routerId={routerId ? `${category}/${routerId}` : null}
           >
             {/* {!!examples.length && <MarkdownView>{header}</MarkdownView>} */}
-            {showMarkdown && <MarkdownView>{header}</MarkdownView>}
+            <MarkdownView>{header}</MarkdownView>
             {componentExamples.map((item, index) =>
               item.source ? (
                 <CustomCodeView

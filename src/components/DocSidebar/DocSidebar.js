@@ -168,7 +168,7 @@ class DocSidebar extends React.PureComponent {
             <div className="title-wrapper">
               {icon} {activeTitle}
             </div>
-            <Nav className="nav-docs overflow-hidden" vertical>
+            <Nav className="nav-docs" vertical>
               {nodeItems}
             </Nav>
           </Sidebar>

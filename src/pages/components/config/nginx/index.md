@@ -1,1 +1,20 @@
 # Nginx
+
+```
+server {
+  listen: 80;
+  # gzip config
+  gzip on;
+  gzip_min_length 1k;
+  gzip_comp_level 9;
+  gzip_vary on;
+  gzip_types text/plain text/css text/javascript application/json application/javascript application/x-javascript application/xml;
+  gzip_vary on;
+  gzip_disable "MSIE [1-6]\.";
+  root /usr/share/nginx/html;
+  
+  location / {
+    try_files $uri $uri/ /index.html;
+  }
+}
+```

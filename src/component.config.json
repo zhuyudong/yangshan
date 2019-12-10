@@ -110,7 +110,28 @@
     "id": "docker",
     "name": "Docker",
     "title": "Docker",
-    "children": []
+    "children": [
+      {
+        "id": "command",
+        "name": "command",
+        "title": "命令行"
+      },
+      {
+        "id": "Dockerfile",
+        "name": "Dockerfile",
+        "title": "Dockerfile"
+      },
+      {
+        "id": "kubernetes",
+        "name": "kubernetes",
+        "title": "kubernetes"
+      },
+      {
+        "id": "docker-compose",
+        "name": "docker-compose",
+        "title": "docker-compose"
+      }
+    ]
   },
   {
     "id": "canvas",

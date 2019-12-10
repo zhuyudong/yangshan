@@ -1,13 +1,22 @@
-version: "3.3"
+# docker-compose
+
+[Compose file format Vs Docker Engine release](https://docs.docker.com/compose/compose-file/compose-versioning/)
+
+##### 安装
+
+#### 配置文件
+
+```
+version: "3.7"
 
 services:
-  rsuitejs_build:
+  yangshan_build:
     build: ../
     container_name: "yangshan_build"
     volumes:
       - dist:/usr/src/app/dist
 
-  rsuitejs_web:
+  yangshan_web:
     image: nginx
     ports:
       - "80:80"
@@ -19,3 +28,4 @@ services:
 
 volumes:
   dist:
+```
