@@ -25,7 +25,7 @@ const resolveToStaticPath = relativePath => resolve(__dirname, relativePath)
 const { NODE_ENV, STYLE_DEBUG, ENV_LOCALE } = process.env
 const __PRO__ = NODE_ENV === 'production'
 
-const smtp = SpeedMeasurePlugin()
+const smtp = new SpeedMeasurePlugin()
 const extractLess = new ExtractTextPlugin('style.[hash:8].css')
 
 const getStyleLoader = () => {
@@ -262,4 +262,4 @@ const config = merge(
     }
 )
 
-module.exports = process.env.SPEED_MEASURE ? smtp(config) : config
+module.exports = process.env.SPEED_MEASURE ? smtp.wrap(config) : config
