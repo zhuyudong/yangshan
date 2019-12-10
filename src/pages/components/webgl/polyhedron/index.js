@@ -27,8 +27,8 @@ import {
 } from '@src/utils/webgl/helper'
 
 export default createComponent({
-  id: 'webgl/cube',
-  examples: ['basic'],
+  id: 'webgl/polyhedron',
+  examples: ['cube', 'rect', 'pyramis', 'platform', 'podetium'],
   dependencies: {
     getCanvas,
     getContext,

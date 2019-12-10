@@ -1,6 +1,6 @@
 # docker-compose
 
-[Compose file format Vs Docker Engine release](https://docs.docker.com/compose/compose-file/compose-versioning/)
+<a target="_blank" href="https://docs.docker.com/compose/compose-file/compose-versioning/">Compose file format Vs Docker Engine release</a>
 
 #### 安装
 

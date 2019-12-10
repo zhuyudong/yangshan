@@ -117,7 +117,7 @@
         "title": "命令行"
       },
       {
-        "id": "Dockerfile",
+        "id": "dockerfile",
         "name": "Dockerfile",
         "title": "Dockerfile"
       },
@@ -180,49 +180,9 @@
         }
       },
       {
-        "id": "rect",
-        "name": "Rect",
-        "title": "矩形",
-        "components": [],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
-      },
-      {
-        "id": "cube",
-        "name": "Cube",
-        "title": "立方体",
-        "components": [],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
-      },
-      {
-        "id": "pyramis",
-        "name": "Pyramis",
-        "title": "锥体",
-        "components": [],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
-      },
-      {
-        "id": "platform",
-        "name": "Platform",
-        "title": "台体",
-        "components": [],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
-      },
-      {
-        "id": "podetium",
-        "name": "Podetium",
-        "title": "柱体",
+        "id": "polyhedron",
+        "name": "Polyhedron",
+        "title": "多面体",
         "components": [],
         "designHash": {
           "default": "1",

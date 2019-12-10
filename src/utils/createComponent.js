@@ -215,7 +215,7 @@ const createComponent = ({
             designHash={designHash}
             routerId={routerId ? `${category}/${routerId}` : null}
           >
-            <MarkdownView>{header}</MarkdownView>
+            {showSource && <MarkdownView>{header}</MarkdownView>}
             {componentExamples.map((item, index) =>
               item.source ? (
                 <CustomCodeView
