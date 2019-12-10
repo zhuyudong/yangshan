@@ -9,6 +9,7 @@ const HtmlwebpackPlugin = require('html-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const markdownRenderer = require('react-markdown-reader').renderer
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 const multipleThemesCompile = require('webpack-multiple-themes-compile')
@@ -24,6 +25,7 @@ const resolveToStaticPath = relativePath => resolve(__dirname, relativePath)
 const { NODE_ENV, STYLE_DEBUG, ENV_LOCALE } = process.env
 const __PRO__ = NODE_ENV === 'production'
 
+const smtp = SpeedMeasurePlugin()
 const extractLess = new ExtractTextPlugin('style.[hash:8].css')
 
 const getStyleLoader = () => {
@@ -142,7 +144,7 @@ if (__PRO__) {
   plugins.push(new CompressionPlugin())
 }
 
-module.exports = merge(
+const config = merge(
   {
     devServer: {
       contentBase: join(__dirname, 'public'),
@@ -244,19 +246,20 @@ module.exports = merge(
   themesConfig,
   __PRO__
     ? {
-        resolve: {
-          alias: {
-            '@src': resolveToStaticPath('./src')
-          }
+      resolve: {
+        alias: {
+          '@src': resolveToStaticPath('./src')
         }
       }
+    }
     : {
-        resolve: {
-          alias: {
-            '@src': resolveToStaticPath('./src')
-            // rsuite: resolve(__dirname, '../rsuite')
-            // 'react-dom': '@hot-loader/react-dom'
-          }
+      resolve: {
+        alias: {
+          '@src': resolveToStaticPath('./src')
+          // 'react-dom': '@hot-loader/react-dom'
         }
       }
+    }
 )
+
+module.exports = process.env.SPEED_MEASURE ? smtp(config) : config
