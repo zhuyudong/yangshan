@@ -34,7 +34,7 @@ class Frame extends Component {
   render() {
     const { showSubmenu, theme } = this.state
     const menuStyles = {
-      width: showSubmenu ? 160 : 0
+      width: showSubmenu ? 200 : 0
     }
 
     return (
@@ -42,7 +42,7 @@ class Frame extends Component {
         {({ direction }) => {
           const contextStyle = {
             [`margin${direction === 'rtl' ? 'Right' : 'Left'}`]: showSubmenu
-              ? 264
+              ? 304
               : 80
           }
           return (

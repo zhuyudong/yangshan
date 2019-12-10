@@ -123,8 +123,8 @@
       },
       {
         "id": "kubernetes",
-        "name": "kubernetes",
-        "title": "kubernetes"
+        "name": "Kubernetes",
+        "title": "Kubernetes"
       },
       {
         "id": "docker-compose",

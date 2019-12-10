@@ -1,6 +1,6 @@
 # Array
 
-##### chunk
+#### chunk
 
 ```js
 const chunk = (input, size) => {
@@ -15,13 +15,13 @@ chunk(['a', 'b', 'c', 'd'], 2)
 // => [['a', 'b'], ['c', 'd']]
 ```
 
-##### compact
+#### compact
 
 ```js
 ;[0, 1, false, 2, '', 3].filter(Boolean)
 ```
 
-##### concat
+#### concat
 
 ```js
 const array = [1]
@@ -31,7 +31,7 @@ console.log(other)
 // output: [1, 2, 3, [4]]
 ```
 
-##### difference
+#### difference
 
 ```js
 const arrays = [
@@ -56,7 +56,7 @@ console.log(arrays.reduce((a, b) => a.filter(c => !b.includes(c))))
 // output: [1, 3, 4]
 ```
 
-##### drop
+#### drop
 
 ```js
 ;[1, 2, 3].slice(1)
@@ -65,7 +65,7 @@ console.log(arrays.reduce((a, b) => a.filter(c => !b.includes(c))))
 // => [3]
 ```
 
-##### dropRight
+#### dropRight
 
 ```js
 ;[1, 2, 3].slice(0, -1)
@@ -74,7 +74,7 @@ console.log(arrays.reduce((a, b) => a.filter(c => !b.includes(c))))
 // => [1]
 ```
 
-##### fill
+#### fill
 
 ```js
 const array = [1, 2, 3]
@@ -94,7 +94,7 @@ Array(3)
 // output: [4, '*', '*', 10]
 ```
 
-##### find
+#### find
 
 ```js
 const users = [
@@ -109,7 +109,7 @@ users.find(function(o) {
 // output: object for 'barney'
 ```
 
-##### findIndex
+#### findIndex
 
 ```js
 const users = [
@@ -125,7 +125,7 @@ console.log(index)
 // output: 1
 ```
 
-##### first
+#### first
 
 ```js
 // ;[1, 2, 3, 4, 5][0]
@@ -144,7 +144,7 @@ console.log(index)
 // => [1, 2]
 ```
 
-##### flatten
+#### flatten
 
 ```js
 const flatten = [1, [2, [3, [4]], 5]].reduce((a, b) => a.concat(b), [])
@@ -161,7 +161,7 @@ const flatten = [1, [2, [3, [4]], 5]].flatMap(number => number)
 // => [1, 2, [3, [4]], 5]
 ```
 
-##### flattenDeep
+#### flattenDeep
 
 ```js
 const flattenDeep = arr =>
@@ -186,7 +186,7 @@ flattenDeep([1, [[2], [3, [4]], 5]])
 // => [1, 2, 3, 4, 5]
 ```
 
-##### fromPairs
+#### fromPairs
 
 ```js
 // const fromPairs = function(arr) {
@@ -207,7 +207,7 @@ fromPairs([
 // => { 'a': 1, 'b': 2 }
 ```
 
-##### head
+#### head
 
 ```js
 const array = [1, 2, 3]
@@ -216,7 +216,7 @@ console.log(head)
 // output: 1
 ```
 
-##### tail
+#### tail
 
 ```js
 const array = [1, 2, 3]
@@ -225,7 +225,7 @@ console.log(tail)
 // output [2, 3]
 ```
 
-##### indexOf
+#### indexOf
 
 ```js
 const array = [2, 9, 9]
@@ -234,7 +234,7 @@ console.log(result)
 // output: 0
 ```
 
-##### intersection
+#### intersection
 
 ```js
 const arrays = [
@@ -246,7 +246,7 @@ console.log(arrays.reduce((a, b) => a.filter(c => b.includes(c))))
 // output: [1, 2]
 ```
 
-##### takeRight
+#### takeRight
 
 ```js
 // Native
@@ -263,7 +263,7 @@ console.log(arrays.reduce((a, b) => a.filter(c => b.includes(c))))
 // => [1, 2, 3]
 ```
 
-##### isArray
+#### isArray
 
 ```js
 const array = []
@@ -271,14 +271,14 @@ console.log(Array.isArray(array))
 // output: true
 ```
 
-##### isArrayBuffer
+#### isArrayBuffer
 
 ```js
 console.log(new ArrayBuffer(2) instanceof ArrayBuffer)
 // output: true
 ```
 
-##### join
+#### join
 
 ```js
 const result = ['one', 'two', 'three'].join('--')
@@ -286,7 +286,7 @@ console.log(result)
 // output: 'one--two--three'
 ```
 
-##### last
+#### last
 
 ```js
 // Native
@@ -308,7 +308,7 @@ numbers.slice(-2)
 // => [4, 5]
 ```
 
-##### lastIndexOf
+#### lastIndexOf
 
 ```js
 const array = [2, 9, 9, 4, 3, 6]
@@ -317,7 +317,7 @@ console.log(result)
 // output: 2
 ```
 
-##### reverse
+#### reverse
 
 ```js
 const array = [1, 2, 3]
@@ -325,7 +325,7 @@ console.log(array.reverse())
 // output: [3, 2, 1]
 ```
 
-##### slice
+#### slice
 
 ```js
 const array = [1, 2, 3, 4]
@@ -333,7 +333,7 @@ console.log(array.slice(1, 3))
 // output: [2, 3]
 ```
 
-##### without
+#### without
 
 ```js
 const array = [1, 2, 3]

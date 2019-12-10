@@ -56,11 +56,25 @@ const createComponent = ({
     const dist = getDict(locale)
     const namePath = locale === 'en' ? `${name}/en/` : `${name}/`
     const context = require(`@src/pages/${category}/${namePath}index.md`)
-    const componentExamples = examples.map(item => ({
-      showSource,
-      source: require(`@src/pages/${category}/${namePath}${item}.md`),
-      path: `https://github.com/zhuyudong/yangshan/blob/master/src/pages/${category}/${namePath}${item}.md`
-    }))
+    const componentExamples = []
+    examples.forEach(item => {
+      const source = require(`@src/pages/${category}/${namePath}${item}.md`)
+      if (/<!--divider-->/.test(source)) {
+        source.split('<!--divider-->').forEach(i => {
+          componentExamples.push({
+            showSource,
+            source: i,
+            path: `https://github.com/zhuyudong/yangshan/blob/master/src/pages/${category}/${namePath}${item}.md`
+          })
+        })
+      } else {
+        componentExamples.push({
+          showSource,
+          source,
+          path: `https://github.com/zhuyudong/yangshan/blob/master/src/pages/${category}/${namePath}${item}.md`
+        })
+      }
+    })
     /* 将 index.md 中的代码插入 */
     if (
       !context.match(/run-disable/) &&
@@ -201,7 +215,6 @@ const createComponent = ({
             designHash={designHash}
             routerId={routerId ? `${category}/${routerId}` : null}
           >
-            {/* {!!examples.length && <MarkdownView>{header}</MarkdownView>} */}
             <MarkdownView>{header}</MarkdownView>
             {componentExamples.map((item, index) =>
               item.source ? (

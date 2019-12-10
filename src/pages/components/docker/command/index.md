@@ -1,6 +1,6 @@
 # 命令行
 
-##### 生命周期管理
+#### 生命周期管理
 
 ```bash
 # 使用nginx:latest镜像以守护进程模式（-d）运行nginx，名为nginx
@@ -42,7 +42,7 @@ PORTS:
 docker ps -a -q
 ```
 
-##### 容器操作
+#### 容器操作
 
 ```bash
 # 以下命令容器id皆可以用容器name代替
@@ -122,7 +122,7 @@ A /var/cache/nginx/fastcgi_temp
 A /var/cache/nginx/proxy_temp
 ```
 
-##### 镜像操作
+#### 镜像操作
 
 ```bash
 docker images
@@ -148,7 +148,7 @@ docker build -f /path/to/a/Dockerfile .
 docker build -t test/myapp .
 ```
 
-##### 镜像仓库
+#### 镜像仓库
 
 ```bash
 docker login -u 用户名 -p 密码
@@ -166,7 +166,7 @@ docker search mysql --no-trunc --filter=is-automated=true --filter=stars=100
 | :----------------- | :-------------------------------------------------------------------------------------------------- | :---- | :------- | --------- |
 | mysql/mysql-server | Optimized MySQL Server Docker images. Created, maintained and supported by the MySQL team at Oracle | 658   |          | [OK]      |
 
-##### 容器信息
+#### 容器信息
 
 ```bash
 # 列出容器/镜像元数据

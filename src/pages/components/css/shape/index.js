@@ -4,6 +4,7 @@ import styled from 'styled-components'
 export default createComponent({
   id: 'css/shape',
   examples: [
+    'examples'
     // '正方形',
     // '长方形',
     // '圆形',

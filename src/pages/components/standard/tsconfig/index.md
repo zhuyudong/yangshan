@@ -1,6 +1,6 @@
 # tsconfig.json
 
-##### 常用命令
+#### 常用命令
 
 ```bash
 yarn global add typescript
@@ -8,7 +8,7 @@ yarn global add typescript
 tsc --init
 ```
 
-##### 核心包
+#### 核心包
 
 - `@type/react`
 - `@type/react-dom`
@@ -17,7 +17,7 @@ tsc --init
 - `source-map-loader`
 - `awesome-typescript-loader`
 
-##### 典型配置
+#### 典型配置
 
 ```json
 {
@@ -88,7 +88,7 @@ tsc --init
 }
 ```
 
-##### 典型写法
+#### 典型写法
 
 `webpack.config.js`
 
