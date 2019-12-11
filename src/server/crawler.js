@@ -10,7 +10,7 @@ const articles = []
 const ruanyifeng = 'https://github.com/ruanyf/weekly'
 const filename = path.join(__dirname, '../pages/tools/', 'sources.js')
 
-const spider = async () => {
+const crawler = async () => {
   /* 抓取文章目录及链接 */
   const time1 = process.hrtime()
   const mds = await superagent.get(ruanyifeng)
@@ -131,4 +131,4 @@ const spider = async () => {
   )
 }
 
-exports.spider = spider
+exports.crawler = crawler

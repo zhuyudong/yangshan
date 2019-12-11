@@ -1,7 +1,5 @@
-import React from 'react'
 import createComponent from '@src/utils/createComponent'
 
 export default createComponent({
-  id: 'utils/properties',
-  dependencies: {}
+  id: 'utils/properties'
 })

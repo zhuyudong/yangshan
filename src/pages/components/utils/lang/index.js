@@ -1,7 +1,5 @@
-import React from 'react'
 import createComponent from '@src/utils/createComponent'
 
 export default createComponent({
-  id: 'utils/lang',
-  dependencies: {}
+  id: 'utils/lang'
 })
