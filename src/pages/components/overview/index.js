@@ -41,6 +41,7 @@ export default locale => {
                       >
                         {child.name}
                         {locale === 'zh' &&
+                          child.title !== child.name &&
                           /[\u4e00-\u9fa5]+/.test(child.title) && (
                           <span>({child.title})</span>
                         )}

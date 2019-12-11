@@ -1,6 +1,6 @@
-### 函数
+#### 函数（Function）
 
-#### 展示 `Function` 及其原型链上的属性和方法
+展示 `Function` 及其原型链上的属性和方法
 
 <!--start-code-->
 

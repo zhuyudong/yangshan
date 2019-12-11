@@ -11,7 +11,7 @@ docker-compose --version
 docker-compose -v
 ```
 
-#### 配置文件
+### [本项目配置](https://github.com/zhuyudong/yangshan/blob/master/docker/docker-compose.yml)
 
 ```
 version: "3.7"

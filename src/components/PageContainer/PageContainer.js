@@ -90,9 +90,9 @@ class PageContainer extends React.Component {
   render() {
     const {
       children,
-      designHash: designHashConfig = {},
       routerId,
       hidePageNav,
+      // designHash: designHashConfig = {},
       ...rest
     } = this.props
     const { hideNav } = this.state
@@ -102,7 +102,7 @@ class PageContainer extends React.Component {
         {({ direction }) => (
           <ThemeContext.Consumer>
             {({ theme }) => {
-              const designHash = designHashConfig[theme]
+              // const designHash = designHashConfig[theme]
               const rtl = direction === 'rtl'
               const route = location.pathname.match(/^([\/\w-]+)[?#]?.*/)[1]
               return (
@@ -116,7 +116,7 @@ class PageContainer extends React.Component {
                     </Col>
                     <Col md={8} xsHidden smHidden>
                       <ButtonToolbar className="menu-button">
-                        {designHash && (
+                        {/* {designHash && (
                           <Whisper
                             placement="bottom"
                             speaker={<Tooltip>{locale.common.design}</Tooltip>}
@@ -127,11 +127,11 @@ class PageContainer extends React.Component {
                               icon={
                                 <Icon icon={design} style={style.iconSvg} />
                               }
-                              // target='_blank'
-                              // href={`/design/${theme}/index.html#artboard${designHash}`}
+                              target='_blank'
+                              href={`/design/${theme}/index.html#artboard${designHash}`}
                             />
                           </Whisper>
-                        )}
+                        )} */}
                         {routerId && (
                           <Whisper
                             placement="bottom"

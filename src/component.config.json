@@ -140,23 +140,15 @@
     "children": [
       {
         "id": "konva",
-        "name": "Konva",
-        "title": "Konva",
-        "components": [],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        "name": "konva.js",
+        "title": "konva.js",
+        "components": []
       },
       {
         "id": "fabric",
-        "name": "Fabric",
-        "title": "Fabric",
-        "components": [],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        "name": "fabric.js",
+        "title": "fabric.js",
+        "components": []
       }
     ]
   },
@@ -173,21 +165,19 @@
           "Point",
           "Line",
           "Triangle"
-        ],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        ]
       },
       {
         "id": "polyhedron",
         "name": "Polyhedron",
         "title": "多面体",
-        "components": [],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        "components": [
+          "台体",
+          "锥体",
+          "柱体",
+          "立方体",
+          "长方体"
+        ]
       }
     ]
   },
@@ -213,12 +203,16 @@
         "name": "原型与原型链",
         "title": "原型与原型链",
         "components": [
-          "prototype"
-        ],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+          "Date",
+          "Math",
+          "Array",
+          "Object",
+          "Number",
+          "String",
+          "RegExp",
+          "Symbol",
+          "Function"
+        ]
       }
     ]
   },
@@ -267,21 +261,13 @@
         "title": "工具",
         "components": [
           "times"
-        ],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        ]
       },
       {
         "id": "seq",
         "name": "Seq",
         "title": "链式",
-        "components": [],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        "components": []
       },
       {
         "id": "date",
@@ -294,21 +280,13 @@
           "format",
           "display",
           "manipulate"
-        ],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        ]
       },
       {
         "id": "math",
         "name": "Math",
         "title": "数学",
-        "components": [],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        "components": []
       },
       {
         "id": "lang",
@@ -324,11 +302,7 @@
           "isFinite",
           "isInteger",
           "isUndefined"
-        ],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        ]
       },
       {
         "id": "array",
@@ -376,11 +350,7 @@
           "assign",
           "extend",
           "toPairs"
-        ],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        ]
       },
       {
         "id": "string",
@@ -399,11 +369,7 @@
           "padStart",
           "startsWith",
           "upperFirst"
-        ],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        ]
       },
       {
         "id": "number",
@@ -412,11 +378,7 @@
         "components": [
           "random",
           "inRange"
-        ],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        ]
       },
       {
         "id": "function",
@@ -428,11 +390,7 @@
           "partial",
           "throttle",
           "debounce"
-        ],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        ]
       },
       {
         "id": "collection",
@@ -457,21 +415,13 @@
           "groupBy",
           "includes",
           "reduceRight"
-        ],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        ]
       },
       {
         "id": "properties",
         "name": "Properties",
         "title": "属性",
-        "components": [],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        "components": []
       }
     ]
   },
@@ -504,11 +454,7 @@
         "components": [
           "launch.json",
           "setting.json"
-        ],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        ]
       },
       {
         "id": "babel",
@@ -517,11 +463,7 @@
         "components": [
           ".babelrc",
           ".babelrc.js"
-        ],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        ]
       },
       {
         "id": "tslint",
@@ -529,11 +471,7 @@
         "title": "tslint.json",
         "components": [
           "tslint.json"
-        ],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        ]
       },
       {
         "id": "eslint",
@@ -542,11 +480,7 @@
         "components": [
           ".eslintrc",
           ".eslintrc.js"
-        ],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        ]
       },
       {
         "id": "prettier",
@@ -557,11 +491,7 @@
           ".prettierrc.yml",
           ".prettierrc.json",
           ".prettierrc.yaml"
-        ],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        ]
       },
       {
         "id": "gitignore",
@@ -569,11 +499,7 @@
         "title": ".gitignore",
         "components": [
           ".gitignore"
-        ],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        ]
       },
       {
         "id": "editconfig",
@@ -581,11 +507,7 @@
         "title": ".editconfig",
         "components": [
           ".editconfig"
-        ],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        ]
       },
       {
         "id": "tsconfig",
@@ -593,11 +515,7 @@
         "title": "tsconfig.json",
         "components": [
           "tsconfig.json"
-        ],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        ]
       },
       {
         "id": "eslintignore",
@@ -605,11 +523,7 @@
         "title": ".eslintignore",
         "components": [
           ".eslintignore"
-        ],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        ]
       },
       {
         "id": "package",
@@ -617,11 +531,7 @@
         "title": "package.json",
         "components": [
           "package.json"
-        ],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        ]
       },
       {
         "id": "postcss",
@@ -629,11 +539,7 @@
         "title": "postcss.config.js",
         "components": [
           "postcss.config.js"
-        ],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        ]
       },
       {
         "id": "webpack",
@@ -641,11 +547,7 @@
         "title": "webpack.config.js",
         "components": [
           "webpack.config.js"
-        ],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        ]
       }
     ]
   },
@@ -660,11 +562,7 @@
         "title": "my.conf",
         "components": [
           "my.conf"
-        ],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        ]
       },
       {
         "id": "redis",
@@ -672,11 +570,7 @@
         "title": "redis.conf",
         "components": [
           "redis.conf"
-        ],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        ]
       },
       {
         "id": "nginx",
@@ -684,11 +578,7 @@
         "title": "nginx.conf",
         "components": [
           "nginx.conf"
-        ],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        ]
       },
       {
         "id": "mongodb",
@@ -696,11 +586,7 @@
         "title": "mongo.conf",
         "components": [
           "mongo.conf"
-        ],
-        "designHash": {
-          "default": "1",
-          "dark": "1"
-        }
+        ]
       }
     ]
   },
