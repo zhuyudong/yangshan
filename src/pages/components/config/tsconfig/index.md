@@ -10,14 +10,43 @@ tsc --init
 
 #### 核心包
 
-- `@type/react`
-- `@type/react-dom`
+- `@types/react`
+- `@types/react-dom`
 - `typescript`
 - `ts-loader`
 - `source-map-loader`
 - `awesome-typescript-loader`
 
-#### 典型配置
+`tsconfig.json`
+
+```json
+// https://www.tslang.cn/docs/handbook/compiler-options.html
+{
+  "compilerOptions": {
+    "paths": { "*": ["types/*"] },
+    "baseUrl": ".",
+    "strict": false,
+    "strictNullChecks": false,
+    "alwaysStrict": false,
+    "removeComments": false,
+    // 配置编译目标使用的模块化标准
+    "module": "ESNext",
+    // 配置编译目标代码的版本标准
+    "target": "ESNext",
+    "jsx": "react",
+    "noImplicitReturns": true,
+    "allowSyntheticDefaultImports": true,
+    //https://github.com/ant-design/ant-design/issues/8642 配置解析模块的模式
+    "moduleResolution": "node"
+    // "esModuleInterop": true 设置es模块化导出commonjs模块化代码
+  },
+  // 影响 webpack 构建
+  "include": ["./src", "./build", "./types", "./__tests__"],
+  "exclude": ["./node_modules", "./__mocks__"]
+}
+```
+
+#### 初始化配置
 
 ```json
 {
@@ -84,42 +113,6 @@ tsc --init
 
     /* Advanced Options */
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
-  }
-}
-```
-
-#### 典型写法
-
-`webpack.config.js`
-
-```js
-/* run-disable */
-module.exports = {
-  devtool: 'source-map',
-  resolve: {
-    extensions: ['.txs', '.ts', '.js']
-  },
-  module: {
-    rules: [
-      {
-        enforce: 'pre',
-        test: /\.js$/,
-        loader: 'source-map-loader'
-      },
-      {
-        test: /\.tsx?$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'ts-loader'
-          }
-        ]
-      }
-    ]
-  },
-  externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM'
   }
 }
 ```

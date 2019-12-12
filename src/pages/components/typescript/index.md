@@ -8,11 +8,14 @@
 - `string` 字符串类型
 - `number` 数值类型
 - `boolean` 布尔类型
+- `object` 对象类型
 - `symbol` `Symbol` 类型
+- `unkown`
 - `type`
 - `private`
 - `public`
 - `protected`
+- `declare`
 - `enum`
 - `keyof`
 - `infer`

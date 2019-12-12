@@ -17,13 +17,13 @@
     "children": [
       {
         "id": "less",
-        "name": "less",
-        "title": "less"
+        "name": "Less",
+        "title": "Less"
       },
       {
         "id": "sass",
-        "name": "sass",
-        "title": "sass"
+        "name": "Sass",
+        "title": "Sass"
       },
       {
         "id": "flex",
@@ -262,6 +262,11 @@
         "id": "react",
         "name": "React",
         "title": "React"
+      },
+      {
+        "id": "packages",
+        "name": "packages",
+        "title": "packages"
       }
     ]
   },
@@ -637,6 +642,14 @@
         "title": "webpack",
         "components": [
           "webpack.config.js"
+        ]
+      },
+      {
+        "id": "travis",
+        "name": "travis",
+        "title": "travis",
+        "components": [
+          ".travis.yml"
         ]
       }
     ]
