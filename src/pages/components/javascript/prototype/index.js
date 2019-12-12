@@ -10,9 +10,9 @@ export default createComponent({
     'number',
     'date',
     'math',
-    'function',
     'regexp',
     'string',
+    'function',
     'symbol'
   ],
   dependencies: {
