@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
+import { Tooltip } from 'antd'
 import classnames from 'classnames'
 import { Sidebar, Nav, Icon, IconButton } from 'rsuite'
 import { Link } from 'react-router'
@@ -57,19 +58,18 @@ class DocSidebar extends React.PureComponent {
   render() {
     const { expandedMenus } = this.state
     const nodeItems = []
-    const menuItems = this.getMenuItems()
+    const menu = this.getMenuItems()
     const rootPath = this.getRootPath()
     const { locale, router } = this.context
     const showMediaToggleButton = this.props.style.width !== 0
     const isActive = router.isActive
-    const menu = getMenu(locale)
     const { mediaSidebarShow } = this.state
     const { name: activeTitle, icon } = menu.filter(({ id }) =>
       isActive(`${rootPath}${id}`)
     )[0]
-    menuItems
+    menu
       .filter(({ id }) => this.context.router.isActive(`${rootPath}${id}`))
-      .map((item, key) => {
+      .map(item => {
         if (item.children && item.children.length) {
           item.children.map((child, index) => {
             const pathname = child.url
@@ -122,7 +122,6 @@ class DocSidebar extends React.PureComponent {
               }
               return
             }
-
             const title =
               get(locale, 'id') === 'en-US' || !child.title ? null : (
                 <span className="title-zh">{child.title}</span>
@@ -134,6 +133,18 @@ class DocSidebar extends React.PureComponent {
                   {child.name} {title}
                   <Icon icon="external-link-square" className="external-link" />
                 </NavItem>
+              )
+            } else if (/\.md$/.test(child.title)) {
+              nodeItems.push(
+                <Nav.Item
+                  key={child.id}
+                  active={active}
+                  className="overview fs-12"
+                  componentClass={Link}
+                  to={`/${item.id}?title=${child.title}`}
+                >
+                  <Tooltip title={child.title}>{child.title}</Tooltip>
+                </Nav.Item>
               )
             } else {
               nodeItems.push(
@@ -175,7 +186,15 @@ class DocSidebar extends React.PureComponent {
               onClick={this.handleCloseMediaSidebarShow}
             />
             <div className="title-wrapper">
-              {icon} {activeTitle}
+              {activeTitle === '文档' ? (
+                <Link to="/docs">
+                  {icon} {activeTitle}
+                </Link>
+              ) : (
+                <span>
+                  {icon} {activeTitle}
+                </span>
+              )}
             </div>
             <Nav className="nav-docs" vertical>
               {nodeItems}

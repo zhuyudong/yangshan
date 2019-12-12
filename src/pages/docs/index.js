@@ -5,10 +5,18 @@ import PageContainer from '@src/components/PageContainer'
 
 export default locale => {
   const localePath = locale === 'en' ? './en' : '.'
+  const { search } = location
+  const match = search.match(/title=(.+)&?/)
+  const title = match && decodeURIComponent(match[1])
   return () => (
-    <Frame showSubmenu={false}>
+    <Frame>
       <PageContainer routerId={'docs'}>
-        <MarkdownView>{require(`${localePath}/index.md`)}</MarkdownView>
+        {!title && (
+          <MarkdownView>{require(`${localePath}/index.md`)}</MarkdownView>
+        )}
+        {title && (
+          <MarkdownView>{require(`${localePath}/${title}`)}</MarkdownView>
+        )}
       </PageContainer>
     </Frame>
   )

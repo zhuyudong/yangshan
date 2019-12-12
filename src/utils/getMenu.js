@@ -2,11 +2,11 @@ import React from 'react'
 import { get } from 'lodash/object'
 import { Icon } from 'rsuite'
 import {
+  docs,
   wrench,
   github,
-  component,
-  docs,
-  practice
+  practice,
+  component
 } from '@src/components/SvgIcons'
 import components from '@src/component.config.json'
 import { getDict } from '@src/locales'
@@ -15,6 +15,19 @@ const dict = getDict()
 const svgStyle = {
   width: 22
 }
+
+const filenames = require
+  .context('../pages/docs', true, /\.md$/)
+  .keys()
+  .filter(i => i !== './index.md')
+  .map((item, ix) => {
+    const filename = item.slice(2)
+    return {
+      id: ix,
+      name: filename,
+      title: filename
+    }
+  })
 
 const getMenu = locale => {
   return [
@@ -46,7 +59,7 @@ const getMenu = locale => {
       id: 'docs',
       name: get(locale, 'common.docs'),
       icon: <Icon icon={docs} svgStyle={svgStyle} size="lg" />,
-      children: null
+      children: filenames
     }
   ]
 }
