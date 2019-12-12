@@ -5,7 +5,7 @@ services:
     build: ../
     container_name: "yangshan_build"
     volumes:
-      - dist:/usr/src/app/dist
+      - dist:/app/dist
 
   yangshan_web:
     image: nginx
