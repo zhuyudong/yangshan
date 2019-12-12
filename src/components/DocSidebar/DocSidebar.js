@@ -15,9 +15,12 @@ class DocSidebar extends React.PureComponent {
 
   constructor(props) {
     super(props)
+    const { pathname } = location
+    const arr =
+      pathname.match(/.+\/([\w-]+)\/.+/) || pathname.match(/.+\/([\w-]+)$/)
     this.state = {
       mediaSidebarShow: false,
-      expandedMenus: []
+      expandedMenus: arr ? [arr[1]] : []
     }
   }
 
@@ -81,7 +84,13 @@ class DocSidebar extends React.PureComponent {
                       to={pathname}
                       onClick={() => this.onMenuClick(child.id)}
                     >
-                      {child.name}
+                      <span
+                        className={classnames({
+                          'focus-color': expandedMenus.includes(child.id)
+                        })}
+                      >
+                        {child.name}
+                      </span>
                     </Link>
                     {!!child.children.length && (
                       <Icon

@@ -502,7 +502,7 @@
       {
         "id": "tslint",
         "name": "tslint",
-        "title": "tslint.json",
+        "title": "tslint",
         "components": [
           "tslint.json"
         ]
@@ -510,7 +510,7 @@
       {
         "id": "eslint",
         "name": "eslint",
-        "title": ".eslintrc.js",
+        "title": "eslint",
         "components": [
           ".eslintrc",
           ".eslintrc.js"
@@ -519,7 +519,7 @@
       {
         "id": "prettier",
         "name": "prettier",
-        "title": ".prettierrc",
+        "title": "prettier",
         "components": [
           ".prettierrc.js",
           ".prettierrc.yml",
@@ -599,9 +599,17 @@
         ]
       },
       {
+        "id": "jest",
+        "name": "jest",
+        "title": "jest",
+        "components": [
+          "jest.config.js"
+        ]
+      },
+      {
         "id": "babel",
         "name": "babel",
-        "title": ".babelrc",
+        "title": "babel",
         "components": [
           ".babelrc",
           ".babelrc.js"
@@ -610,23 +618,15 @@
       {
         "id": "tsconfig",
         "name": "tsconfig",
-        "title": "tsconfig.json",
+        "title": "tsconfig",
         "components": [
           "tsconfig.json"
         ]
       },
       {
-        "id": "jest",
-        "name": "jest",
-        "title": "jest.config.js",
-        "components": [
-          "jest.config.js"
-        ]
-      },
-      {
         "id": "postcss",
         "name": "postcss",
-        "title": "postcss.config.js",
+        "title": "postcss",
         "components": [
           "postcss.config.js"
         ]
@@ -634,7 +634,7 @@
       {
         "id": "webpack",
         "name": "webpack",
-        "title": "webpack.config.js",
+        "title": "webpack",
         "components": [
           "webpack.config.js"
         ]

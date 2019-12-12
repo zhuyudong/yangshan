@@ -1,6 +1,7 @@
-## .prettierrc
+## Prettier
 
-.prettierrc
+`.prettierrc`
+
 ```
 {
   "printWidth": 80,
@@ -10,8 +11,10 @@
 }
 ```
 
-.prettier.config.js
+`.prettier.config.js`
+
 ```js
+/*run-disable*/
 module.exports = {
   endOfLine: 'lf',
   semi: false,

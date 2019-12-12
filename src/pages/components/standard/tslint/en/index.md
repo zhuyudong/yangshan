@@ -1,1 +1,1 @@
-## tslint.json
+## TSLint

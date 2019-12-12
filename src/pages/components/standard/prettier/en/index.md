@@ -1,1 +1,1 @@
-## .prettierrc
+## Prettier
