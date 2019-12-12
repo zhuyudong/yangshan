@@ -12,7 +12,7 @@ services:
     ports:
       - "80:80"
     container_name: "yangshan_web"
-    restart: unless-stopped
+    restart: always
     volumes:
       - dist:/usr/share/nginx/html
       - ./nginx.conf:/etc/nginx/conf.d/default.conf

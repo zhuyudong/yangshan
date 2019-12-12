@@ -162,7 +162,7 @@ const config = merge(
     },
     entry,
     output: {
-      filename: '[name].bundle.js?[hash:8]',
+      filename: '[name].bundle.[hash:8].js',
       path: resolve(__dirname, 'dist'),
       publicPath: '/'
     },

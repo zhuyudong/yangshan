@@ -7,9 +7,8 @@ RUN mkdir /app
 
 WORKDIR /app
 USER root
-ADD package.json ./
-RUN yarn --silent --no-cache
-
+# ADD package.json ./
 COPY ./ ./
+RUN yarn --silent
 
 CMD ["yarn", "build-webpack"]
