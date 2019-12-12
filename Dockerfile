@@ -1,5 +1,7 @@
 FROM node
 
+LABEL maintainer="Yudong Zhu <zhuyudong@aliyun.com>"
+
 WORKDIR /usr/src/app/
 USER root
 ADD package.json ./

@@ -141,7 +141,7 @@ class PageContainer extends React.Component {
                               appearance="subtle"
                               icon={<Icon icon="edit2" />}
                               target="_blank"
-                              href={`https://github.com/zhuyudong/yangshan/blob/master/src/pages/${route}/index.md`}
+                              href={`https://github.com/zhuyudong/yangshan/blob/master/src/pages${route}/index.md`}
                             />
                           </Whisper>
                         )}

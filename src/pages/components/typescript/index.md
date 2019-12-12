@@ -1,5 +1,5 @@
 # TypeScript
-
+---
 ### TypeScript 关键字
 
 无需定义即可直接使用
