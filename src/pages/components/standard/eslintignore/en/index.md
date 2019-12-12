@@ -1,1 +1,1 @@
-# .eslintignore
+## .eslintignore

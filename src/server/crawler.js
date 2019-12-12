@@ -116,19 +116,25 @@ const crawler = async () => {
     )
   })
   const time = process.hrtime()
-  fs.outputFileSync(
-    filename,
-    `export default ${JSON.stringify(tools, null, 2)}`
-  )
-  shell.exec(`eslint --fix ${filename}`)
-  const diff = process.hrtime(time)
-  console.log(
-    chalk.green(
-      `Update tool JSON configuration file completed. ${(diff[0] * 1e9 +
-        diff[1]) /
-        1000000}ms`
+  // 删除旧文件
+  console.log(chalk.red(`Delete "${filename}"`))
+  rimraf(filename, () => {
+    fs.outputFileSync(
+      filename,
+      `export default ${JSON.stringify(tools, null, 2)}`
     )
-  )
+    // 格式化文件
+    shell.exec(`eslint --fix ${filename}`)
+
+    const diff = process.hrtime(time)
+    console.log(
+      chalk.green(
+        `Update tool JSON configuration file completed. ${(diff[0] * 1e9 +
+          diff[1]) /
+          1000000}ms`
+      )
+    )
+  })
 }
 
 exports.crawler = crawler

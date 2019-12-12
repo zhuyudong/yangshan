@@ -27,12 +27,9 @@ if (!fs.existsSync(filename)) {
   /*
    * 每月 1 号执行一次定时任务
    */
-  schedule.scheduleJob('*/1 * *', () => {
+  schedule.scheduleJob('*/1 * *', async () => {
     try {
-      console.log(chalk.red(`Delete "${filename}"`))
-      rimraf(filename, async () => {
-        await crawler()
-      })
+      await crawler()
     } catch (err) {
       console.error(err)
     }

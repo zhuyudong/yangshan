@@ -1,1 +1,1 @@
-# .editconfig
+## .editconfig

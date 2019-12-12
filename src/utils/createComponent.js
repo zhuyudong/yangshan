@@ -212,7 +212,7 @@ const createComponent = ({
         const { source = '' } = tabExamples[tabIndex] || {}
         return (
           <PageContainer
-            designHash={designHash}
+            // designHash={designHash}
             routerId={routerId ? `${category}/${routerId}` : null}
           >
             {showSource && <MarkdownView>{header}</MarkdownView>}

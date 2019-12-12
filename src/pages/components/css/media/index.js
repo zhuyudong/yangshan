@@ -3,7 +3,6 @@ import styled from 'styled-components'
 
 export default createComponent({
   id: 'css/media',
-  examples: [],
   dependencies: {
     styled
   }

@@ -16,6 +16,16 @@
     "title": "CSS",
     "children": [
       {
+        "id": "less",
+        "name": "less",
+        "title": "less"
+      },
+      {
+        "id": "sass",
+        "name": "sass",
+        "title": "sass"
+      },
+      {
         "id": "flex",
         "name": "Flex",
         "title": "弹性"
@@ -247,7 +257,13 @@
     "id": "typescript",
     "name": "TypeScript",
     "title": "TypeScript",
-    "children": []
+    "children": [
+      {
+        "id": "react",
+        "name": "React",
+        "title": "React"
+      }
+    ]
   },
   {
     "id": "database",
@@ -484,15 +500,6 @@
         ]
       },
       {
-        "id": "babel",
-        "name": "babel",
-        "title": ".babelrc",
-        "components": [
-          ".babelrc",
-          ".babelrc.js"
-        ]
-      },
-      {
         "id": "tslint",
         "name": "tslint",
         "title": "tslint.json",
@@ -537,43 +544,11 @@
         ]
       },
       {
-        "id": "tsconfig",
-        "name": "tsconfig",
-        "title": "tsconfig.json",
-        "components": [
-          "tsconfig.json"
-        ]
-      },
-      {
         "id": "eslintignore",
         "name": "eslintignore",
         "title": ".eslintignore",
         "components": [
           ".eslintignore"
-        ]
-      },
-      {
-        "id": "package",
-        "name": "package",
-        "title": "package.json",
-        "components": [
-          "package.json"
-        ]
-      },
-      {
-        "id": "postcss",
-        "name": "postcss",
-        "title": "postcss.config.js",
-        "components": [
-          "postcss.config.js"
-        ]
-      },
-      {
-        "id": "webpack",
-        "name": "webpack",
-        "title": "webpack.config.js",
-        "components": [
-          "webpack.config.js"
         ]
       }
     ]
@@ -583,6 +558,14 @@
     "name": "配置文件",
     "title": "配置文件",
     "children": [
+      {
+        "id": "package.json",
+        "name": "package.json",
+        "title": "package.json",
+        "components": [
+          "package.json"
+        ]
+      },
       {
         "id": "mysql",
         "name": "MySQL",
@@ -613,6 +596,47 @@
         "title": "mongo.conf",
         "components": [
           "mongo.conf"
+        ]
+      },
+      {
+        "id": "babel",
+        "name": "babel",
+        "title": ".babelrc",
+        "components": [
+          ".babelrc",
+          ".babelrc.js"
+        ]
+      },
+      {
+        "id": "tsconfig",
+        "name": "tsconfig",
+        "title": "tsconfig.json",
+        "components": [
+          "tsconfig.json"
+        ]
+      },
+      {
+        "id": "jest",
+        "name": "jest",
+        "title": "jest.config.js",
+        "components": [
+          "jest.config.js"
+        ]
+      },
+      {
+        "id": "postcss",
+        "name": "postcss",
+        "title": "postcss.config.js",
+        "components": [
+          "postcss.config.js"
+        ]
+      },
+      {
+        "id": "webpack",
+        "name": "webpack",
+        "title": "webpack.config.js",
+        "components": [
+          "webpack.config.js"
         ]
       }
     ]
