@@ -2,7 +2,7 @@ export default {
   id: 'zh-CN',
   common: {
     search: '搜索',
-    name: '洋山',
+    name: '洋山-FE',
     resume: '图灵人工智能研究院前端基础部件及能力平台',
     advanced: '高级功能',
     guide: '新手指南',

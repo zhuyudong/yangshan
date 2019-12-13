@@ -2,13 +2,11 @@ FROM node
 
 LABEL maintainer="Yudong Zhu <zhuyudong@aliyun.com>"
 
-RUN rm -rf /app
-RUN mkdir /app
-
-WORKDIR /app
+WORKDIR /usr/src/app
 USER root
-# ADD package.json ./
+ADD package.json ./
+RUN npm i -g cnpm
+RUN cnpm --silent --no-cache
 COPY ./ ./
-RUN yarn --silent
 
 CMD ["yarn", "build-webpack"]

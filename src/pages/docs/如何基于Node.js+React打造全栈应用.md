@@ -14,9 +14,9 @@
 
 #### 后端
 
-- `koa(Node.js)` HTTP 框架
-- `apollo-boost(QraphQL)` 接口
-- `mongoose(MongoDB)` 数据库 ORM
+- `koa` Node.js HTTP 框架
+- `apollo-boost` QraphQL 接口
+- `mongoose` MongoDB 数据库 ORM
 - `cheerio` 爬虫
 - `node-schedule` 定时任务
 
@@ -27,8 +27,8 @@
 
 #### 代码规范
 
-- `eslint`
-- `prettier`
+- `eslint` 语法检查
+- `prettier` 代码格式化
 
 #### git
 
@@ -36,19 +36,20 @@
 
 #### 测试
 
-- `jest`
+- `jest` 测试框架
 - `enzyme`
 
 #### 构建
 
-- `babel`
-- `webpack`
-- `postcss`
+- `babel` 高级语法/API 转译
+- `webpack` 模块化构建
+- `postcss` css 浏览器前缀、压缩 css
 - `typescript`
 
 #### 部署
 
-- `docker-compose`
+- `nginx` 负载均衡、反向代理等
+- `docker-compose` 容器编排
 
 ### 项目目录结构
 

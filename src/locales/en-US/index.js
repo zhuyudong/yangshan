@@ -2,7 +2,7 @@ export default {
   id: 'en-US',
   common: {
     search: 'Search',
-    name: 'Yangshan',
+    name: 'Yangshan-FE',
     resume:
       'Turing AI Institute of Nanjing Front-end basic components and capability platform',
     advanced: 'Advanced',

@@ -194,14 +194,39 @@ const config = merge(
           ]
         },
         {
-          test: /\.(jpg|png)$/,
+          test: /\.(jpe?g|png|gif)$/,
           //`publicPath`  only use to assign assets path in build
           use: [
+            // {
+            //   loader: 'url-loader',
+            //   options: {
+            //     limit: 8192,
+            //     publicPath: '/'
+            //   }
+            // },
+            'file-loader',
             {
-              loader: 'url-loader',
+              loader: 'image-webpack-loader',
               options: {
-                limit: 8192,
-                publicPath: '/'
+                mozjpeg: {
+                  progressive: true,
+                  quality: 65
+                },
+                // optipng.enabled: false will disable optipng
+                optipng: {
+                  enabled: false
+                },
+                pngquant: {
+                  quality: [0.65, 0.9],
+                  speed: 4
+                },
+                gifsicle: {
+                  interlaced: false
+                },
+                // the webp option will enable WEBP
+                webp: {
+                  quality: 75
+                }
               }
             }
           ]
@@ -246,20 +271,20 @@ const config = merge(
   themesConfig,
   __PRO__
     ? {
-      resolve: {
-        alias: {
-          '@src': resolveToStaticPath('./src')
+        resolve: {
+          alias: {
+            '@src': resolveToStaticPath('./src')
+          }
         }
       }
-    }
     : {
-      resolve: {
-        alias: {
-          '@src': resolveToStaticPath('./src')
-          // 'react-dom': '@hot-loader/react-dom'
+        resolve: {
+          alias: {
+            '@src': resolveToStaticPath('./src')
+            // 'react-dom': '@hot-loader/react-dom'
+          }
         }
       }
-    }
 )
 
 module.exports = process.env.SPEED_MEASURE ? smtp.wrap(config) : config

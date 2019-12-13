@@ -564,7 +564,7 @@
     "title": "配置文件",
     "children": [
       {
-        "id": "package.json",
+        "id": "package",
         "name": "package.json",
         "title": "package.json",
         "components": [
@@ -626,6 +626,14 @@
         "title": "tsconfig",
         "components": [
           "tsconfig.json"
+        ]
+      },
+      {
+        "id": "browserslist",
+        "name": "browserslist",
+        "title": "browserslist",
+        "components": [
+          ".browserslistrc"
         ]
       },
       {

@@ -1,8 +1,8 @@
 [English][readm-en] | [中文版]
 
-# 洋山
+# 洋山-FE
 
-主页: [http://211.159.183.230](http://211.159.183.230)
+主页: [http://yangshan.fun](http://yangshan.fun) 或 [http://211.159.183.230](http://211.159.183.230)
 
 ## 开发
 
@@ -28,5 +28,5 @@ yarn dev
 
 ```bash
 cd docker
-docker-compose rm && docker-compose pull && docker-compose build --no-cache && docker-compose up -d --force-recreate
+docker-compose up -d --build
 ```
