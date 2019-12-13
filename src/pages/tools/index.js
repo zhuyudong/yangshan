@@ -5,6 +5,7 @@ import { debounce } from 'lodash/function'
 import 'lazysizes'
 import 'lazysizes/plugins/parent-fit/ls.parent-fit'
 import Frame from '@src/components/Frame'
+import MarkdownView from '@src/components/MarkdownView'
 import PageContainer from '@src/components/PageContainer'
 import { refers, types, tags } from '@src/common/constants'
 import sources from './sources'
@@ -96,6 +97,7 @@ export default locale => {
     return (
       <Frame showSubmenu={false}>
         <PageContainer routerId="tools" className="masonry-block">
+          <MarkdownView>{require('./index.md')}</MarkdownView>
           <div className="masonry-search">
             <InputGroup className="masonry-search-input">
               <Input

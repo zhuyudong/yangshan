@@ -18,8 +18,8 @@ import {
   lightOff,
   component
 } from '@src/components/SvgIcons'
-import SearchDrawer from '@src/components/SearchDrawer'
 import loadCssFile from '@src/utils/loadCssFile'
+import SearchDrawer from '@src/components/SearchDrawer'
 import { DirectionContext } from '@src/components/Context'
 import yangshan from '../../resources/images/yangshan.jpg'
 
@@ -142,9 +142,9 @@ class TopLevelNav extends React.Component {
         icon: component
       },
       {
-        key: 'practice',
+        key: 'practices',
         tip: get(locale, 'common.practice'),
-        to: `${localePath}practice`,
+        to: `${localePath}practices/overview`,
         icon: practice
       },
       {

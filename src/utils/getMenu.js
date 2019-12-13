@@ -8,6 +8,7 @@ import {
   practice,
   component
 } from '@src/components/SvgIcons'
+import practices from '@src/practice.config.json'
 import components from '@src/component.config.json'
 import { getDict } from '@src/locales'
 
@@ -50,10 +51,10 @@ const getMenu = locale => {
       children: components
     },
     {
-      id: 'practice',
-      name: get(locale, 'common.components'),
+      id: 'practices',
+      name: get(locale, 'common.practice'),
       icon: <Icon icon={practice} svgStyle={svgStyle} size="lg" />,
-      children: null
+      children: practices
     },
     {
       id: 'docs',

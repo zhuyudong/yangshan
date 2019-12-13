@@ -16,9 +16,11 @@ import PageContainer from '@src/components/PageContainer'
 import Paragraph from '@src/components/Paragraph'
 import MarkdownView from '@src/components/MarkdownView'
 import CodeView from '@src/components/CodeView'
+import practices from '@src/practice.config.json'
 import components from '@src/component.config.json'
 import { getDict } from '@src/locales'
 
+const json = { components, practices }
 const babelOptions = {
   presets: ['env', 'stage-1', 'react'],
   plugins: ['transform-class-properties']
@@ -132,7 +134,7 @@ const createComponent = ({
       constructor(props) {
         super(props)
         let component =
-          components.find(
+          json[category].find(
             i =>
               i.id === id ||
               i.name === id ||
@@ -142,7 +144,7 @@ const createComponent = ({
           ) || {}
         if (component.id !== id) {
           component =
-            component.children.find(
+            (component.children || []).find(
               i => i.id === id || `${component.id}/${i.id}` === id
             ) || {}
         }
