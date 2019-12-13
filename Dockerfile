@@ -6,7 +6,8 @@ WORKDIR /usr/src/app
 USER root
 # RUN yum install -y libwebp-tools
 ADD package.json ./
-RUN npm i -g yarn tyarn --registry=https://registry.npm.taobao.org
+#--registry=https://registry.npm.taobao.org
+RUN npm i -g yarn tyarn
 RUN tyarn --no-cache
 COPY ./ ./
 
