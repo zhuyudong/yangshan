@@ -1,21 +1,39 @@
-version: '3.7'
+version: "3.7"
 
 services:
-  yangshan_build:
+  build:
     build: ../
-    container_name: 'yangshan_build'
+    #build:
+    #  context: ../
+    #  dockerfile: Dockerfile
+    #args:
+    #  NODE_ENV: "production"
+    container_name: "yangshan-fe_build"
     volumes:
       - dist:/usr/src/app/dist
+    #networks:
+    #  - webapp-network
 
-  yangshan_web:
+  web:
     image: nginx
     ports:
-      - '80:80'
-    container_name: 'yangshan_web'
+      - "80:80"
+    container_name: "yangshan-fe_web"
     restart: unless-stopped
     volumes:
       - dist:/usr/share/nginx/html
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
 
+  #database:
+  #  image: mongo
+  #  restart: always
+  #  volumes:
+  #    - ~/data/db:/data/db
+  #  networks:
+  #    - webapp-network
+
 volumes:
   dist:
+#networks:
+#  webapp-network:
+#    driver: bridge

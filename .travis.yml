@@ -1,0 +1,12 @@
+before_install:
+  - chmod 600 ~/.ssh/id_rsa
+install:
+  - install
+notifications:
+  email:
+    recipients:
+      - zhuyudong@aliyun.com
+    on_success: always
+    on_failure: always
+after_success:
+  - ssh root@211.159.183.230 "~/yangshan-fe/deploy/deploy.sh"

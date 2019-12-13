@@ -30,5 +30,5 @@ Open url http://127.0.0.1:8080/ in browser.
 
 ```bash
 cd docker
-docker-compose up -d --build
+docker-compose up -d --build --force-recreate
 ```
