@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
-import { Button, Icon, Divider } from 'antd'
+import { Button, Icon } from 'antd'
 import Frame from '@src/components/Frame'
 import MarkdownView from '@src/components/MarkdownView'
 import PageContainer from '@src/components/PageContainer'
@@ -14,14 +14,14 @@ export default locale => {
   return () => (
     <Frame>
       <PageContainer routerId={'docs'}>
-        <Divider orientation="right">
+        <div className="btn-confirm">
           <Link to="/docs/new">
-            <Button className="btn-newdoc">
+            <Button id="btn-newdoc">
               <Icon type="plus" />
               新建文档
             </Button>
           </Link>
-        </Divider>
+        </div>
         {!title && (
           <MarkdownView>{require(`${localePath}/index.md`)}</MarkdownView>
         )}

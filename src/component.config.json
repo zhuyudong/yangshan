@@ -27,8 +27,8 @@
       },
       {
         "id": "postcss",
-        "name": "postcss",
-        "title": "postcss",
+        "name": "PostCSS",
+        "title": "PostCSS",
         "components": [
           "postcss.config.js"
         ]
