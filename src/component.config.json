@@ -26,6 +26,19 @@
         "title": "Sass"
       },
       {
+        "id": "postcss",
+        "name": "postcss",
+        "title": "postcss",
+        "components": [
+          "postcss.config.js"
+        ]
+      },
+      {
+        "id": "general",
+        "name": "综合案例",
+        "title": "综合案例"
+      },
+      {
         "id": "flex",
         "name": "Flex",
         "title": "弹性"
@@ -117,6 +130,11 @@
     "children": []
   },
   {
+    "id": "nginx",
+    "name": "Nginx",
+    "title": "Nginx"
+  },
+  {
     "id": "docker",
     "name": "Docker",
     "title": "Docker",
@@ -192,15 +210,15 @@
     ]
   },
   {
-    "id": "python",
-    "name": "Python",
-    "title": "Python",
-    "children": []
-  },
-  {
     "id": "flutter",
     "name": "Flutter",
     "title": "Flutter",
+    "children": []
+  },
+  {
+    "id": "python",
+    "name": "Python",
+    "title": "Python",
     "children": []
   },
   {
@@ -259,6 +277,11 @@
     "title": "TypeScript",
     "children": [
       {
+        "id": "types",
+        "name": "types",
+        "title": "types"
+      },
+      {
         "id": "react",
         "name": "React",
         "title": "React"
@@ -267,6 +290,48 @@
         "id": "packages",
         "name": "packages",
         "title": "packages"
+      },
+      {
+        "id": "tsconfig",
+        "name": "tsconfig.json",
+        "title": "tsconfig.json"
+      }
+    ]
+  },
+  {
+    "id": "test",
+    "name": "测试",
+    "title": "测试",
+    "children": [
+      {
+        "id": "jest",
+        "name": "Jest",
+        "title": "Jest",
+        "components": [
+          "jest.config.js"
+        ]
+      },
+      {
+        "id": "enzyme",
+        "name": "Enzyme",
+        "title": "Enzyme"
+      }
+    ]
+  },
+  {
+    "id": "browser",
+    "name": "浏览器",
+    "title": "浏览器",
+    "children": [
+      {
+        "id": "bom",
+        "name": "BOM对象",
+        "title": "BOM对象"
+      },
+      {
+        "id": "debug",
+        "name": "调试技巧",
+        "title": "调试技巧"
       }
     ]
   },
@@ -278,17 +343,26 @@
       {
         "id": "redis",
         "name": "Redis",
-        "title": "Redis"
+        "title": "Redis",
+        "components": [
+          "redis.conf"
+        ]
       },
       {
         "id": "mysql",
         "name": "MySQL",
-        "title": "MySQL"
+        "title": "MySQL",
+        "components": [
+          "my.conf"
+        ]
       },
       {
         "id": "mongodb",
         "name": "MongoDB",
-        "title": "MongoDB"
+        "title": "MongoDB",
+        "components": [
+          "mongo.conf"
+        ]
       }
     ]
   },
@@ -474,6 +548,57 @@
     ]
   },
   {
+    "id": "build-tools",
+    "name": "构建工具",
+    "title": "构建工具",
+    "children": [
+      {
+        "id": "gulp",
+        "name": "Gulp",
+        "title": "Gulp"
+      },
+      {
+        "id": "babel",
+        "name": "Babel",
+        "title": "Babel",
+        "components": [
+          ".babelrc",
+          ".babelrc.js"
+        ]
+      },
+      {
+        "id": "rollup",
+        "name": "Rollup",
+        "title": "Rollup"
+      },
+      {
+        "id": "webpack",
+        "name": "Webpack",
+        "title": "Webpack"
+      }
+    ]
+  },
+  {
+    "id": "continuous-integration",
+    "name": "持续集成",
+    "title": "持续集成",
+    "children": [
+      {
+        "id": "travis",
+        "name": "Travis",
+        "title": "Travis",
+        "components": [
+          ".travis.yml"
+        ]
+      },
+      {
+        "id": "jenkis",
+        "name": "Jenkis",
+        "title": "Jenkis"
+      }
+    ]
+  },
+  {
     "id": "network",
     "name": "网络协议",
     "title": "网络协议",
@@ -497,7 +622,7 @@
     "children": [
       {
         "id": "vscode",
-        "name": "vscode",
+        "name": "Visual Studio Code",
         "title": ".vscode",
         "components": [
           "launch.json",
@@ -506,26 +631,28 @@
       },
       {
         "id": "tslint",
-        "name": "tslint",
-        "title": "tslint",
+        "name": "TSLint",
+        "title": "TSLint",
         "components": [
           "tslint.json"
         ]
       },
       {
         "id": "eslint",
-        "name": "eslint",
-        "title": "eslint",
+        "name": "ESLint",
+        "title": "ESLint",
         "components": [
+          ".eslintignore",
           ".eslintrc",
           ".eslintrc.js"
         ]
       },
       {
         "id": "prettier",
-        "name": "prettier",
-        "title": "prettier",
+        "name": "Prettier",
+        "title": "Prettier",
         "components": [
+          ".prettierignore",
           ".prettierrc.js",
           ".prettierrc.yml",
           ".prettierrc.json",
@@ -533,27 +660,20 @@
         ]
       },
       {
-        "id": "gitignore",
-        "name": "gitignore",
-        "title": ".gitignore",
+        "id": "git",
+        "name": "Git",
+        "title": "Git",
         "components": [
+          "git commit message",
           ".gitignore"
         ]
       },
       {
-        "id": "editconfig",
-        "name": "editconfig",
-        "title": ".editconfig",
+        "id": "editor",
+        "name": "编辑器",
+        "title": "编辑器",
         "components": [
           ".editconfig"
-        ]
-      },
-      {
-        "id": "eslintignore",
-        "name": "eslintignore",
-        "title": ".eslintignore",
-        "components": [
-          ".eslintignore"
         ]
       }
     ]
@@ -572,92 +692,11 @@
         ]
       },
       {
-        "id": "mysql",
-        "name": "MySQL",
-        "title": "my.conf",
-        "components": [
-          "my.conf"
-        ]
-      },
-      {
-        "id": "redis",
-        "name": "Redis",
-        "title": "redis.conf",
-        "components": [
-          "redis.conf"
-        ]
-      },
-      {
-        "id": "nginx",
-        "name": "Nginx",
-        "title": "nginx.conf",
-        "components": [
-          "nginx.conf"
-        ]
-      },
-      {
-        "id": "mongodb",
-        "name": "MongoDB",
-        "title": "mongo.conf",
-        "components": [
-          "mongo.conf"
-        ]
-      },
-      {
-        "id": "jest",
-        "name": "jest",
-        "title": "jest",
-        "components": [
-          "jest.config.js"
-        ]
-      },
-      {
-        "id": "babel",
-        "name": "babel",
-        "title": "babel",
-        "components": [
-          ".babelrc",
-          ".babelrc.js"
-        ]
-      },
-      {
-        "id": "tsconfig",
-        "name": "tsconfig",
-        "title": "tsconfig",
-        "components": [
-          "tsconfig.json"
-        ]
-      },
-      {
         "id": "browserslist",
         "name": "browserslist",
         "title": "browserslist",
         "components": [
           ".browserslistrc"
-        ]
-      },
-      {
-        "id": "postcss",
-        "name": "postcss",
-        "title": "postcss",
-        "components": [
-          "postcss.config.js"
-        ]
-      },
-      {
-        "id": "webpack",
-        "name": "webpack",
-        "title": "webpack",
-        "components": [
-          "webpack.config.js"
-        ]
-      },
-      {
-        "id": "travis",
-        "name": "travis",
-        "title": "travis",
-        "components": [
-          ".travis.yml"
         ]
       }
     ]

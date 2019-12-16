@@ -1,9 +1,0 @@
-## .eslintignore
-
-```
-node_modules/**
-dist/**
-coverage
-package-lock.json
-yarn.lock
-```

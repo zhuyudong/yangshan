@@ -170,9 +170,4 @@
 └── yarn.lock
 ```
 
-### 核心代码
-
-`src/server/utils/dbHelper.ts`
-
-```ts
-```
+### [核心代码]()
