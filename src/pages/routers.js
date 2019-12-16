@@ -66,6 +66,21 @@ export const createRouters = (locale, onEnter, onEntered) => {
         )
       )}
       <Route
+        key="/docs/new"
+        path="/docs/new"
+        getComponents={(_, callback) => {
+          onEnter && onEnter()
+          import('./docs/new.js').then(({ default: getComponent }) => {
+            const component = getComponent(locale)
+            callback && callback(null, component)
+            onEntered && onEntered()
+          })
+        }}
+        onEnter={() => {
+          setTitle('新建文档')
+        }}
+      />
+      <Route
         path="*"
         getComponents={(location, callback) => {
           onEnter && onEnter()

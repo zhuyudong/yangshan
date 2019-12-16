@@ -19,7 +19,6 @@ class DocSidebar extends React.PureComponent {
     const { pathname } = location
     const arr =
       pathname.match(/.+\/([\w-]+)\/.+/) || pathname.match(/.+\/([\w-]+)$/)
-    console.log(arr)
     this.state = {
       mediaSidebarShow: false,
       expandedMenus: arr ? [arr[1]] : []

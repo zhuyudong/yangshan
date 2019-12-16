@@ -6,7 +6,7 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const TerserPlugin = require('terser-webpack-plugin')
 const HtmlwebpackPlugin = require('html-webpack-plugin')
-const CompressionPlugin = require('compression-webpack-plugin')
+// const CompressionPlugin = require('compression-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const markdownRenderer = require('react-markdown-reader').renderer
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
@@ -16,10 +16,9 @@ const multipleThemesCompile = require('webpack-multiple-themes-compile')
 const HtmlWebpackHandleCssInjectPlugin = require('./scripts/HtmlWebpackHandleCssInjectPlugin')
 const packageJSON = require('./package.json')
 
-const iconPath = [
-  './node_modules/rsuite/lib/styles',
-  '../rsuite/src/styles'
-].map(relativePath => resolve(__dirname, relativePath))
+const iconPath = ['./node_modules/rsuite/lib/styles'].map(relativePath =>
+  resolve(__dirname, relativePath)
+)
 const resolveToStaticPath = relativePath => resolve(__dirname, relativePath)
 
 const { NODE_ENV, STYLE_DEBUG, ENV_LOCALE } = process.env
@@ -69,7 +68,6 @@ const themesConfig = multipleThemesCompile({
   lessContent: themeName => `// Generate by Script.
 @import '../index.less';
 @import '../themes/${themeName}.less';
-
 @theme-name: ${themeName};`,
   cwd: resolve(__dirname, './'), // 将相对目录修改为 webpack.config.js 所在目录
   cacheDir: './src/less/themes-cache', // 输出目录
@@ -141,7 +139,7 @@ const optimization = {
 if (__PRO__) {
   optimization.minimize = true
   optimization.minimizer = [new TerserPlugin()]
-  plugins.push(new CompressionPlugin())
+  // plugins.push(new CompressionPlugin())
 }
 
 const config = merge(
@@ -170,6 +168,10 @@ const config = merge(
     module: {
       unknownContextCritical: false,
       rules: [
+        {
+          test: /\.(less|css)$/,
+          use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader']
+        },
         {
           test: /\.js$/,
           use: [

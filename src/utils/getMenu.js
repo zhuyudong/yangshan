@@ -61,6 +61,12 @@ const getMenu = locale => {
       name: get(locale, 'common.docs'),
       icon: <Icon icon={docs} svgStyle={svgStyle} size="lg" />,
       children: filenames
+    },
+    {
+      id: 'docs/new',
+      name: '新建文档',
+      icon: <Icon icon={docs} svgStyle={svgStyle} size="lg" />,
+      children: null
     }
   ]
 }
