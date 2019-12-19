@@ -1,11 +1,10 @@
 const { join, resolve } = require('path')
-// const fs = require('fs')
-// const ip = require('ip')
 const _ = require('lodash')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const TerserPlugin = require('terser-webpack-plugin')
 const HtmlwebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 // const CompressionPlugin = require('compression-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const markdownRenderer = require('react-markdown-reader').renderer
@@ -26,10 +25,19 @@ const __PRO__ = NODE_ENV === 'production'
 
 const smtp = new SpeedMeasurePlugin()
 const extractLess = new ExtractTextPlugin('style.[hash:8].css')
+// const extractLess = new MiniCssExtractPlugin({
+//   filename: __PRO__ ? 'style.[hash:8].css' : '[name].css',
+//   chunkFilename: __PRO__ ? '[id].[hash:8].css' : '[id].css'
+// })
 
 const getStyleLoader = () => {
   const loaders = [
-    { loader: 'css-loader' },
+    {
+      loader: 'css-loader',
+      options: {
+        importLoaders: 1
+      }
+    },
     { loader: 'postcss-loader' },
     {
       loader: 'less-loader',
@@ -37,7 +45,6 @@ const getStyleLoader = () => {
         javascriptEnabled: true,
         globalVars: {
           rootPath: '~'
-          // rootPath: __PRO__ ? '~' : '../../../../'
         }
       }
     }
@@ -53,9 +60,18 @@ const languages = [
   'bash',
   'xml',
   'css',
+  'sql',
+  'dts',
   'less',
   'json',
   'diff',
+  'yaml',
+  'scss',
+  'http',
+  'shell',
+  'python',
+  'django',
+  'makefile',
   'typescript'
 ]
 
@@ -90,7 +106,6 @@ const plugins = [
     new RegExp(`^./(${languages.join('|')})$`)
   ),
   new webpack.DefinePlugin({
-    //__RSUITE_CLASSNAME_PREFIX__: JSON.stringify('react-suite-'),
     DEPLOY_ENV: JSON.stringify(process.env.DEPLOY_ENV)
   }),
   new webpack.NamedModulesPlugin(),
@@ -154,7 +169,7 @@ const config = merge(
         ]
       },
       compress: true,
-      host: '0.0.0.0', // ip.address(),
+      host: '0.0.0.0',
       port: 8080,
       open: true
     },
@@ -169,8 +184,25 @@ const config = merge(
       unknownContextCritical: false,
       rules: [
         {
-          test: /\.(less|css)$/,
-          use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader']
+          test: /\.css$/, // /\.(less|css)$/,
+          // include: resolve(__dirname, 'src'),
+          // exclude: resolve(__dirname, 'node_modules'),
+          use: [
+            {
+              loader: 'style-loader', // __PRO__ ? MiniCssExtractPlugin.loader : 'style-loader',
+              options: {
+                // hmr: __PRO__ ? true : undefined
+              }
+            },
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 2
+              }
+            },
+            'postcss-loader'
+            // 'less-loader'
+          ]
         },
         {
           test: /\.js$/,
@@ -206,31 +238,31 @@ const config = merge(
             //     publicPath: '/'
             //   }
             // },
-            'file-loader',
-            {
-              loader: 'image-webpack-loader',
-              options: {
-                mozjpeg: {
-                  progressive: true,
-                  quality: 65
-                },
-                // optipng.enabled: false will disable optipng
-                optipng: {
-                  enabled: false
-                },
-                pngquant: {
-                  quality: [0.65, 0.9],
-                  speed: 4
-                },
-                gifsicle: {
-                  interlaced: false
-                },
-                // the webp option will enable WEBP
-                webp: {
-                  quality: 75
-                }
-              }
-            }
+            'file-loader'
+            // {
+            //   loader: 'image-webpack-loader',
+            //   options: {
+            //     mozjpeg: {
+            //       progressive: true,
+            //       quality: 65
+            //     },
+            //     // optipng.enabled: false will disable optipng
+            //     optipng: {
+            //       enabled: false
+            //     },
+            //     pngquant: {
+            //       quality: [0.65, 0.9],
+            //       speed: 4
+            //     },
+            //     gifsicle: {
+            //       interlaced: false
+            //     },
+            //     // the webp option will enable WEBP
+            //     webp: {
+            //       quality: 75
+            //     }
+            //   }
+            // }
           ]
         },
         {

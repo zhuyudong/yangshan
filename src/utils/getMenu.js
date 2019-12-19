@@ -26,9 +26,11 @@ const filenames = require
     return {
       id: ix,
       name: filename,
-      title: filename
+      title: filename.slice(0, -3)
     }
   })
+
+console.log(filenames)
 
 const getMenu = locale => {
   return [

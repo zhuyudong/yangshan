@@ -1,4 +1,4 @@
-### 正则（RegExp）
+### RegExp
 
 展示 `RegExp` 及其原型链上的属性和方法
 

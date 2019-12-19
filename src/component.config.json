@@ -26,6 +26,11 @@
         "title": "Sass"
       },
       {
+        "id": "selectors",
+        "name": "选择器",
+        "title": "选择器"
+      },
+      {
         "id": "postcss",
         "name": "PostCSS",
         "title": "PostCSS",
@@ -268,8 +273,8 @@
           "Math",
           "Array",
           "Object",
-          "Number",
           "String",
+          "Number",
           "RegExp",
           "Symbol",
           "Function"

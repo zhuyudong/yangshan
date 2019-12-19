@@ -2,7 +2,11 @@
 
 ts 文件类型：`.ts`, `.tsx`, `.d.ts`
 
+`npm i -g typescript` 或 `yarn global add typescript` 安装 `tsc` 全局命令
+
 `tsc --init` 初始化出 `tsconfig.json`
+
+`tsx` 执行编译
 
 ### 与文件相关
 
@@ -23,7 +27,7 @@ ts 文件类型：`.ts`, `.tsx`, `.d.ts`
 }
 ```
 
-#### 继承与覆盖
+### 继承与覆盖
 
 `tsconfig.extends.json`
 
@@ -37,7 +41,7 @@ ts 文件类型：`.ts`, `.tsx`, `.d.ts`
 }
 ```
 
-### 编译选项
+### 编译选项详解
 
 ```json
 {

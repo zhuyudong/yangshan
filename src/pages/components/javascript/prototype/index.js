@@ -5,15 +5,15 @@ import { Instance, getTree, explain, containerStyle } from '@src/utils/g6'
 export default createComponent({
   id: 'javascript/prototype',
   examples: [
-    'object',
-    'array',
-    'number',
     'date',
     'math',
-    'regexp',
+    'array',
     'string',
-    'function',
-    'symbol'
+    'object',
+    'number',
+    'regexp',
+    'symbol',
+    'function'
   ],
   dependencies: {
     G6,

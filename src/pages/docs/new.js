@@ -1,12 +1,13 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { Button, Icon, Popconfirm } from 'antd'
 import { Editor } from '@toast-ui/react-editor'
-import 'tui-editor/dist/tui-editor.css'
-import 'tui-editor/dist/tui-editor-contents.css'
-import 'codemirror/lib/codemirror.css'
-import 'highlight.js/styles/github.css'
 import Frame from '@src/components/Frame'
 import PageContainer from '@src/components/PageContainer'
+import 'tui-editor/dist/tui-editor.css' // editor's ui
+import 'tui-editor/dist/tui-editor-contents.css' // editor's content
+import 'codemirror/lib/codemirror.css' // codemirror
+import 'highlight.js/styles/github.css' // code block highlight
+// import './styles.less'
 
 const ext = [
   {

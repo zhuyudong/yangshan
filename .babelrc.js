@@ -4,6 +4,13 @@ module.exports = api => {
     presets: ['@babel/preset-env', '@babel/preset-react'],
     plugins: [
       'lodash',
+      [
+        'import',
+        {
+          libraryName: 'antd',
+          style: false
+        }
+      ],
       '@babel/plugin-transform-proto-to-assign',
       '@babel/plugin-transform-runtime',
       'react-hot-loader/babel',

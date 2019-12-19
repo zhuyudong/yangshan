@@ -18,7 +18,7 @@ class App extends React.PureComponent {
 
   render() {
     return (
-      <Grid fluid className='app-container'>
+      <Grid fluid className="app-container">
         {this.props.children}
       </Grid>
     )

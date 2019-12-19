@@ -134,14 +134,14 @@ class DocSidebar extends React.PureComponent {
                   <Icon icon="external-link-square" className="external-link" />
                 </NavItem>
               )
-            } else if (/\.md$/.test(child.title)) {
+            } else if (/\.md$/.test(child.name)) {
               nodeItems.push(
                 <Nav.Item
                   key={child.id}
                   active={active}
                   className="overview fs-12"
                   componentClass={Link}
-                  to={`/${item.id}?title=${child.title}`}
+                  to={`/${item.id}?title=${child.name}`}
                 >
                   <Tooltip title={child.title}>{child.title}</Tooltip>
                 </Nav.Item>

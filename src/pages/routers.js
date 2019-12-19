@@ -42,7 +42,11 @@ export const createRouters = (locale, onEnter, onEntered) => {
                   )
                 }}
                 onEnter={() => {
-                  setTitle(`${capitalize(route)} - ${dir}`)
+                  setTitle(
+                    /^[A-Z]+/.test(route)
+                      ? `${route} - ${dir}`
+                      : `${capitalize(route)} - ${dir}`
+                  )
                 }}
               />
             ))}
