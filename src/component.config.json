@@ -132,7 +132,8 @@
   {
     "id": "nginx",
     "name": "Nginx",
-    "title": "Nginx"
+    "title": "Nginx",
+    "children": []
   },
   {
     "id": "docker",
@@ -232,6 +233,11 @@
         "title": "API"
       },
       {
+        "id": "config",
+        "name": "配置",
+        "title": "配置"
+      },
+      {
         "id": "graphql",
         "name": "QraphQL",
         "title": "QraphQL"
@@ -297,6 +303,12 @@
         "title": "tsconfig.json"
       }
     ]
+  },
+  {
+    "id": "serverless",
+    "name": "Serverless",
+    "title": "Serverless",
+    "children": []
   },
   {
     "id": "test",

@@ -1,5 +1,7 @@
 # TypeScript
+
 ---
+
 ### TypeScript 关键字
 
 无需定义即可直接使用
@@ -401,6 +403,18 @@ interface IUserInfo {
 function getUserInfo(user: IUserInfo): string {
   return user.age + '=====' + user.userName
 }
+
+/*接口合并*/
+interface A {
+  name: string
+}
+interface A {
+  age: number
+}
+const a: A = {
+  name: 'xiaoming',
+  age: 25
+}
 ```
 
 ### 8. 类
@@ -477,6 +491,145 @@ abstract class Animal {
 ```
 
 #### 成员修饰符
+
+```ts
+class Dog {
+  constructor(name: string) {
+    // 属性必须先定义
+    // ❌ 类型“Dog”上不存在属性“name”。ts(2339)
+    this.name = name
+  }
+}
+
+// 属性定义方式
+class Dog1 {
+  constructor(name: string) {
+    this.name = name
+  }
+  // 属性都是实例属性
+  // 实例属性都必须初始化
+  name: string
+  // name?: string
+  // name: string = 'dog'
+  // public name: string
+  // 方法都是原型方法
+  run() {}
+  // 私有成员只能在本类中调用，不能在实例中调用
+  private pri() {}
+  public pub() {
+    console.log(this.pri())
+  }
+}
+console.log(Dog1.prototype)
+const dog1 = new Dog1('wangwang')
+console.log(dog1)
+// 属性“pri”为私有属性，只能在类“Dog1”中访问。ts(2341)
+dog1.pri()
+
+// 继承
+class Husky extends Dog1 {
+  constructor(name: string, color: string) {
+    super(name)
+    // this 必须位于 super 后
+    this.color = color
+  }
+  color: string
+}
+
+// 成员修饰符
+class Dog2 {
+  // 不能被继承和实例化
+  private constructor(name: string) {
+    this.name = name
+  }
+  name: string
+}
+// ❌ 类“Dog2”的构造函数是私有的，仅可在类声明中访问。ts(2673)
+const dog2 = new Dog2()
+// ❌ 无法扩展类“Dog2”。类构造函数标记为私有。ts(2675)
+class Husky2 extends Dog2 {
+  constructor(name: string) {
+    super(name)
+  }
+}
+
+class Dog3 {
+  constructor(name: string) {
+    this.name = name
+  }
+  name: string
+  // protected 只能在类和子类中访问
+  protected pro() {}
+  run() {
+    this.pro()
+  }
+}
+const dog3 = new Dog3('dog3')
+// ❌ 属性“pro”受保护，只能在类“Dog3”及其子类中访问。ts(2445)
+dog3.pro()
+class Husky3 extends Dog3 {
+  constructor(name: string) {
+    super(name)
+    // 可在子类中访问父类protected方法
+    this.pro()
+  }
+}
+
+class Dog4 {
+  // 只能被继承不能被实例化
+  protected constructor(name: string) {
+    this.name = name
+  }
+  name: string
+  protected pro() {}
+}
+// ❌ 类“Dog4”的构造函数是受保护的，仅可在类声明中访问。ts(2674)
+const dog4 = new Dog4('dog4')
+class Husky4 extends Dog4 {
+  constructor(name: string) {
+    super(name)
+    this.pro()
+  }
+}
+
+//只读属性
+class Dog5 {
+  constructor(public name: string) {
+    this.name = name
+  }
+  // 等效于
+  /*
+  constructor(name: string) {
+    this.name = name
+  }
+  name: string
+  //*/
+  // 只读属性一定要初始化
+  readonly legs: number = 4
+}
+const dog5 = new Dog5('dog5')
+// ❌ Cannot assign to 'legs' because it is a read-only property.ts(2540)
+dog5.legs = 5
+
+/* 静态成员 */
+class Dog6 {
+  // 静态成员只能被类不能被实例访问
+  static food: string = 'bones'
+  constructor() {}
+}
+Dog6.food
+const dog6 = new Dog6()
+// ❌ Property 'food' is a static member of type 'Dog6'ts(2576)
+dog6.food
+
+// 静态成员可被继承
+class Husky6 extends Dog6 {
+  constructor() {
+    super()
+  }
+}
+Husky6.food
+```
 
 #### 多态
 

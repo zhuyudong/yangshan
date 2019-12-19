@@ -10,7 +10,7 @@ export default {
     tools: '工具集',
     opensources: '开源软件',
     components: '知识 && 规范',
-    practice: '业务组件',
+    practice: '组件 && 区块 && 模板',
     docs: '文档',
     tools: '工具',
     example: '例图',

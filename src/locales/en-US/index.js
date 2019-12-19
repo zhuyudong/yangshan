@@ -11,7 +11,7 @@ export default {
     tools: 'tools',
     opensources: 'Open Souce Softwart',
     components: 'Knowledge && Standards',
-    practice: 'Practice Components',
+    practice: 'Components && Block && Template',
     docs: 'article',
     tools: 'Tools',
     example: 'image',

@@ -1,6 +1,5 @@
 import createComponent from '@src/utils/createComponent'
 
 export default createComponent({
-  id: 'typescript',
-  examples: ['strategy']
+  id: 'nodejs/config'
 })
